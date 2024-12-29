@@ -29,7 +29,7 @@ export default function RootLayout({
         <div className="h-16 z-50">
           <Nav />
         </div>
-        <div className="lg:max-w-[1500px] mx-auto z-20 border-2">
+        <div className="lg:max-w-[1500px] mx-auto z-20 ">
           {children}
         </div>
         <div>

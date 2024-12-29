@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const DevelopmentProcess = () => {
@@ -6,7 +8,7 @@ const DevelopmentProcess = () => {
 
   const steps = [
     {
-      icon: '/figma/discovery.png',  // Replace with your actual icon path
+      icon: '/figma/discovery.png',
       title: 'Understanding Your Needs',
       description: 'Understanding your needs and setting a clear roadmap.',
     },
@@ -32,33 +34,38 @@ const DevelopmentProcess = () => {
     },
   ];
 
+  // Automatic Swipe
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStep((prev) => (prev + 1) % steps.length);
+    }, 3000); // Auto-swipe every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, [steps.length]);
+
   const handleNextStep = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
-    }
+    setCurrentStep((prev) => (prev + 1) % steps.length);
   };
 
   const handlePreviousStep = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
+    setCurrentStep((prev) => (prev - 1 + steps.length) % steps.length);
   };
 
   return (
     <div>
       {/* Development Process Section */}
-      <section className="container px-4 py-12 bg-gray-50">
+      <section className="container px-6 py-12 bg-gray-50">
         <h2 className="text-3xl font-bold text-center mb-12">Our Proven Development Process</h2>
         <div className="max-w-md mx-auto text-center">
           <div className="mb-6">
             {steps[currentStep] && (
               <>
-                <div className="w-16 h-16 mx-auto mb-4 relative">
+                <div className="w-20 h-20 mx-auto mb-4 relative">
                   <Image
                     src={steps[currentStep].icon}
                     alt={steps[currentStep].title}
-                    width={64} // Explicit width in pixels
-                    height={64} // Explicit height in pixels
+                    width={64}
+                    height={64}
                     className="object-contain"
                   />
                 </div>
@@ -77,24 +84,8 @@ const DevelopmentProcess = () => {
               style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
             />
           </div>
-          <div className="flex justify-between">
-            {/* Go Back Button */}
-            <button
-              onClick={handlePreviousStep}
-              className="px-4 py-2 bg-gray-600 text-white rounded-full"
-              disabled={currentStep === 0}
-            >
-              Go Back
-            </button>
-            {/* Next Step Button */}
-            <button
-              onClick={handleNextStep}
-              className="px-4 py-2 bg-blue-600 text-white rounded-full"
-              disabled={currentStep === steps.length - 1}
-            >
-              Next Step
-            </button>
-          </div>
+          
+         
         </div>
       </section>
 
@@ -121,8 +112,8 @@ const DevelopmentProcess = () => {
               <Image
                 src={`/icons/${tech}.png`}
                 alt={tech}
-                width={48} // Explicit width
-                height={48} // Explicit height
+                width={48}
+                height={48}
               />
             </div>
           ))}
