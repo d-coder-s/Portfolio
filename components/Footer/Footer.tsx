@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import Link from 'next/link';
 import { BsInstagram } from "react-icons/bs";
 import { TfiLinkedin } from "react-icons/tfi";
 import { FaTwitter, FaFacebookF } from "react-icons/fa";
@@ -63,10 +64,10 @@ const Footer = () => {
         {/* Quick Links */}
         <div className="flex flex-col space-y-1 text-sm">
           <h3 className="text-lg font-semibold text-[#38bdf8]">Quick Links</h3>
-          <a href="#" className="hover:underline">Home</a>
-          <a href="#" className="hover:underline">About Us</a>
-          <a href="#" className="hover:underline">Services</a>
-          <a href="#" className="hover:underline">Contact</a>
+          <Link href="/" className="hover:underline">Home</Link>
+          <Link href="/about" className="hover:underline">About Us</Link>
+          <Link href="/services" className="hover:underline">Services</Link>
+          <Link href="/contact" className="hover:underline">Contact</Link>
         </div>
 
         {/* Social Links */}
@@ -81,6 +82,7 @@ const Footer = () => {
               key={index}
               href={href}
               target="_blank"
+              rel="noopener noreferrer"
               className="p-2 bg-[#475569] hover:bg-[#38bdf8] rounded-md transition duration-300 flex items-center justify-center"
             >
               <Icon size={20} className="text-white" />
