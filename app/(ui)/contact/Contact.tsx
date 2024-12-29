@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React, { useRef } from 'react';
@@ -47,9 +48,9 @@ const Contact = () => {
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div> 
         <div className="relative z-10">
-          <h1 className="text-4xl font-bold mb-2">Let’s make something awesome together.</h1>
+        <h1 className="text-4xl font-bold mb-2">Let&apos;s make something awesome together.</h1>
           <p className="text-lg">
-            Drop us a line, or give us a heads-up if you’re interested in visiting us.
+            Drop us a line, or give us a heads-up if you&apos;re interested giving us the opportunity to turn your beautiful idea in an amazing site.
           </p>
         </div>
       </div>
@@ -74,7 +75,7 @@ const Contact = () => {
                     How long does it take to complete a project?
                   </summary>
                   <p className="mt-2 text-gray-600">
-                    The timeline depends on the project’s complexity. Typically, projects take 2–8 weeks.
+                    The timeline depends on the project&apos;s complexity. Typically, projects take 2,8 weeks.
                   </p>
                 </details>
                 <details className="mb-2">
