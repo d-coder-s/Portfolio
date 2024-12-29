@@ -238,7 +238,7 @@ const Contact = () => {
                   className="block text-sm font-medium mb-1"
                   htmlFor="expertise"
                 >
-                  What Expertise You're Interested In *
+                  What Expertise You&apos;re Interested In *
                 </label>
                 <select
                   name="expertise"
