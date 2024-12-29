@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 
 interface Slide {
   title: string;
@@ -13,13 +14,13 @@ const slides: Slide[] = [
   {
     title: 'Custom Website Development',
     description: 'Empower your business with tailored web solutions designed to excel.',
-    image: '/figma/web.webp', // Verify this path
+    image: '/figma/web.webp',
     bgColor: 'bg-gray-100'
   },
   {
     title: 'E-Commerce Development',
     description: 'Empower your business with tailored web solutions designed to excel.',
-    image: '/figma/ecommerce.webp', // Verify this path
+    image: '/figma/ecommerce.webp',
     bgColor: 'bg-blue-200'
   }
 ];
@@ -28,12 +29,12 @@ const PortfolioSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Reusable function to update slide index
-  const updateSlide = (step: number) => {
+  const updateSlide = useCallback((step: number) => {
     setCurrentIndex((prev) => (prev + step + slides.length) % slides.length);
-  };
+  }, []);
 
-  const prevSlide = () => updateSlide(-1);
-  const nextSlide = () => updateSlide(1);
+  const prevSlide = useCallback(() => updateSlide(-1), [updateSlide]);
+  const nextSlide = useCallback(() => updateSlide(1), [updateSlide]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -43,16 +44,15 @@ const PortfolioSection: React.FC = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [prevSlide, nextSlide]);
 
-  
+  // Auto slide change
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
     }, 5000); // Change slide every 5 seconds
     return () => clearInterval(interval);
-  }, []);
- 
+  }, [nextSlide]);
 
   return (
     <div className="relative w-full max-w-4xl mx-auto p-6">
@@ -75,10 +75,12 @@ const PortfolioSection: React.FC = () => {
 
         {/* Image Content */}
         <div className="w-full md:w-1/2 flex justify-center">
-          <img
+          <Image
             src={slides[currentIndex].image}
             alt={`${slides[currentIndex].title} image`}
             className="w-3/4 md:w-full rounded-md shadow-md object-cover"
+            width={400}
+            height={300}
           />
         </div>
       </div>

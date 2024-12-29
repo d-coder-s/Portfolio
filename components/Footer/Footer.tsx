@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { BsInstagram } from "react-icons/bs";
 import { TfiLinkedin } from "react-icons/tfi";
+import Image from 'next/image';
 
 const Footer = () => {
   const [currentProject, setCurrentProject] = useState(0);
@@ -20,7 +21,6 @@ const Footer = () => {
       title: "Project 3",
       image: "/figma/p3.webp",
     },
-    // Add more projects as needed
   ];
 
   // Handle the transition every 3 seconds
@@ -34,10 +34,10 @@ const Footer = () => {
 
   return (
     <div className="w-full py-8 sm:px-12 lg:px-12">
+      {/* Projects Section */}
       <section className="mt-8 py-12">
         <h2 className="text-2xl font-bold text-center mb-6 text-white">Our Projects</h2>
         <div className="relative w-full overflow-hidden">
-          {/* Added relative positioning for the project container */}
           <div
             className="flex transition-all duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentProject * 100}%)` }}
@@ -47,24 +47,28 @@ const Footer = () => {
                 key={index}
                 className="w-full px-8 py-4 text-center bg-gray-800 rounded-lg shadow-lg flex-shrink-0"
               >
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-96 object-cover rounded-lg mb-4" // Adjust the height of the image
+                  width={400} // Set an appropriate width
+                  height={300} // Set an appropriate height
+                  className="w-full h-96 object-cover rounded-lg mb-4"
+                  priority={index === 0} // Optimize the first image for LCP
                 />
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Company Info Section */}
       <div className="flex flex-wrap md:justify-between md:space-y-0 sm:space-y-6 sm:justify-center md:items-start sm:items-center">
-        {/* Company Info Section */}
         <div className="flex flex-col justify-center space-y-2 sm:w-full md:w-auto">
-          <h2 className="text-lg font-bold">Solarworks</h2>
+          <h2 className="text-lg font-bold">Dcoder</h2>
           <div className="flex flex-col text-sm text-gray-400">
-            <span className="font-semibold text-white">Mr. Gautam Verma</span>
-            <span>Contact: 9999021752</span>
-            <span>Email: Gautam.vrma@outlook.com</span>
+            <span className="font-semibold text-white">Abhishek jaiswal</span>
+            <span>Contact: 8690896522</span>
+            <span>Email: dcoder.atwork@gmail.com</span>
             <a
               href="https://wa.me/9999021752"
               target="_blank"
@@ -84,7 +88,8 @@ const Footer = () => {
             Write in a few lines and send us your CV.
           </p>
           <div className="flex mt-4 space-x-3">
-            {[{
+            {[
+              {
                 Icon: TfiLinkedin,
                 href: "https://www.linkedin.com/company/96432867/admin/dashboard/",
               },
@@ -105,12 +110,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Projects Section */}
-
-
       {/* Bottom Bar */}
       <div className="mt-8 pt-4 border-t border-[#252540] flex justify-center">
-        <p className="text-xs text-white-500">© 2024 Solarworks. All rights reserved.</p>
+        <p className="text-xs text-gray-400">© 2024 Solarworks. All rights reserved.</p>
       </div>
     </div>
   );

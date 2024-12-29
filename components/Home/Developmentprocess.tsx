@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const DevelopmentProcess = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -51,7 +52,7 @@ const DevelopmentProcess = () => {
             {steps[currentStep] && (
               <>
                 <div className="w-16 h-16 mx-auto mb-4">
-                  <img
+                  <Image
                     src={steps[currentStep].icon}  // Display the PNG icon
                     alt={steps[currentStep].title}
                     className="w-full h-full object-contain"
@@ -113,7 +114,7 @@ const DevelopmentProcess = () => {
               key={i}
               className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center"
             >
-              <img
+              <Image
                 src={`/icons/${tech}.png`}  // Replace with actual icon paths
                 alt={tech}
                 className="w-12 h-12"
