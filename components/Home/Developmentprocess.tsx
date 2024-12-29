@@ -11,21 +11,22 @@ const DevelopmentProcess = () => {
       description: 'Understanding your needs and setting a clear roadmap.',
     },
     {
-      icon: '/figma/sketch.png',  // Replace with your actual icon path
+      icon: '/figma/sketch.png',
       title: 'Development',
       description: 'Bringing your vision to life.',
-    },{
-      icon: '/figma/coding.png',  // Replace with your actual icon path
+    },
+    {
+      icon: '/figma/coding.png',
       title: 'Deployment & Support',
       description: 'Deploying the project and providing ongoing assistance.',
     },
     {
-      icon: '/figma/test.png',  // Replace with your actual icon path
+      icon: '/figma/test.png',
       title: 'Quality Assurance',
       description: 'Ensuring the product is error-free and meets quality standards.',
     },
     {
-      icon: '/figma/rocket.png',  // Replace with your actual icon path
+      icon: '/figma/rocket.png',
       title: 'Deployment & Support',
       description: 'Deploying the project and providing ongoing assistance.',
     },
@@ -45,17 +46,20 @@ const DevelopmentProcess = () => {
 
   return (
     <div>
+      {/* Development Process Section */}
       <section className="container px-4 py-12 bg-gray-50">
         <h2 className="text-3xl font-bold text-center mb-12">Our Proven Development Process</h2>
         <div className="max-w-md mx-auto text-center">
           <div className="mb-6">
             {steps[currentStep] && (
               <>
-                <div className="w-16 h-16 mx-auto mb-4">
+                <div className="w-16 h-16 mx-auto mb-4 relative">
                   <Image
-                    src={steps[currentStep].icon}  // Display the PNG icon
+                    src={steps[currentStep].icon}
                     alt={steps[currentStep].title}
-                    className="w-full h-full object-contain"
+                    width={64} // Explicit width in pixels
+                    height={64} // Explicit height in pixels
+                    className="object-contain"
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-2">
@@ -115,9 +119,10 @@ const DevelopmentProcess = () => {
               className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center"
             >
               <Image
-                src={`/icons/${tech}.png`}  // Replace with actual icon paths
+                src={`/icons/${tech}.png`}
                 alt={tech}
-                className="w-12 h-12"
+                width={48} // Explicit width
+                height={48} // Explicit height
               />
             </div>
           ))}
