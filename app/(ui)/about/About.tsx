@@ -1,6 +1,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function AboutUs() {
   return (
@@ -39,7 +40,7 @@ export default function AboutUs() {
             </p>
           </div>
           <div className="lg:w-1/2">
-            <img
+            <Image
               src="/figma/about.png"
               alt="Team working on innovative solutions"
               className="rounded-lg shadow-lg"
@@ -161,7 +162,7 @@ export default function AboutUs() {
                       <Link href={teamMember.link}>
                         <div className="relative text-center p-0 bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 w-40 h-40 flex items-center justify-center overflow-hidden cursor-pointer">
                           <div className="relative w-full h-full">
-                            <img
+                            <Image
                               src={teamMember.image}
                               alt={teamMember.name}
                               className="w-full h-full object-cover rounded-full border-4 border-gray-700 shadow-md"
@@ -184,7 +185,7 @@ export default function AboutUs() {
                       <Link href={teamMember.link}>
                         <div className="relative text-center p-0 bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 w-40 h-40 flex items-center justify-center overflow-hidden cursor-pointer">
                           <div className="relative w-full h-full">
-                            <img
+                            <Image
                               src={teamMember.image}
                               alt={teamMember.name}
                               className="w-full h-full object-cover rounded-full border-4 border-gray-700 shadow-md"

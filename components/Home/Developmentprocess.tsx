@@ -43,19 +43,13 @@ const DevelopmentProcess = () => {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, [steps.length]);
 
-  const handleNextStep = () => {
-    setCurrentStep((prev) => (prev + 1) % steps.length);
-  };
-
-  const handlePreviousStep = () => {
-    setCurrentStep((prev) => (prev - 1 + steps.length) % steps.length);
-  };
-
   return (
     <div>
       {/* Development Process Section */}
       <section className="container px-6 py-12 bg-gray-50">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Proven Development Process</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Our Proven Development Process
+        </h2>
         <div className="max-w-md mx-auto text-center">
           <div className="mb-6">
             {steps[currentStep] && (
@@ -67,6 +61,7 @@ const DevelopmentProcess = () => {
                     width={64}
                     height={64}
                     className="object-contain"
+                    priority
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-2">
@@ -84,8 +79,6 @@ const DevelopmentProcess = () => {
               style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
             />
           </div>
-          
-         
         </div>
       </section>
 
@@ -114,6 +107,7 @@ const DevelopmentProcess = () => {
                 alt={tech}
                 width={48}
                 height={48}
+                priority
               />
             </div>
           ))}
