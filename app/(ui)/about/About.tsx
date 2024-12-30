@@ -1,7 +1,6 @@
 
 import React from "react";
-import Link from "next/link";
-import Image from 'next/image';
+import TeamCarousel from './TeamCarousel';
 
 export default function AboutUs() {
   return (
@@ -40,7 +39,7 @@ export default function AboutUs() {
             </p>
           </div>
           <div className="lg:w-1/2">
-            <Image
+            <img
               src="/figma/about.png"
               alt="Team working on innovative solutions"
               className="rounded-lg shadow-lg"
@@ -86,127 +85,7 @@ export default function AboutUs() {
               The passionate minds driving innovation and excellence at Dcoder.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-8 max-w-6xl mx-auto px-6">
-            {[
-              {
-                name: "Abhishek Jaiswal",
-                role: "Frontend Developer, Lead Designer",
-                image: "/figma/abhishek.jpeg",
-                link: "/team/abhishek",
-                discription: "loremjashbhcsbhucjb",
-              },
-              {
-                name: "Vedant Pandey",
-                role: "Full Stack Developer",
-                image: "/figma/vedant.jpeg",
-                link: "/team/vedant",
-                discription: "loremjashbhcsbhucjb",
-              },
-              {
-                name: "Aman Pal",
-                role: "Full Stack Developer",
-                image: "https://via.placeholder.com/150",
-                link: "/team/aman",
-                discription: "loremjashbhcsbhucjb",
-              },
-              {
-                name: "Utkarsh Pal",
-                role: "App Developer",
-                image: "https://via.placeholder.com/150",
-                link: "/team/utkarsh",
-                discription: "loremjashbhcsbhucjb",
-              },
-              {
-                name: "Arush Agarwal",
-                role: "Backend Developer",
-                image: "https://via.placeholder.com/150",
-                link: "/team/arush",
-                discription: "loremjashbhcsbhucjb",
-              },
-              {
-                name: "Ankit Kumar",
-                role: "Backend Developer",
-                image: "/figma/ankit.jpeg",
-                link: "/team/ankit",
-                discription: "loremjashbhcsbhucjb",
-              },
-              {
-                name: "Harsh Gupta",
-                role: "AI-ML & Data Science",
-                image: "https://via.placeholder.com/150",
-                link: "/team/harsh",
-                discription: "loremjashbhcsbhucjb",
-              },
-              {
-                name: "Sartaj Ahmad",
-                role: "QA Engineer",
-                image: "/figma/sartaj.jpg",
-                link: "/team/sartaj",
-                discription: "loremjashbhcsbhucjb",
-              },
-            ].map((teamMember, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row items-center gap-4 w-full max-w-4xl mx-auto"
-              >
-                
-                {index % 2 === 0 ? (
-                  <>
-                    {/* Left side: Name and Role */}
-                    <div className="flex flex-col items-start text-left w-full md:w-1/3">
-                      <h3 className="text-xl font-bold text-amber-700">{teamMember.name}</h3>
-                      <p className="text-gray-400">{teamMember.role}</p>
-                    </div>
-                    {/* Right side: Profile Picture and Link */}
-                    <div className="flex items-center gap-4 w-full md:w-2/3">
-                      <Link href={teamMember.link}>
-                        <div className="relative text-center p-0 bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 w-40 h-40 flex items-center justify-center overflow-hidden cursor-pointer">
-                          <div className="relative w-full h-full">
-                            <Image
-                              src={teamMember.image}
-                              alt={teamMember.name}
-                              className="w-full h-full object-cover rounded-full border-4 border-gray-700 shadow-md"
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                              <p className="text-sm text-white px-2">View Profile</p>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                      {/* Description */}
-                      <p className="flex flex-col text-gray-300 text-left w-full">{teamMember.discription}</p>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Left side: Profile Picture and Link */}
-                    <p className="flex flex-col text-gray-300 items-start text-left w-full md:w-2/4">{teamMember.discription}</p>
-                    <div className="flex items-center gap-4 w-full md:w-2/3">
-                      <Link href={teamMember.link}>
-                        <div className="relative text-center p-0 bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 w-40 h-40 flex items-center justify-center overflow-hidden cursor-pointer">
-                          <div className="relative w-full h-full">
-                            <Image
-                              src={teamMember.image}
-                              alt={teamMember.name}
-                              className="w-full h-full object-cover rounded-full border-4 border-gray-700 shadow-md"
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                              <p className="text-sm text-white px-2">View Profile</p>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                    {/* Right side: Name, Role, and Description */}
-                    <div className="flex flex-col items-start text-left w-full md:w-1/3">
-                      <h3 className="text-xl font-bold text-amber-700">{teamMember.name}</h3>
-                      <p className="text-gray-400">{teamMember.role}</p>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
+          <TeamCarousel />
         </section>
 
         <section className="py-16 bg-gradient-to-r from-gray-500 to-gray-900 text-center">
