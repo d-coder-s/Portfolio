@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import {  FaSearch, FaCode, FaBug, FaRocket, FaProjectDiagram } from 'react-icons/fa';
-import { FaReact, FaNodeJs, FaJs, FaAws, FaAngular, FaApple, FaAndroid, FaSwift, FaFigma } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaJs, FaAws, FaAngular, FaAndroid, FaSwift, FaFigma } from 'react-icons/fa';
 import { SiTypescript, SiKotlin, SiFlutter, SiTensorflow, SiNumpy, SiPandas, SiScikitlearn, SiNextdotjs, SiMongodb, SiExpress, SiCanva } from 'react-icons/si';
 
 
@@ -47,7 +47,7 @@ const DevelopmentProcess = () => {
     { icon: <SiKotlin size={48} className="text-teal-500" />, name: 'Kotlin' },
     { icon: <SiFlutter size={48} className="text-blue-500" />, name: 'Flutter' },
     { icon: <FaAndroid size={48} className="text-green-600" />, name: 'Android Studio' },
-    { icon: <FaApple size={48} className="text-gray-700" />, name: 'Swift' },
+    { icon: <FaSwift size={48} className="text-gray-700" />, name: 'Swift' },
     { icon: <FaAngular size={48} className="text-red-600" />, name: 'Angular' },
     { icon: <SiNumpy size={48} className="text-green-500" />, name: 'Numpy' },
     { icon: <SiPandas size={48} className="text-blue-400" />, name: 'Pandas' },
