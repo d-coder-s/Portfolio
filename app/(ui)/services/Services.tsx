@@ -16,6 +16,7 @@ interface Service {
 const Services: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Service | null>(null);
+  const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
 
   const services: Service[] = [
     {
@@ -134,8 +135,22 @@ const Services: React.FC = () => {
         },
       ],
     },
+    {
+      title: "Data Science ",
+      description: "Unlock the power of your data with our expert Data Analysis services. Our team of skilled data analysts works closely with you to understand your business challenges and transforms raw data into valuable insights. By leveraging advanced statistical techniques, machine learning models, and data visualization tools, we help you make informed decisions, identify trends, and uncover opportunities for growth. Whether it’s optimizing processes, forecasting future trends, or analyzing customer behavior, our data-driven approach ensures that your business stays ahead of the curve.",
+      imgSrc: "/figma/data.jpg",
+      placeholder: "/figma/placeholder.jpg",
+      details: "Cutting-edge cybersecurity solutions.",
+      developers: [
+        {
+          name: "Harsh Gupta",
+          role: "Data Analyst",
+          img: "/figma/harsh.jpg",
+          profile: "#",
+        },
+      ],
+    },
   ];
-  
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -155,37 +170,28 @@ const Services: React.FC = () => {
     setSelectedProject(null);
   };
 
+  const toggleDescription = (index: number) => {
+    setExpanded((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <header className="text-center">
         <h1 className="text-4xl font-bold text-gray-900">Our Services</h1>
-        <p className="mt-4 text-lg text-gray-600">
-          Innovative solutions tailored to your business needs.
-        </p>
+        <p className="mt-4 text-lg text-gray-600">Innovative solutions tailored to your business needs.</p>
       </header>
 
-      <section className="mt-12 grid gap-8">
+      <section className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (
           <div
             key={index}
-            className={`grid grid-cols-2 gap-6 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition p-6 items-start ${
-              index % 2 === 0 ? "grid-flow-col" : "grid-flow-col-dense"
-            }`}
+            className="bg-white rounded-lg shadow-md hover:shadow-xl transition p-6 flex flex-col"
           >
-            {/* Description */}
-            <div className="flex flex-col justify-center">
-              <h2 className="text-2xl font-semibold text-gray-800">{service.title}</h2>
-              <p className="text-gray-600 mt-2">{service.description}</p>
-              <button
-                onClick={() => openModal(service)}
-                className="mt-4 px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition self-start"
-              >
-                Our Developers
-              </button>
-            </div>
-
             {/* Image */}
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-4">
               <Image
                 src={service.imgSrc}
                 alt={service.title}
@@ -193,9 +199,27 @@ const Services: React.FC = () => {
                 blurDataURL={service.placeholder}
                 width={400}
                 height={250}
-                className="w-full h-auto rounded-lg object-cover"
+                className="w-full h-48 object-cover rounded-lg"
               />
             </div>
+            {/* Description */}
+            <h2 className="text-2xl font-semibold text-gray-800">{service.title}</h2>
+            <p className="text-gray-600 mt-2 flex-grow">
+              {expanded[index] ? service.description : `${service.description.substring(0, 100)}...`}
+              <button
+              onClick={() => toggleDescription(index)}
+              className="mt-2 text-blue-600 hover:underline"
+            >
+              {expanded[index] ? "Read Less" : "Read More"}
+            </button>
+            </p>
+           
+            <button
+              onClick={() => openModal(service)}
+              className="mt-4 px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition self-start"
+            >
+              Our Developers
+            </button>
           </div>
         ))}
       </section>

@@ -19,9 +19,9 @@ const Navbar = () => {
           {/* Logo */}
           <div className="text-white text-2xl font-bold cursor-pointer">
             <Link href="/"> <Image 
-                src="/figma/dc.png" 
+                src="/figma/dcc.png" 
                 alt="Logo" 
-                width={75} 
+                width={60} 
                 height={30} 
                 priority
                 className="object-contain"
