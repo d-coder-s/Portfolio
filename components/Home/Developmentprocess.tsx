@@ -6,7 +6,7 @@ import { FaReact, FaNodeJs, FaJs, FaAws, FaAngular, FaAndroid, FaSwift, FaFigma 
 import { SiTypescript, SiKotlin, SiFlutter, SiTensorflow, SiNumpy, SiPandas, SiScikitlearn, SiNextdotjs, SiMongodb, SiExpress, SiCanva } from 'react-icons/si';
 
 
-const DevelopmentProcess = () => {
+const Developmentprocess = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [currentTechIndex, setCurrentTechIndex] = useState(0);
   const techContainerRef = useRef<HTMLDivElement>(null);
@@ -140,4 +140,4 @@ const DevelopmentProcess = () => {
   );
 };
 
-export default DevelopmentProcess;
+export default Developmentprocess;

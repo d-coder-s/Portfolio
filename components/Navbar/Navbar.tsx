@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FiMenu, FiX } from 'react-icons/fi'; // Icons for menu toggle
+import { FiMenu, FiX } from 'react-icons/fi'; 
+import Image from 'next/image';// Icons for menu toggle
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="text-white text-2xl font-bold cursor-pointer">
-            <Link href="/">Dcoder</Link>
+            <Link href="/"> <Image 
+                src="/figma/dc.png" 
+                alt="Logo" 
+                width={75} 
+                height={30} 
+                priority
+                className="object-contain"
+              /></Link>
           </div>
 
           {/* Desktop Menu */}
