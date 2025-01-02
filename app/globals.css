@@ -13,7 +13,32 @@ body {
 }
 
 @layer base {
-  :root {
+  :root {@layer utilities
+     {
+      .button-primary {
+        @apply bg-blue-500 text-white py-2 px-6 md:py-3 md:px-8 rounded-lg hover:bg-blue-600 transition duration-300;
+      }
+    
+      .button-secondary {
+        @apply bg-gray-200 text-gray-800 py-2 px-6 md:py-3 md:px-8 rounded-lg hover:bg-gray-300 transition duration-300;
+      }
+    .translate-x-full {
+      transform: translateX(100%);
+    }
+    .translate-x-0 {
+      transform: translateX(0);
+    }
+    .opacity-0 {
+      opacity: 0;
+    }
+    .opacity-100 {
+      opacity: 1;
+    }
+    .transition-transform {
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+  }
+  
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
