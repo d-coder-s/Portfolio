@@ -86,7 +86,7 @@ const Services: React.FC = () => {
         {
           name: "Arush Agarwal",
           role: "Backend Engineer",
-          img: "/figma/aarush.jpg",
+          img: "/figma/aaru.jpg",
           profile: "#",
         },
         {
@@ -130,7 +130,7 @@ const Services: React.FC = () => {
         {
           name: "Arush Agarwal",
           role: "Strategy Analyst",
-          img: "/figma/aarush.jpg",
+          img: "/figma/aaru.jpg",
           profile: "#",
         },
       ],
@@ -181,7 +181,7 @@ const Services: React.FC = () => {
     <div className="max-w-7xl mx-auto px-6 py-12">
       <header className="text-center">
         <h1 className="text-4xl font-bold text-gray-900">Our Services</h1>
-        <p className="mt-4 text-lg text-gray-600">Innovative solutions tailored to your business needs.</p>
+        <p className="mt-4 text-lg text-gray-600">Strategic, innovative solutions built around your unique business needs.</p>
       </header>
 
       <section className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -214,12 +214,33 @@ const Services: React.FC = () => {
             </button>
             </p>
            
-            <button
-              onClick={() => openModal(service)}
-              className="mt-4 px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition self-start"
-            >
-              Our Developers
-            </button>
+            <div className="mt-4 space-y-2">
+  {/* Our Developers Button */}
+  <button
+    onClick={() => openModal(service)}
+    className="w-full px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition"
+  >
+    Our Developers
+  </button>
+
+  {/* Project Delivered & Reach Us Buttons */}
+  <div className="flex gap-2 mt-2">
+    <button
+      onClick={() => alert('Project Delivered!')} // Replace with your logic
+      className="w-1/2 px-4 py-2  bg-blue-600 text-white font-bold rounded-lg hover:bg-green-700 transition"
+    >
+     Delivered with Success
+    </button>
+    <Link
+      href="/contact" // Replace with your actual contact page
+      className="w-1/2 px-4 py-2  bg-blue-600 text-white font-bold rounded-lg hover:bg-yellow-600 transition text-center"
+    >
+      Drop Us a <br /> Message
+    </Link>
+  </div>
+</div>
+
+
           </div>
         ))}
       </section>

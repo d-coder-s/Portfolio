@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FiMenu, FiX } from 'react-icons/fi'; 
-import Image from 'next/image';// Icons for menu toggle
+import Image from 'next/image'; // Icons for menu toggle
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,16 +16,21 @@ const Navbar = () => {
     <nav className="bg-gray-900 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="text-white text-2xl font-bold cursor-pointer">
-            <Link href="/"> <Image 
-                src="/figma/dcc.png" 
-                alt="Logo" 
-                width={60} 
-                height={30} 
-                priority
-                className="object-contain"
-              /></Link>
+          {/* Logo with text */}
+          <div className="flex items-center space-x-3">
+            <div className="w-14 h-14 bg-gray-700 rounded-full flex justify-center items-center">
+              <Link href="/">
+                <Image
+                  src="/figma/lo.png"
+                  alt="Logo"
+                  width={60}
+                  height={60}
+                  priority
+                  className="object-contain"
+                />
+              </Link>
+            </div>
+            <div className="text-white text-2xl font-bold">Dcoder</div>
           </div>
 
           {/* Desktop Menu */}

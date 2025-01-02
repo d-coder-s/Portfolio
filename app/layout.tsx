@@ -13,6 +13,10 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Dcoder",
   // description: "A SaaS Product for Resume Reviewing",
+  description:"Dcoder is a cutting-edge technology platform specializing in web development, mobile app development, AI/ML solutions, e-commerce, and data science, designed to help businesses thrive in the digital world.",
+  icons: {
+    icon: "/figma/lo.png"
+  }
 };
 
 export default function RootLayout({
@@ -22,17 +26,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className} min-h-screen text-gray-800`}
-      >
+      <body className={`${poppins.className} min-h-screen text-gray-800`}>
         <Toaster position="top-center" />
-        <div className="h-16 z-50">
+        
+        {/* Navbar */}
+        <div className="sticky top-0 z-50">
           <Nav />
         </div>
+        
+        {/* Main content area */}
         <div className="lg:max-w-[1500px] mx-auto z-20 ">
           {children}
         </div>
-        <div>
+        {/* Footer */}
+        <div className="mt-8">
           <Footer />
         </div>
       </body>

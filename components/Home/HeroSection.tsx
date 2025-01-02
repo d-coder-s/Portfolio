@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image'; // Next.js Image optimization
+import Image from 'next/image';
+import Link from 'next/link';
 
 const images = [
   '/figma/TheLook.webp',
@@ -21,25 +22,32 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="container px-4 py-12 md:py-24">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 lg:py-24">
       {/* Upper Section with Text and Carousel */}
-      <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+      <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
         {/* Text Content */}
-        <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+        <div className="space-y-6 text-center lg:text-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             Elevate Your Online Presence
           </h1>
-          <p className="text-gray-500 md:text-xl lg:text-base xl:text-xl dark:text-gray-400">
+          <p className="text-gray-600 md:text-lg lg:text-xl dark:text-gray-400">
             We create stunning websites that drive results and enhance your digital footprint.
           </p>
-          {/* Button */}
-          <button className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-300 mt-4">
-            Get Started
-          </button>
+          {/* Button with Link */}
+          <div>
+            <Link href="/services">
+              <button className="bg-blue-500 text-white py-2 px-4 md:py-3 md:px-6 rounded-lg hover:bg-blue-600 transition duration-300">
+                Get Started
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* Image Carousel */}
-        <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-xl shadow-lg">
+        <div
+          className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden rounded-xl shadow-lg"
+          aria-label="Image Carousel"
+        >
           <Image
             key={currentImageIndex}
             src={images[currentImageIndex]}
@@ -52,11 +60,14 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Lower Section with Static Image */}
-      <div className="mt-12">
-        <h2 className="text-2xl font-semibold text-center mb-4">
+      <div className="mt-12 text-center">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">
           Explore More with Our Stunning Designs
         </h2>
-        <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-xl shadow-lg">
+        <div
+          className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden rounded-xl shadow-lg"
+          aria-label="Static Hero Image"
+        >
           <Image
             src="/figma/DALL·E 2024-12-12 12.49.51 - A grid layout of 12 web design Figma template previews displayed on a clean and professional workspace. Each template showcases a different design the.webp"
             alt="Additional Hero Image"

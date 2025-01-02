@@ -73,10 +73,10 @@ const Footer = () => {
         {/* Social Links */}
         <div className="flex justify-center items-center space-x-2">
           {[
-            { Icon: TfiLinkedin, href: "https://www.linkedin.com/company/96432867/admin/dashboard/" },
-            { Icon: BsInstagram, href: "https://www.instagram.com/Solarworks/" },
+            { Icon: TfiLinkedin, href: "https://www.linkedin.com/company/dcoder123/" },
+            { Icon: BsInstagram, href: "https://www.instagram.com" },
             { Icon: FaTwitter, href: "https://twitter.com" },
-            { Icon: FaFacebookF, href: "https://facebook.com" },
+       
           ].map(({ Icon, href }, index) => (
             <a
               key={index}

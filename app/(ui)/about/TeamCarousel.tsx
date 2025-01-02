@@ -11,7 +11,7 @@ const TeamCarousel = () => {
     { name: 'Vedant Pandey', role: 'Full Stack Developer', image: '/figma/vedant.jpeg', link: '/team/vedant' },
     { name: 'Aman Pal', role: 'Full Stack Developer', image: '/figma/aman.jpg', link: '/team/aman' },
     { name: 'Utkarsh Pal', role: 'App Developer', image: '/figma/utkarsh.jpg', link: '/team/utkarsh' },
-    { name: 'Arush Agarwal', role: 'Backend Developer', image: '/figma/aarush', link: '/team/arush' },
+    { name: 'Arush Agarwal', role: 'Backend Developer', image: '/figma/aaru.jpg', link: '/team/arush' },
     { name: 'Ankit Kumar', role: 'Backend Developer', image: '/figma/ankit.jpeg', link: '/team/ankit' },
     { name: 'Harsh Gupta', role: 'AI-ML & Data Science', image: '/figma/harsh.jpg', link: '/team/harsh' },
     { name: 'Sartaj Ahmad', role: 'QA Engineer', image: '/figma/sartaj.jpg', link: '/team/sartaj' },
