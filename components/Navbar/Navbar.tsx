@@ -16,21 +16,21 @@ const Navbar = () => {
     <nav className="bg-gray-900 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo with text */}
+          {/* Logo with text wrapped in Link */}
           <div className="flex items-center space-x-3">
-            <div className="w-14 h-14 bg-gray-700 rounded-full flex justify-center items-center">
-              <Link href="/">
+            <Link href="/" className="flex items-center space-x-3">
+              <div className="w-14 h-14 bg-gray-700 rounded-full flex justify-center items-center">
                 <Image
-                  src="/figma/lo.png"
+                  src="/figma/logo.png"
                   alt="Logo"
                   width={60}
                   height={60}
                   priority
                   className="object-contain"
                 />
-              </Link>
-            </div>
-            <div className="text-white text-2xl font-bold">Dcoder</div>
+              </div>
+              <div className="text-white text-2xl font-bold">Dcoder</div>
+            </Link>
           </div>
 
           {/* Desktop Menu */}

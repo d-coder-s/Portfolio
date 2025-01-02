@@ -7,14 +7,14 @@ const TeamCarousel = () => {
   const teamContainerRef = useRef<HTMLDivElement>(null);
 
   const teamMembers = [
-    { name: 'Abhishek Jaiswal', role: 'Frontend Developer, Lead Designer', image: '/figma/abhishek.jpeg', link: '/team/abhishek' },
-    { name: 'Vedant Pandey', role: 'Full Stack Developer', image: '/figma/vedant.jpeg', link: '/team/vedant' },
-    { name: 'Aman Pal', role: 'Full Stack Developer', image: '/figma/aman.jpg', link: '/team/aman' },
-    { name: 'Utkarsh Pal', role: 'App Developer', image: '/figma/utkarsh.jpg', link: '/team/utkarsh' },
-    { name: 'Arush Agarwal', role: 'Backend Developer', image: '/figma/aaru.jpg', link: '/team/arush' },
-    { name: 'Ankit Kumar', role: 'Backend Developer', image: '/figma/ankit.jpeg', link: '/team/ankit' },
-    { name: 'Harsh Gupta', role: 'AI-ML & Data Science', image: '/figma/harsh.jpg', link: '/team/harsh' },
-    { name: 'Sartaj Ahmad', role: 'QA Engineer', image: '/figma/sartaj.jpg', link: '/team/sartaj' },
+    { name: 'Abhishek Jaiswal', role: 'Frontend Developer, Lead Designer', image: '/figma/abhishek.jpeg', link: 'https://www.linkedin.com/in/abhishek-jaiswal-278890246/' },
+    { name: 'Vedant Pandey', role: 'Full Stack Developer', image: '/figma/vedant.jpeg', link: 'https://www.linkedin.com/in/vedant-pandey7/' },
+    { name: 'Aman Pal', role: 'Full Stack Developer', image: '/figma/aman.jpg', link: 'https://www.linkedin.com/in/aman-pal-ap/' },
+    { name: 'Arush Agarwal', role: 'Backend Developer', image: '/figma/aaru.jpg', link: 'https://www.linkedin.com/in/aarush-agarwal-ba4b16249/' },
+    { name: 'Harsh Gupta', role: 'AI-ML & Data Science', image: '/figma/harsh.jpg', link: 'https://www.linkedin.com/in/harsh-gupta-1b305b25b/' },
+    { name: 'Utkarsh Pal', role: 'App Developer', image: '/figma/utkarsh.jpg', link: 'https://www.linkedin.com/in/utkarsh8671/' },
+    { name: 'Ankit Kumar', role: 'Backend Developer', image: '/figma/ankit.jpeg', link: 'https://www.linkedin.com/in/ankit-kumar-b223762ba/' },
+    { name: 'Sartaj Ahmad', role: 'QA Engineer', image: '/figma/sartaj.jpg', link: 'https://www.linkedin.com/in/sartaj-ahamad-26442a228/' },
   ];
 
   // Automatic slide change

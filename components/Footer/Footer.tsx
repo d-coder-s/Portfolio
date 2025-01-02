@@ -1,13 +1,17 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
-import Link from 'next/link';
-import { BsInstagram } from "react-icons/bs";
-import { TfiLinkedin } from "react-icons/tfi";
-import { FaTwitter } from "react-icons/fa";
-import Image from 'next/image';
+import Link from "next/link";
+import {
+  BsInstagram,
+  BsGithub,
+  BsLinkedin,
+  BsTwitter,
+  BsWhatsapp,
+} from "react-icons/bs";
+import Image from "next/image";
 
-const Footer = () => {
+const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0);
 
   const projects = [
@@ -24,81 +28,178 @@ const Footer = () => {
   }, [projects.length]);
 
   return (
-    <footer className="w-full py-10 bg-gradient-to-b from-[#1e293b] to-[#0f172a] text-white">
-      {/* Projects Section */}
-      <section className="py-4">
-        <h2 className="text-2xl font-bold text-center mb-4 text-[#38bdf8]">Our Projects</h2>
-        <div className="relative w-full overflow-hidden max-w-3xl mx-auto">
-          <div
-            className="flex transition-transform duration-1000 ease-in-out"
-            style={{ transform: `translateX(-${currentProject * 100}%)` }}
-          >
-            {projects.map((project, index) => (
-              <div key={index} className="w-full flex-shrink-0 text-center">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={300}
-                  height={200}
-                  className="w-full h-48 object-cover rounded-lg mb-2"
-                  priority={index === 0}
-                />
-                <h3 className="text-md font-medium text-[#38bdf8]">{project.title}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Company Info & Social Links */}
-      <div className="flex flex-wrap justify-between gap-6 mt-8 border-t border-[#334155] pt-6 px-4">
-        {/* Contact Details */}
-        <div className="flex flex-col space-y-1 text-sm">
-          <h2 className="text-lg font-bold text-[#38bdf8]">Dcoder</h2>
-          <p>Abhishek Jaiswal</p>
-          <p>Contact: <span className="text-[#38bdf8]">8690896522</span></p>
-          <p>Email: <a href="mailto:dcoder.atwork@gmail.com" className="hover:underline text-[#38bdf8]">dcoder.atwork@gmail.com</a></p>
-          <p>Location: Ghaziabad-201015</p>
-        </div>
-
-        {/* Quick Links */}
-        <div className="flex flex-col space-y-1 text-sm">
-          <h3 className="text-lg font-semibold text-[#38bdf8]">Quick Links</h3>
-          <Link href="/" className="hover:underline">Home</Link>
-          <Link href="/about" className="hover:underline">About Us</Link>
-          <Link href="/services" className="hover:underline">Services</Link>
-          <Link href="/contact" className="hover:underline">Contact</Link>
-        </div>
-
-        {/* Social Links */}
-        <div className="flex justify-center items-center space-x-2">
-          {[
-            { Icon: TfiLinkedin, href: "https://www.linkedin.com/company/dcoder123/" },
-            { Icon: BsInstagram, href: "https://www.instagram.com" },
-            { Icon: FaTwitter, href: "https://twitter.com" },
-       
-          ].map(({ Icon, href }, index) => (
-            <a
-              key={index}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-[#475569] hover:bg-[#38bdf8] rounded-md transition duration-300 flex items-center justify-center"
-            >
-              <Icon size={20} className="text-white" />
-            </a>
+    <section className="py-10 bg-gradient-to-b from-[#43536d] to-[#162343] text-white">
+      <h2 className="text-2xl font-bold text-center mb-4 text-[#38bdf8]">
+        Our Projects
+      </h2>
+      <div className="relative w-full overflow-hidden max-w-3xl mx-auto">
+        <div
+          className="flex transition-transform duration-1000 ease-in-out"
+          style={{ transform: `translateX(-${currentProject * 100}%)` }}
+        >
+          {projects.map((project, index) => (
+            <div key={index} className="w-full flex-shrink-0 text-center">
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-lg mb-2"
+                priority={index === 0}
+              />
+              <h3 className="text-md font-medium text-[#38bdf8]">
+                {project.title}
+              </h3>
+            </div>
           ))}
         </div>
       </div>
+    </section>
+  );
+};
 
-      {/* Bottom Bar */}
-      <div className="mt-6 pt-4 border-t border-[#334155] text-center">
-        <p className="text-xs text-gray-400">
-          © 2024 <span className="text-[#38bdf8] font-semibold">Dcoder</span>. All rights reserved.
+const Footer = () => {
+  return (
+    <footer className="w-full py-10 bg-gray-900 text-white">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 px-4">
+        {/* Company Info */}
+        <div>
+          <h2 className="text-lg font-bold text-white">Dcoder</h2>
+          <p className="text-sm text-gray-500 mt-2">
+            Decoder empowers businesses with tailored solutions, delivering
+            creative, precise, and impactful results through expertise,
+            efficiency, and innovation.
+          </p>
+          <div className="flex space-x-3 mt-4">
+            <a
+              href="https://www.linkedin.com/company/d-coder-s/"
+              className="text-white hover:text-[#3b5998]"
+            >
+              <BsLinkedin size={20} />
+            </a>
+            <a
+              href="https://wa.me/9651321339" // Replace with your WhatsApp number
+              className="text-white hover:text-[#49af43]"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BsWhatsapp size={20} />
+            </a>
+            <a
+              href="https://github.com/d-coder-s"
+              className="text-white hover:text-[#0e0e0e]"
+            >
+              <BsGithub size={20} />
+            </a>
+            <a
+              href="https://x.com/AbhishekJa42094"
+              className="text-white hover:text-[#1DA1F2]"
+            >
+              <BsTwitter size={20} />
+            </a>
+            <a href="#" className="text-white hover:text-[#E1306C]">
+              <BsInstagram size={20} />
+            </a>
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <div>
+          <h3 className="text-md font-semibold text-gray-900">Navigation</h3>
+          <ul className="mt-2 space-y-1 text-sm">
+            <li>
+              <Link href="/" className="hover:underline">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/services" className="hover:underline">
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="hover:underline">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:underline">
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:underline">
+                FAQs/Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h3 className="text-md font-semibold text-gray-900">Contact</h3>
+          <ul className="mt-2 space-y-1 text-sm">
+            <li>+91-8690896522</li>
+            <li>
+              <a
+                href="https://d-coder-s.netlify.app/"
+                className="hover:underline"
+              >
+                https://d-coder-s.netlify.app/
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:dcoder.atwork@gmail.com"
+                className="hover:underline"
+              >
+                dcoder.atwork@gmail.com
+              </a>
+            </li>
+            <li>C 8/14 Ghaziabad,Uttar Pradesh</li>
+          </ul>
+        </div>
+
+        {/* Newsletter */}
+        <div>
+          <h3 className="text-md font-semibold text-white">Services</h3>
+          <ul className="list-disc list-inside text-gray-500 mt-2">
+            <li>Web Development</li>
+            <li>Mobile App Development</li>
+            <li>UI/UX Design</li>
+            <li>AI/ML</li>
+            <li>Game development</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-6 border-t border-gray-300 text-center pt-4">
+        <p className="text-sm text-gray-500">
+          Copyright © 2024{" "}
+          <span className="text-white font-semibold">Dcoder</span> All Rights
+          Reserved.
         </p>
+        <div className="text-xs space-x-2 mt-1">
+          <a href="#" className="hover:underline">
+            User Terms & Conditions
+          </a>{" "}
+          |
+          <a href="#" className="hover:underline">
+            Privacy Policy
+          </a>
+        </div>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+const FooterWithProjects = () => {
+  return (
+    <>
+      <Projects />
+      <Footer />
+    </>
+  );
+};
+
+export default FooterWithProjects;

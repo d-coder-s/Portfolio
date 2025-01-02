@@ -16,7 +16,7 @@ export default function AboutUs() {
     >
       <div className="bg-black bg-opacity-70 min-h-screen">
         {/* Header Section */}
-        <header className="text-center py-11 bg-gradient-to-r from-gray-500 to-blue-500 bg-opacity-100">
+        <header className="text-center py-11 bg-gradient-to-r from-[#43536d] to-[#162343] bg-opacity-100">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl font-bold">Dcoder</h1>
             <p className="mt-4 text-xl">
