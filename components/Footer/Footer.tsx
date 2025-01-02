@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from 'next/link';
 import { BsInstagram } from "react-icons/bs";
 import { TfiLinkedin } from "react-icons/tfi";
-import { FaTwitter, FaFacebookF } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 import Image from 'next/image';
 
 const Footer = () => {
