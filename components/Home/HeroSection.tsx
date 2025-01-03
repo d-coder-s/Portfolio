@@ -31,11 +31,7 @@ const slides = [
     title: 'Transform Data into Actionable Insights',
     description: 'Unlock the power of data to drive informed business strategies and measurable growth.',
   },
-  {
-    image: '/figma/webd3.webp',
-    title: 'Visionary Guidance for Continued Growth',
-    description: 'Expert consultancy services to optimize operations and accelerate business outcomes.',
-  },
+  
 ];
 
 const HeroSection: React.FC = () => {

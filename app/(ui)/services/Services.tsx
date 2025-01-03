@@ -74,6 +74,12 @@ const Services: React.FC = () => {
           img: "/figma/ankit.jpeg",
           profile: "https://www.linkedin.com/in/ankit-kumar-b223762ba/",
         },
+        {
+          name: "Abhishek Jaiswal",
+          role: "Frontend Developer, Lead Designer",
+          img: "/figma/abhishek.jpeg",
+          profile: "https://www.linkedin.com/in/abhishek-jaiswal-278890246/",
+        },
       ],
     },
     {

@@ -48,9 +48,9 @@ const slides: Slide[] = [
     bgColor: 'bg-blue-200',
   },
   {
-    title: 'Consultancy',
-    description: 'Providing expert guidance to optimize strategies and drive business growth.',
-    image: '/figma/coo.png',
+    title: 'Game Developer',
+    description: 'Providing expert guidance to optimize strategies and drive game development success.',
+    image: '/figma/gd.png',
     bgColor: 'bg-green-200',
   },
 ];
@@ -117,20 +117,21 @@ const PortfolioSection: React.FC = () => {
 
       {/* Navigation Buttons */}
       <div className="flex justify-center gap-4 mt-6">
-        <button
-          onClick={prevSlide}
-          aria-label="Previous Slide"
-          className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
-        >
-          ◀️
-        </button>
-        <button
-          onClick={nextSlide}
-          aria-label="Next Slide"
-          className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
-        >
-          ▶️
-        </button>
+      <button
+  onClick={prevSlide}
+  aria-label="Previous Slide"
+  className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
+>
+  ◀
+</button>
+<button
+  onClick={nextSlide}
+  aria-label="Next Slide"
+  className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
+>
+  ▶
+</button>
+
       </div>
 
       {/* Slide Indicators */}
