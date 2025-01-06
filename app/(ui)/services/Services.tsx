@@ -234,7 +234,7 @@ const Services: React.FC = () => {
                 className="w-full h-48 object-cover rounded-lg"
               />
             </div>
-            {/* Description */}
+          
             <h2 className="text-2xl font-semibold text-gray-800">
               {service.title}
             </h2>
@@ -251,7 +251,7 @@ const Services: React.FC = () => {
             </p>
 
             <div className="mt-4 space-y-2">
-              {/* Our Developers and Project Delivered Buttons in one row */}
+             
               <div className="flex gap-2">
                 <button
                   onClick={() => openModal(service)}
@@ -259,19 +259,17 @@ const Services: React.FC = () => {
                 >
                   Our Developers
                 </button>
-                <button
-                  onClick={() => alert("Project Delivered!")} // Replace with your logic
-                  className="w-1/2 px-4 py-2 bg-gray-600 text-white font-bold rounded-lg hover:bg-green-700 transition"
-                >
-                  Delivered with Success
-                </button>
+                <Link
+                href="/project" 
+                className="w-1/2 px-4 py-2 bg-gray-600 text-white font-bold rounded-lg hover:bg-green-700 transition"
+              >
+                Browse Work
+              </Link>
               </div>
 
-
-              {/* Drop Us a Message Button in second row */}
               <div className="flex">
               <Link
-                href="/contact" // Replace with your actual contact page
+                href="/contact" 
                 className="w-full px-4 py-2 bg-gray-600 text-white font-bold rounded-lg hover:bg-yellow-600 transition text-center"
               >
                 Drop Us a <br /> Message
