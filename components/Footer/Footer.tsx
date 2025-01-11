@@ -92,12 +92,12 @@ const Footer = () => {
               <BsGithub size={20} />
             </a>
             <a
-              href="https://x.com/AbhishekJa42094"
+              href="https://x.com/dcoder_atwork?t=gnvKHiHKKt4MObKNBomSow&s=08"
               className="text-white hover:text-[#1DA1F2]"
             >
               <BsTwitter size={20} />
             </a>
-            <a href="#" className="text-white hover:text-[#E1306C]">
+            <a href="https://www.instagram.com/dcoder_atwork/#" className="text-white hover:text-[#E1306C]">
               <BsInstagram size={20} />
             </a>
           </div>

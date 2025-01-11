@@ -48,8 +48,9 @@ export default function Home() {
             description: "AI Summarizer is an intelligent tool that leverages advanced natural language processing (NLP) techniques to generate concise and accurate summaries from long-form text. Whether it's articles, research papers, or documents, this tool provides users with quick, clear, and actionable insights, saving time and enhancing productivity. Built using Next.js, Redux, and Tailwind CSS, the app offers a seamless and responsive user experience while delivering high-quality summaries powered by AI.",
         },
     ];
+
     return (
-        <div className="space-y-32 py-10 lg:px-20">
+        <div className="space-y-16 py-10 px-4 md:px-10 lg:px-20">
             {projects.map((project, index) => (
                 <ProjectSection key={index} project={project} isReversed={index % 2 !== 0} />
             ))}
@@ -60,12 +61,11 @@ export default function Home() {
 function ProjectSection({ project, isReversed }: { project: Project; isReversed: boolean }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    // Automatic image rotation
     useEffect(() => {
         if (project.images.length > 1) {
             const interval = setInterval(() => {
                 setCurrentImageIndex((prevIndex) => (prevIndex + 1) % project.images.length);
-            }, 2000); // 2-second interval
+            }, 2000);
             return () => clearInterval(interval);
         }
     }, [project.images]);
@@ -74,7 +74,7 @@ function ProjectSection({ project, isReversed }: { project: Project; isReversed:
         <motion.section
             className={`flex flex-col lg:flex-row ${
                 isReversed ? "lg:flex-row-reverse" : ""
-            } items-center gap-10`}
+            } items-center gap-6 lg:gap-10`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -108,18 +108,18 @@ function ProjectSection({ project, isReversed }: { project: Project; isReversed:
 
             {/* Details Section */}
             <motion.div
-                className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-md text-left space-y-4"
+                className="w-full lg:w-1/2 bg-white p-4 md:p-6 rounded-lg shadow-md text-left space-y-4"
                 initial={{ x: isReversed ? -100 : 100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
                     duration: 1,
-                    delay: 0.3, // Slight delay after the image animation
+                    delay: 0.3,
                     ease: "easeOut",
                 }}
                 viewport={{ once: true }}
             >
                 <motion.h2
-                    className="text-2xl lg:text-3xl font-extrabold text-gray-800 hover:text-blue-600 transition-colors duration-300"
+                    className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -140,7 +140,7 @@ function ProjectSection({ project, isReversed }: { project: Project; isReversed:
                     href={project.link || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-blue-500 text-white px-6 py-2 rounded-lg font-medium shadow-md hover:bg-blue-600 transition duration-300"
+                    className="inline-block bg-blue-500 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg font-medium shadow-md hover:bg-blue-600 transition duration-300"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
