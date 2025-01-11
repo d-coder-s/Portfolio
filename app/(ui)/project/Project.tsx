@@ -1,6 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+    motion,
+    useScroll,
+    useSpring,
+    useTransform,
+    MotionValue,
+} from "framer-motion";
+
+function useParallax(value: MotionValue<number>, distance: number) {
+    return useTransform(value, [0, 1], [-distance, distance]);
+}
 
 interface Project {
     title: string;
@@ -9,7 +19,72 @@ interface Project {
     description: string;
 }
 
+function ProjectCard({ project }: { project: Project }) {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref });
+    const y = useParallax(scrollYProgress, 200);
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        if (project.images.length > 1) {
+            const interval = setInterval(() => {
+                setCurrentImageIndex((prevIndex) => (prevIndex + 1) % project.images.length);
+            }, 3000); // 3 seconds interval
+            return () => clearInterval(interval);
+        }
+    }, [project.images]);
+
+    return (
+        <section className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6 mt-10">
+            {/* Project Image */}
+            <div
+                ref={ref}
+                className="w-[90vw] md:w-[50vw] h-[60vh] rounded-xl border border-gray-300 relative overflow-hidden shadow-lg"
+            >
+                {project.images.length > 1 ? (
+                    <img
+                        src={project.images[currentImageIndex]}
+                        alt={project.title}
+                        className="object-cover w-full h-full transition-opacity duration-500"
+                    />
+                ) : (
+                    <img
+                        src={project.images[0]}
+                        alt={project.title}
+                        className="object-cover w-full h-full"
+                    />
+                )}
+            </div>
+
+            {/* Details Box */}
+            <motion.div
+                style={{ y }}
+                className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center md:items-start space-y-4 max-w-md"
+            >
+                <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">{project.title}</h2>
+                <p className="text-base md:text-lg text-gray-700">{project.description}</p>
+                <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
+                >
+                    View Project
+                </a>
+            </motion.div>
+        </section>
+    );
+}
+
 export default function Home() {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001,
+    });
+
     const projects: Project[] = [
         {
             title: "Health.E",
@@ -50,105 +125,16 @@ export default function Home() {
     ];
 
     return (
-        <div className="space-y-16 py-10 px-4 md:px-10 lg:px-20">
-            {projects.map((project, index) => (
-                <ProjectSection key={index} project={project} isReversed={index % 2 !== 0} />
-            ))}
+        <div className="bg-gray-100 py-10 lg:px-20">
+            <main className="text-black font-sans pb-24">
+                {projects.map((project, index) => (
+                    <ProjectCard key={index} project={project} />
+                ))}
+            </main>
+            <motion.div
+                className="fixed top-0 left-0 h-1 bg-blue-500 origin-left"
+                style={{ scaleX }}
+            />
         </div>
-    );
-}
-
-function ProjectSection({ project, isReversed }: { project: Project; isReversed: boolean }) {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    useEffect(() => {
-        if (project.images.length > 1) {
-            const interval = setInterval(() => {
-                setCurrentImageIndex((prevIndex) => (prevIndex + 1) % project.images.length);
-            }, 2000);
-            return () => clearInterval(interval);
-        }
-    }, [project.images]);
-
-    return (
-        <motion.section
-            className={`flex flex-col lg:flex-row ${
-                isReversed ? "lg:flex-row-reverse" : ""
-            } items-center gap-6 lg:gap-10`}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-        >
-            {/* Image Section */}
-            <motion.div
-                className="w-full lg:w-1/2 relative aspect-video border border-gray-300 rounded-lg overflow-hidden shadow-lg"
-                initial={{ x: isReversed ? 100 : -100, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                viewport={{ once: true }}
-            >
-                {project.images.length > 0 ? (
-                    <motion.img
-                        key={currentImageIndex}
-                        src={project.images[currentImageIndex]}
-                        alt={project.title || "Project Image"}
-                        className="object-cover w-full h-full"
-                        initial={{ scale: 1.1 }}
-                        animate={{ scale: 1 }}
-                        exit={{ scale: 0.9 }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
-                    />
-                ) : (
-                    <div className="flex items-center justify-center w-full h-full bg-gray-200 text-gray-500">
-                        No Image Available
-                    </div>
-                )}
-            </motion.div>
-
-            {/* Details Section */}
-            <motion.div
-                className="w-full lg:w-1/2 bg-white p-4 md:p-6 rounded-lg shadow-md text-left space-y-4"
-                initial={{ x: isReversed ? -100 : 100, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{
-                    duration: 1,
-                    delay: 0.3,
-                    ease: "easeOut",
-                }}
-                viewport={{ once: true }}
-            >
-                <motion.h2
-                    className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                >
-                    {project.title || "Untitled Project"}
-                </motion.h2>
-                <motion.p
-                    className="text-sm md:text-base text-gray-600 leading-relaxed"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                >
-                    {project.description || "No description provided."}
-                </motion.p>
-                <motion.a
-                    href={project.link || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-blue-500 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg font-medium shadow-md hover:bg-blue-600 transition duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                >
-                    View Project
-                </motion.a>
-            </motion.div>
-        </motion.section>
     );
 }
