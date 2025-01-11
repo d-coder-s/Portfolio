@@ -95,23 +95,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Lower Static Section */}
-      <div className="mt-8 md:mt-12 text-center">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4">
-          Explore More with Our Stunning Designs
-        </h2>
-        <div
-          className="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 overflow-hidden rounded-xl shadow-lg"
-          aria-label="Static Hero Image"
-        >
-          <Image
-            src="/figma/hs.webp"
-            alt="Additional Hero Image"
-            layout="fill"
-            objectFit="cover"
-            className="transition-opacity duration-500"
-          />
-        </div>
-      </div>
+     
     </section>
   );
 };

@@ -78,7 +78,7 @@ const Footer = () => {
               <BsLinkedin size={20} />
             </a>
             <a
-              href="https://wa.me/8690896522" // Replace with your WhatsApp number
+              href="https://wa.me/+918690896522" // Replace with your WhatsApp number
               className="text-white hover:text-[#49af43]"
               target="_blank"
               rel="noopener noreferrer"
