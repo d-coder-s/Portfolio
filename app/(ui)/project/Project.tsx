@@ -134,13 +134,13 @@ export default function Home() {
         },
     {
     title: "MedRoute",
-    images: ["/figma/ab31.png", "/figma/ab32.png"],
+    images: ["/figma/mr1.png", "/figma/mr2.png"],
     link: "https://med-r-c9vd.vercel.app/",
     description: "MedRoute is a full-stack medicine delivery platform built using Next.js 14, React 18, TypeScript, MongoDB, and Tailwind CSS. It features real-time order tracking, pharmacy dashboards, admin panel, emergency delivery options, and an interactive pharmacy locator using Mapbox. The platform ensures secure authentication and a seamless experience for customers, pharmacies, and administrators.",
 },
 {
     title: "TalentEzee",
-    images: ["/figma/ab41.png", "/figma/ab42.png", "/figma/ab43.png"],
+    images: ["/figma/te1.png", "/figma/te2.png", "/figma/te3.png"],
     link: "https://talent-ezee.vercel.app/",
     description: "TalentEzee is a modern talent engagement platform built with Next.js 14 and Tailwind CSS. It features influencer onboarding, campaign management, leaderboards, Stripe-based wallet top-ups, and a raffle reward system—all wrapped in a sleek glassmorphism UI. Designed for scale, it combines design excellence with strong technical performance for seamless talent–brand collaboration.",
 }
