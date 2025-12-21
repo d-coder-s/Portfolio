@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -79,90 +80,100 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center py-8">
-        {" "}
-        <div className="max-w-6xl w-full flex flex-col lg:flex-row items-center lg:items-start">
-          {" "}
-          {/* Left Section */}{" "}
-          <div className="lg:w-1/2 w-full px-4 lg:px-8">
-            {" "}
-            <h1 className="text-4xl font-bold text-gray-600 mb-6">
-              {" "}
-              Connect with Our Team of Experts{" "}
-            </h1>{" "}
-            <p className="text-gray-600 mb-6">
-              {" "}
+      <div className="flex items-center justify-center py-12 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-6xl w-full flex flex-col lg:flex-row items-center lg:items-start gap-12"
+        >
+          {/* Left Section */}
+          <div className="lg:w-1/2 w-full">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+              Connect with Our <br />
+              <span className="text-blue-600">Team of Experts</span>
+            </h1>
+            <p className="text-gray-600 mb-8 text-lg font-light">
               Contact our team of excellence-driven experts today to bring your
-              project to life.{" "}
-            </p>{" "}
-            <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-              {" "}
-              <h2 className="text-lg font-semibold text-gray-600 mb-4">
+              project to life with precision and creativity.
+            </p>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-white/20">
+              <h2 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-blue-500 rounded-full" />
                 Frequently Asked Questions
-              </h2>{" "}
-              <div>
-                {" "}
-                <details className="mb-2">
-                  {" "}
-                  <summary className="font-medium text-blue-700 cursor-pointer">
-                    {" "}
-                    How long does it take to complete a project?{" "}
-                  </summary>{" "}
-                  <p className="mt-2 text-gray-600">
-                    {" "}
-                    The timeline depends on the project&apos;s complexity.
-                    Typically, projects take 2,8 weeks.{" "}
-                  </p>{" "}
-                </details>{" "}
-                <details className="mb-2">
-                  {" "}
-                  <summary className="font-medium text-blue-700 cursor-pointer">
-                    {" "}
-                    What is your pricing structure?{" "}
-                  </summary>{" "}
-                  <p className="mt-2 text-gray-600">
-                    {" "}
-                    We offer flexible pricing based on hourly rates or fixed
-                    packages tailored to your needs.{" "}
-                  </p>{" "}
-                </details>{" "}
-                <details>
-                  {" "}
-                  <summary className="font-medium text-blue-700 cursor-pointer">
-                    {" "}
-                    Do you provide post-launch support?{" "}
-                  </summary>{" "}
-                  <p className="mt-2 text-gray-600">
-                    {" "}
-                    Yes, we offer ongoing support and maintenance services to
-                    ensure your app runs smoothly.{" "}
-                  </p>{" "}
-                </details>{" "}
-              </div>{" "}
-            </div>{" "}
-            {/* Contact Information */}{" "}
-            <h1 className="text-gray-600 text-4xl font-bold mb-5">
-              Directly reach us
-            </h1>{" "}
-            <div className="space-y-2">
-              {" "}
-              <p className="text-gray-600">📞 8690896522</p>{" "}
-              <p className="text-gray-600">✉️ dcoder.atwork@gmail.com</p>{" "}
-              <p className="text-gray-600">📍 Ghaziabad (UP)</p>{" "}
-            </div>{" "}
-          </div>
-          {/* Right Section */}
-          <div className="lg:w-1/2 w-full px-4 lg:px-8 mt-8 lg:mt-0">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-gray-600 text-white rounded-lg shadow-lg p-8 space-y-6"
-            >
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="name"
+              </h2>
+              <div className="space-y-4">
+                <details className="group bg-gray-50 rounded-lg p-3 open:bg-blue-50 transition-colors">
+                  <summary className="font-medium text-gray-700 cursor-pointer flex justify-between items-center outline-none">
+                    How long does it take to complete a project?
+                    <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                  </summary>
+                  <motion.p
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    className="mt-3 text-gray-600 text-sm leading-relaxed"
                   >
+                    The timeline depends on the project&apos;s complexity.
+                    Typically, projects take 2-8 weeks.
+                  </motion.p>
+                </details>
+                <details className="group bg-gray-50 rounded-lg p-3 open:bg-blue-50 transition-colors">
+                  <summary className="font-medium text-gray-700 cursor-pointer flex justify-between items-center outline-none">
+                    What is your pricing structure?
+                    <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                  </summary>
+                  <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                    We offer flexible pricing based on hourly rates or fixed
+                    packages tailored to your needs.
+                  </p>
+                </details>
+                <details className="group bg-gray-50 rounded-lg p-3 open:bg-blue-50 transition-colors">
+                  <summary className="font-medium text-gray-700 cursor-pointer flex justify-between items-center outline-none">
+                    Do you provide post-launch support?
+                    <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                  </summary>
+                  <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                    Yes, we offer ongoing support and maintenance services to
+                    ensure your app runs smoothly.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-4">
+              <h2 className="text-gray-800 text-2xl font-bold mb-4">Directly reach us</h2>
+              <div className="space-y-3 pl-4 border-l-4 border-blue-500">
+                <p className="text-gray-600 flex items-center gap-3 hover:text-blue-600 transition-colors group cursor-pointer">
+                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-1">📞</span>
+                  +91-8690896522
+                </p>
+                <p className="text-gray-600 flex items-center gap-3 hover:text-blue-600 transition-colors cursor-pointer">
+                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-1">✉️</span>
+                  dcoder.atwork@gmail.com
+                </p>
+                <p className="text-gray-600 flex items-center gap-3 hover:text-blue-600 transition-colors cursor-pointer">
+                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-1">📍</span>
+                  Ghaziabad (UP)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Section - Form */}
+          <div className="lg:w-1/2 w-full">
+            <motion.form
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              onSubmit={handleSubmit}
+              className="bg-gray-800/90 backdrop-blur-md text-white rounded-2xl shadow-2xl p-8 lg:p-10 space-y-6 border border-gray-700"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-center">Send us a Message</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="name">
                     Full Name *
                   </label>
                   <input
@@ -171,16 +182,13 @@ const Contact = () => {
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-md border border-gray-300 text-gray-900"
-                    placeholder="Full Name"
+                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
+                    placeholder="John Doe"
                     required
                   />
                 </div>
                 <div>
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="email"
-                  >
+                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="email">
                     Email Address *
                   </label>
                   <input
@@ -189,18 +197,15 @@ const Contact = () => {
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-md border border-gray-300 text-gray-900"
-                    placeholder="Email Address"
+                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
+                    placeholder="john@example.com"
                     required
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="phone"
-                  >
+                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="phone">
                     Phone Number *
                   </label>
                   <input
@@ -209,16 +214,13 @@ const Contact = () => {
                     id="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-md border border-gray-300 text-gray-900"
-                    placeholder="Phone Number"
+                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
+                    placeholder="+91 98765 43210"
                     required
                   />
                 </div>
                 <div>
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="location"
-                  >
+                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="location">
                     Location *
                   </label>
                   <input
@@ -227,41 +229,36 @@ const Contact = () => {
                     id="location"
                     value={formData.location}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-md border border-gray-300 text-gray-900"
-                    placeholder="Location"
+                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
+                    placeholder="City, Country"
                     required
                   />
                 </div>
               </div>
               <div>
-                <label
-                  className="block text-sm font-medium mb-1"
-                  htmlFor="expertise"
-                >
+                <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="expertise">
                   What Expertise You&apos;re Interested In *
                 </label>
-                <select
-                  name="expertise"
-                  id="expertise"
-                  value={formData.expertise}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 text-gray-900"
-                  required
-                >
-                  <option value="">Select</option>
-                  <option value="Web Development">Web Development</option>
-                  <option value="Mobile App Development">
-                    Mobile App Development
-                  </option>
-                  <option value="UI/UX Design">UI/UX Design</option>
-                  <option value="Other">Other</option>
-                </select>
+                <div className="relative">
+                  <select
+                    name="expertise"
+                    id="expertise"
+                    value={formData.expertise}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white outline-none appearance-none transition-all"
+                    required
+                  >
+                    <option value="" className="bg-gray-800 text-gray-400">Select an option</option>
+                    <option value="Web Development" className="bg-gray-800">Web Development</option>
+                    <option value="Mobile App Development" className="bg-gray-800">Mobile App Development</option>
+                    <option value="UI/UX Design" className="bg-gray-800">UI/UX Design</option>
+                    <option value="Other" className="bg-gray-800">Other</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">▼</div>
+                </div>
               </div>
               <div>
-                <label
-                  className="block text-sm font-medium mb-1"
-                  htmlFor="project"
-                >
+                <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="project">
                   Tell Us About Your Project *
                 </label>
                 <textarea
@@ -270,21 +267,23 @@ const Contact = () => {
                   rows={4}
                   value={formData.project}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 text-gray-900"
-                  placeholder="Leave your message here"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all resize-none"
+                  placeholder="Share details about your idea..."
                   maxLength={1000}
                   required
                 ></textarea>
               </div>
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-2 bg-white hover:bg-blue-600 text-gray-600 font-semibold rounded-md transition"
+                className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all duration-300"
               >
-                SUBMIT →
-              </button>
-            </form>
+                SEND MESSAGE →
+              </motion.button>
+            </motion.form>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

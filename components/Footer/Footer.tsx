@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   BsInstagram,
@@ -10,183 +9,184 @@ import {
   BsWhatsapp,
 } from "react-icons/bs";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Projects = () => {
-  const [currentProject, setCurrentProject] = useState(0);
-
   const projects = [
     { title: "Project 1", image: "/figma/p1.webp" },
     { title: "Project 2", image: "/figma/p2.webp" },
     { title: "Project 3", image: "/figma/p3.webp" },
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProject((prev) => (prev + 1) % projects.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [projects.length]);
+  const carouselContent = [...projects, ...projects, ...projects, ...projects];
 
   return (
-    <section className="py-10 bg-gradient-to-b from-[#43536d] to-[#162343] text-white">
-      <h2 className="text-2xl font-bold text-center mb-4 text-[#38bdf8]">
-        Our Projects
+    <section className="py-16 bg-gradient-to-b from-[#162343] to-gray-900 border-t border-white/5 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 rounded-full blur-[100px] -z-10" />
+
+      <h2 className="text-3xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+        Our Latest Projects
       </h2>
-      <div className="relative w-full overflow-hidden max-w-3xl mx-auto">
-        <div
-          className="flex transition-transform duration-1000 ease-in-out"
-          style={{ transform: `translateX(-${currentProject * 100}%)` }}
+
+      <div className="relative w-full overflow-hidden">
+        <motion.div
+          className="flex gap-8 w-max"
+          animate={{ x: [0, "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            ease: "linear",
+            duration: 40,
+          }}
         >
-          {projects.map((project, index) => (
-            <div key={index} className="w-full flex-shrink-0 text-center">
+          {carouselContent.map((project, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="relative w-[300px] h-[200px] rounded-xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer"
+            >
               <Image
                 src={project.image}
                 alt={project.title}
-                width={300}
-                height={200}
-                className="w-full h-48 object-cover rounded-lg mb-2"
-                priority={index === 0}
+                fill
+                sizes="(max-width: 768px) 100vw, 300px"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <h3 className="text-md font-medium text-[#38bdf8]">
-                {project.title}
-              </h3>
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <h3 className="text-lg font-bold text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  {project.title}
+                </h3>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Edges fade */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none" />
       </div>
     </section>
   );
 };
 
 const Footer = () => {
+  const socialIcons = [
+    { Icon: BsLinkedin, link: "https://www.linkedin.com/company/d-coder-s/", color: "hover:text-[#0A66C2]" },
+    { Icon: BsWhatsapp, link: "https://wa.me/+918690896522", color: "hover:text-[#25D366]" },
+    { Icon: BsGithub, link: "https://github.com/d-coder-s", color: "hover:text-white" },
+    { Icon: BsTwitter, link: "https://x.com/dcoder_atwork?t=gnvKHiHKKt4MObKNBomSow&s=08", color: "hover:text-[#1DA1F2]" },
+    { Icon: BsInstagram, link: "https://www.instagram.com/dcoder_atwork/#", color: "hover:text-[#E1306C]" },
+  ];
+
   return (
-    <footer className="w-full py-10 bg-gray-900 text-white">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 px-4">
+    <footer className="w-full bg-gray-900 text-white border-t border-white/10 relative">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 py-16 relative z-10">
         {/* Company Info */}
-        <div>
-          <h2 className="text-lg font-bold text-white">Dcoder</h2>
-          <p className="text-sm text-gray-500 mt-2">
+        <div className="space-y-6">
+          <Link href="/" className="inline-block">
+            <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+              Dcoder
+            </h2>
+          </Link>
+          <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
             Decoder empowers businesses with tailored solutions, delivering
             creative, precise, and impactful results through expertise,
             efficiency, and innovation.
           </p>
-          <div className="flex space-x-3 mt-4">
-            <a
-              href="https://www.linkedin.com/company/d-coder-s/"
-              className="text-white hover:text-[#3b5998]"
-            >
-              <BsLinkedin size={20} />
-            </a>
-            <a
-              href="https://wa.me/+918690896522" // Replace with your WhatsApp number
-              className="text-white hover:text-[#49af43]"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsWhatsapp size={20} />
-            </a>
-            <a
-              href="https://github.com/d-coder-s"
-              className="text-white hover:text-[#0e0e0e]"
-            >
-              <BsGithub size={20} />
-            </a>
-            <a
-              href="https://x.com/dcoder_atwork?t=gnvKHiHKKt4MObKNBomSow&s=08"
-              className="text-white hover:text-[#1DA1F2]"
-            >
-              <BsTwitter size={20} />
-            </a>
-            <a href="https://www.instagram.com/dcoder_atwork/#" className="text-white hover:text-[#E1306C]">
-              <BsInstagram size={20} />
-            </a>
+          <div className="flex space-x-4">
+            {socialIcons.map(({ Icon, link, color }, idx) => (
+              <a
+                key={idx}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`bg-white/5 p-3 rounded-full transition-all duration-300 transform hover:scale-110 hover:bg-white/10 ${color}`}
+              >
+                <Icon size={20} />
+              </a>
+            ))}
           </div>
         </div>
 
         {/* Navigation */}
         <div>
-          <h3 className="text-md font-semibold text-gray-900">Navigation</h3>
-          <ul className="mt-2 space-y-1 text-sm">
-            <li>
-              <Link href="/" className="hover:underline">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:underline">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:underline">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/project" className="hover:underline">
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:underline">
-                FAQs/Contact
-              </Link>
-            </li>
+          <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <span className="w-8 h-1 bg-blue-500 rounded-full"></span>
+            Navigation
+          </h3>
+          <ul className="space-y-3 text-gray-400">
+            {['Home', 'Services', 'About', 'Projects', 'Contact'].map((item) => (
+              <li key={item}>
+                <Link
+                  href={item === "Home" ? "/" : `/${item.toLowerCase().replace('projects', 'project').replace('contact', 'contact')}`}
+                  className="hover:text-blue-400 transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {item}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Contact */}
         <div>
-          <h3 className="text-md font-semibold text-gray-900">Contact</h3>
-          <ul className="mt-2 space-y-1 text-sm">
-            <li>+91-8690896522</li>
-            <li>
-              <a
-                href="https://d-coder-s.netlify.app/"
-                className="hover:underline"
-              >
-                https://d-coder-s.netlify.app/
+          <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <span className="w-8 h-1 bg-purple-500 rounded-full"></span>
+            Contact
+          </h3>
+          <ul className="space-y-4 text-gray-400">
+            <li className="flex items-start gap-3">
+              <span className="mt-1">📞</span>
+              <span className="hover:text-white transition-colors cursor-pointer">+91-8690896522</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1">🌐</span>
+              <a href="https://d-coder-s.netlify.app/" className="hover:text-blue-400 transition-colors break-all">
+                d-coder-s.netlify.app
               </a>
             </li>
-            <li>
-              <a
-                href="mailto:dcoder.atwork@gmail.com"
-                className="hover:underline"
-              >
+            <li className="flex items-start gap-3">
+              <span className="mt-1">✉️</span>
+              <a href="mailto:dcoder.atwork@gmail.com" className="hover:text-blue-400 transition-colors">
                 dcoder.atwork@gmail.com
               </a>
             </li>
-            <li>C 8/14 Ghaziabad,Uttar Pradesh</li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1">📍</span>
+              <span>C 8/14 Ghaziabad, Uttar Pradesh</span>
+            </li>
           </ul>
         </div>
 
-        {/* Newsletter */}
+        {/* Services */}
         <div>
-          <h3 className="text-md font-semibold text-white">Services</h3>
-          <ul className="list-disc list-inside text-gray-500 mt-2">
-            <li>Web Development</li>
-            <li>Mobile App Development</li>
-            <li>UI/UX Design</li>
-            <li>AI/ML</li>
-            <li>Game development</li>
+          <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <span className="w-8 h-1 bg-green-500 rounded-full"></span>
+            Services
+          </h3>
+          <ul className="space-y-3 text-gray-400">
+            {['Web Development', 'Mobile App Development', 'UI/UX Design', 'AI/ML', 'Game Development'].map((service, i) => (
+              <li key={i} className="hover:text-green-400 transition-colors cursor-default">
+                {service}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
-      <div className="mt-6 border-t border-gray-300 text-center pt-4">
-        <p className="text-sm text-gray-500">
-          Copyright © 2024{" "}
-          <span className="text-white font-semibold">Dcoder</span> All Rights
-          Reserved.
-        </p>
-        <div className="text-xs space-x-2 mt-1">
-          <a href="#" className="hover:underline">
-            User Terms & Conditions
-          </a>{" "}
-          |
-          <a href="#" className="hover:underline">
-            Privacy Policy
-          </a>
+      <div className="border-t border-white/5 py-8 bg-black/20 backdrop-blur-sm">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-500">
+            Copyright © 2024 <span className="text-white font-bold">Dcoder</span>. All Rights Reserved.
+          </p>
+          <div className="flex text-sm text-gray-500 gap-6">
+            <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+          </div>
         </div>
       </div>
     </footer>
@@ -195,10 +195,10 @@ const Footer = () => {
 
 const FooterWithProjects = () => {
   return (
-    <>
+    <footer className="relative bg-gray-900">
       <Projects />
       <Footer />
-    </>
+    </footer>
   );
 };
 

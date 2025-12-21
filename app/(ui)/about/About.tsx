@@ -1,5 +1,8 @@
 
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 import TeamCarousel from './TeamCarousel';
 
 export default function AboutUs() {
@@ -27,52 +30,76 @@ export default function AboutUs() {
         </header>
 
         {/* About Section */}
-        <section className="max-w-6xl mx-auto px-6 py-16 flex flex-col lg:flex-row gap-12 items-center">
-          <div className="lg:w-1/2">
-            <h2 className="text-3xl font-bold mb-6">About Us</h2>
-            <p className="text-gray-300 text-lg">
+        <section className="max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/2 space-y-6"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+              About Us
+            </h2>
+            <p className="text-gray-200 text-lg leading-relaxed font-light">
               Dcoder is dedicated to empowering businesses and individuals to
               innovate and succeed. From crafting websites and apps to
               implementing AI/ML solutions, we bring your ideas to life with
               unparalleled precision and creativity. Our consulting services
               ensure your path to success is smooth and guided.
             </p>
-          </div>
-          <div className="lg:w-1/2">
+            <div className="pt-4">
+              <div className="h-1 w-20 bg-blue-500 rounded-full" />
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/2 relative"
+          >
+            <div className="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full -z-10" />
             <img
               src="/figma/about.png"
               alt="Team working on innovative solutions"
-              className="rounded-lg shadow-lg"
+              className="rounded-2xl shadow-2xl border border-white/10"
             />
-          </div>
+          </motion.div>
         </section>
 
         {/* Expertise Section */}
-        <section className="py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">Our Expertise</h2>
-            <p className="text-gray-300 mt-4">
+        <section className="py-20 relative overflow-hidden">
+          <div className="text-center mb-16 relative z-10">
+            <h2 className="text-4xl font-bold text-white mb-4">Our Expertise</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               We specialize in a variety of areas to meet all your technological
-              needs.
+              needs with cutting-edge solutions.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto px-6 relative z-10">
             {[
-              { title: "Web Development", color: "bg-gradient-to-r from-blue-500 to-purple-500" },
-              { title: "Chatbots", color: "bg-gradient-to-r from-indigo-500 to-blue-500" },
-              { title: "AI/ML Solutions", color: "bg-gradient-to-r from-purple-500 to-indigo-500" },
-              { title: "Game Design", color: "bg-gradient-to-r from-pink-500 to-purple-500" },
-              { title: "App Development", color: "bg-gradient-to-r from-teal-500 to-green-500" },
-              { title: "JavaScript Apps", color: "bg-gradient-to-r from-yellow-500 to-orange-500" },
-              { title: "Data Privacy", color: "bg-gradient-to-r from-gray-500 to-blue-500" },
-              { title: "Cloud Solutions", color: "bg-gradient-to-r from-green-500 to-teal-500" },
+              { title: "Web Development", color: "from-blue-600 to-blue-400" },
+              { title: "Chatbots", color: "from-indigo-600 to-indigo-400" },
+              { title: "AI/ML Solutions", color: "from-purple-600 to-purple-400" },
+              { title: "Game Design", color: "from-pink-600 to-pink-400" },
+              { title: "App Development", color: "from-teal-600 to-teal-400" },
+              { title: "JavaScript Apps", color: "from-yellow-500 to-orange-500" },
+              { title: "Data Privacy", color: "from-gray-600 to-gray-400" },
+              { title: "Cloud Solutions", color: "from-emerald-600 to-emerald-400" },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`p-6 text-center font-bold rounded-lg shadow-lg transform hover:scale-105 transition ${item.color}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className={`p-8 text-center font-semibold rounded-xl shadow-lg backdrop-blur-sm bg-gradient-to-br ${item.color} bg-opacity-10 border border-white/10 hover:border-white/30 transition-all`}
               >
                 {item.title}
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface Slide {
   title: string;
@@ -92,45 +93,60 @@ const PortfolioSection: React.FC = () => {
       </h2>
 
       {/* Slide Container */}
-      <div
-        className={`flex flex-col sm:flex-row items-center justify-between p-6 sm:p-8 rounded-xl shadow-md transition-all duration-500 ${slides[currentIndex].bgColor}`}
+      <motion.div
+        key={currentIndex}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
+        transition={{ duration: 0.5 }}
+        className={`flex flex-col sm:flex-row items-center justify-between p-8 sm:p-12 rounded-3xl shadow-xl transition-all duration-500 bg-white/10 backdrop-blur-md border border-gray-200 relative overflow-hidden`}
       >
+        {/* Background Color Blob */}
+        <div className={`absolute inset-0 opacity-20 ${slides[currentIndex].bgColor} -z-10`} />
+
         {/* Text Content */}
-        <div className="w-full sm:w-1/2 text-center sm:text-left space-y-4 sm:space-y-6 mb-6 sm:mb-0">
-          <h3 className="text-lg sm:text-2xl font-bold">{slides[currentIndex].title}</h3>
-          <p className="text-sm sm:text-base text-gray-600">{slides[currentIndex].description}</p>
+        <div className="w-full sm:w-1/2 text-center sm:text-left space-y-6 mb-8 sm:mb-0 relative z-10">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900">{slides[currentIndex].title}</h3>
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">{slides[currentIndex].description}</p>
+          <button className="px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-black transition-colors shadow-lg">
+            Learn More
+          </button>
         </div>
 
         {/* Image Content */}
-        <div className="w-full sm:w-1/2 flex justify-center">
-          <div className="w-64 sm:w-80 md:w-96 lg:w-[400px] h-56 sm:h-64 md:h-80 lg:h-96 relative rounded-md overflow-hidden shadow-md">
+        <div className="w-full sm:w-1/2 flex justify-center relative z-10">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="w-full max-w-[450px] aspect-[4/3] relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+          >
             <Image
               src={slides[currentIndex].image}
               alt={`${slides[currentIndex].title} image`}
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
               priority
+              className="object-cover hover:scale-110 transition-transform duration-700"
             />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Navigation Buttons */}
       <div className="flex justify-center gap-4 mt-6">
-      <button
-  onClick={prevSlide}
-  aria-label="Previous Slide"
-  className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
->
-  ◀
-</button>
-<button
-  onClick={nextSlide}
-  aria-label="Next Slide"
-  className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
->
-  ▶
-</button>
+        <button
+          onClick={prevSlide}
+          aria-label="Previous Slide"
+          className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
+        >
+          ◀
+        </button>
+        <button
+          onClick={nextSlide}
+          aria-label="Next Slide"
+          className="p-2 sm:p-3 bg-gray-300 rounded-full hover:bg-gray-400 transition-all"
+        >
+          ▶
+        </button>
 
       </div>
 
@@ -139,9 +155,8 @@ const PortfolioSection: React.FC = () => {
         {slides.map((_, index) => (
           <div
             key={index}
-            className={`h-2 w-2 sm:h-3 sm:w-3 rounded-full transition-all ${
-              currentIndex === index ? 'bg-blue-500 scale-125' : 'bg-gray-300'
-            }`}
+            className={`h-2 w-2 sm:h-3 sm:w-3 rounded-full transition-all ${currentIndex === index ? 'bg-blue-500 scale-125' : 'bg-gray-300'
+              }`}
           ></div>
         ))}
       </div>
