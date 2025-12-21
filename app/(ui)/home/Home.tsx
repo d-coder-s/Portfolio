@@ -30,7 +30,7 @@ const sectionVariants = {
 const Home = () => {
     return (
         <motion.div
-            className=''
+            className='overflow-x-hidden'
             variants={containerVariants}
             initial="hidden"
             animate="visible"

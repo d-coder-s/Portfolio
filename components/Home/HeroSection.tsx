@@ -52,7 +52,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-14 lg:py-20 relative">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-14 lg:py-20 relative overflow-hidden">
       {/* Background Gradient Blob */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none" />
 
