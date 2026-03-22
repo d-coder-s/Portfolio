@@ -26,14 +26,7 @@ const fadeRight = {
     transition: { duration: 0.55, ease: "easeOut", delay: 0.1 },
   },
 };
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: "easeOut" },
-  },
-};
+
 
 /* ─────────────────────────────────────────────────────────────
    Tape strip
@@ -141,9 +134,11 @@ const ServiceRow = ({
         className={`flex flex-col justify-center px-10 lg:px-14 py-14 ${isEven ? "" : "lg:order-1"}`}
       >
         {/* Number + tagline */}
+    
         <div className="flex items-center gap-4 mb-5 flex-wrap">
           <span className="font-mono text-[11px] tracking-[0.18em] text-dc-ink3 uppercase">
-            // {service.num}
+            {"// "}
+            {service.num}
           </span>
           <span className="font-hand text-[17px] px-3 py-0.5 border border-dashed border-black/20 text-dc-ink3">
             {service.tagline}
@@ -253,8 +248,9 @@ const Services: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+         
             <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
-              // what we offer
+              {"// what we offer"}
             </p>
             <h1
               className="font-serif font-black text-white/90 leading-tight mb-5"
@@ -355,7 +351,7 @@ const Services: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="font-mono text-[11px] tracking-[0.22em] uppercase text-dc-ink2 mb-6 text-center opacity-50"
           >
-            // not sure which service you need?
+            {"// not sure which service you need?"}
           </motion.p>
 
           <motion.h2

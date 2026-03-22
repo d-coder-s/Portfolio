@@ -360,6 +360,7 @@ const LeadPopup: React.FC = () => {
               ) : (
                 /* ── Form state ── */
                 <div style={{ padding: "36px 36px 32px" }}>
+   
                   <p
                     style={{
                       fontFamily: "'Space Mono', monospace",
@@ -370,7 +371,7 @@ const LeadPopup: React.FC = () => {
                       marginBottom: 10,
                     }}
                   >
-                    // let&apos;s talk
+                    {"// let's talk"}
                   </p>
 
                   <h2

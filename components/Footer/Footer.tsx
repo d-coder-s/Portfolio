@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   BsInstagram,
-  BsGithub,
   BsLinkedin,
   BsTwitterX,
   BsWhatsapp,
@@ -54,9 +53,11 @@ const SERVICES = [
 const CONTACT_ITEMS = [
   { icon: "📞", val: "+91-8690896522", href: "tel:+918690896522" },
   { icon: "📞", val: "+91-9548566064", href: "tel:+919548566064" },
-  
-   { icon: "✉️", val: "dcoder.atwork@gmail.com", href: "mailto:dcoder.atwork@gmail.com" },
-  
+  {
+    icon: "✉️",
+    val: "dcoder.atwork@gmail.com",
+    href: "mailto:dcoder.atwork@gmail.com",
+  },
   { icon: "🌐", val: "dcoder.online", href: "https://dcoder.online" },
   { icon: "📍", val: "Remote — India", href: null },
 ] as const;
@@ -76,8 +77,9 @@ const Footer: React.FC = () => (
     {/* ── Top strip ─────────────────────────────────────── */}
     <div className="border-b border-white/[0.08]">
       <div className="max-w-[1500px] mx-auto px-6 lg:px-12 py-3 flex items-center justify-between gap-4 flex-wrap">
+ 
         <p className="font-mono text-[12px] tracking-[0.14em] uppercase text-white/50">
-          // remote-first digital studio &nbsp;·&nbsp; est. 2024
+          {"// remote-first digital studio · est. 2024"}
         </p>
         <p className="font-mono text-[12px] text-white/30 tracking-widest">
           d&lt;coder/&gt;
@@ -103,10 +105,12 @@ const Footer: React.FC = () => (
 
           <p className="font-mono text-[13px] text-white/75 leading-[2] max-w-[280px] mb-3">
             independent digital studio building websites, apps, ai solutions
-            &amp; providing various IT services — tailored to your business goals, shipped on time.
+            &amp; providing various IT services — tailored to your business
+            goals, shipped on time.
           </p>
+    
           <p className="font-mono text-[12px] text-white/40 mb-7">
-            // no fluff. just real, handcrafted code.
+            {"// no fluff. just real, handcrafted code."}
           </p>
 
           {/* Sticky note */}

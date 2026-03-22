@@ -144,8 +144,9 @@ const Chooseus: React.FC = () => {
           >
             why hire <em className="italic text-dc-red">dcoder.</em>
           </h2>
+ 
           <p className="font-mono text-[11px] text-dc-ink3 mt-1 tracking-[0.04em]">
-            // affordable · experienced · remote-first digital studio india
+            {"// affordable · experienced · remote-first digital studio india"}
           </p>
         </div>
       </motion.div>
@@ -251,8 +252,9 @@ const Chooseus: React.FC = () => {
           <div className="flex items-center gap-4 mt-5">
             <div className="relative bg-dc-ink border border-white/10 px-5 py-4 flex-1 -rotate-[1deg] hover:rotate-0 transition-transform duration-300">
               <Tape rotate="rotate-[2deg]" width={60} />
+
               <p className="font-mono text-[9px] text-dc-amber mb-1.5 tracking-widest">
-                // client_feedback.log
+                {"// client_feedback.log"}
               </p>
               <p className="font-mono text-[9px] text-white/70 leading-[1.9]">
                 <span className="text-green-400">INFO</span>

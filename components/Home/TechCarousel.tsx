@@ -149,9 +149,8 @@ const TechCarousel: React.FC = () => {
               04
             </span>
             <div>
-              {/* ✦ SEO: lists specific tech stack keywords */}
               <p className="font-mono text-[10px] text-dc-red tracking-[0.15em] uppercase mb-1">
-                // react · next.js · node.js · flutter · python · aws
+                {"// react · next.js · node.js · flutter · python · aws"}
               </p>
               <h2
                 className="font-serif font-bold text-dc-ink leading-tight"
@@ -160,9 +159,9 @@ const TechCarousel: React.FC = () => {
                 technologies we{" "}
                 <em className="italic text-dc-red">actually use.</em>
               </h2>
-              {/* ✦ SEO: "web & app development" keyword */}
+
               <p className="font-mono text-[11px] text-dc-ink3 mt-1.5 tracking-[0.04em]">
-                // the tools powering our web &amp; app development projects.
+                {"// the tools powering our web & app development projects."}
               </p>
             </div>
           </div>
@@ -229,12 +228,12 @@ const TechCarousel: React.FC = () => {
       {/* ── Footer line ───────────────────────────────────── */}
       <div className="max-w-[1500px] mx-auto px-6 lg:px-12 mt-10">
         <div className="border-t border-dashed border-black/10 pt-5 flex items-center justify-between flex-wrap gap-3">
-          {/* ✦ SEO: mentions "stack" — common search term */}
           <p className="font-hand text-[18px] text-dc-ink3">
             + more tools added to our stack every sprint ✦
           </p>
+  
           <p className="font-mono text-[10px] text-dc-ink3 tracking-[0.1em] uppercase">
-            // always learning · always building
+            {"// always learning · always building"}
           </p>
         </div>
       </div>

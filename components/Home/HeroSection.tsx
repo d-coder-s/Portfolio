@@ -121,20 +121,22 @@ const HeroSection: React.FC = () => {
           </motion.span>
         </div>
 
-        {/* Sub-copy */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
           className="font-mono text-[15px] text-dc-ink3 leading-[2.2] mb-10 max-w-[460px]"
         >
-          // custom web development &amp; mobile apps
+          {"// custom web development & mobile apps"}
           <br />
-          // ai/ml solutions &amp; data analytics (google analytics and adobe analytics)
+          {
+            "// ai/ml solutions & data analytics (google analytics and adobe analytics)"
+          }
           <br />
-          // web &nbsp;·&nbsp; apps &nbsp;·&nbsp; data &nbsp;·&nbsp; design
+          {"// web"}&nbsp;·&nbsp;{"apps"}&nbsp;·&nbsp;{"data"}&nbsp;·&nbsp;
+          {"design"}
           <br />
-          // real work. honest timelines. zero fluff.
+          {"// real work. honest timelines. zero fluff."}
         </motion.p>
 
         {/* CTAs */}
@@ -238,8 +240,9 @@ const HeroSection: React.FC = () => {
             className="relative bg-dc-ink border border-white/10 p-4 w-[200px] shrink-0"
           >
             <Tape rotate="rotate-[2deg]" />
+  
             <p className="font-mono text-[9px] text-dc-amber mb-2.5 tracking-wide">
-              // dcoder.config.js
+              {"// dcoder.config.js"}
             </p>
             <p className="font-mono text-[9px] text-white/70 leading-[1.9]">
               <span className="text-green-400">const</span> studio = {"{"}
@@ -287,8 +290,9 @@ const HeroSection: React.FC = () => {
             className="relative bg-dc-sticky-sand border border-black/[0.07] p-3.5 w-[160px]"
           >
             <Tape rotate="rotate-[3deg]" />
+    
             <p className="font-mono text-[9px] text-dc-ink3 tracking-[0.1em] uppercase mb-2.5">
-              // stack
+              {"// stack"}
             </p>
             <div className="flex flex-wrap gap-1.5">
               {["Next.js", "React", "Node", "Python", "MongoDB", "Flutter"].map(

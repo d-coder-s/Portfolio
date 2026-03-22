@@ -283,7 +283,7 @@ export default function Project() {
         </span>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
           <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
-            // our work · web apps · mobile apps · ui/ux
+            {"// our work · web apps · mobile apps · ui/ux"}
           </p>
           <h1
             className="font-serif font-black text-white/90 leading-tight mb-4"
@@ -315,7 +315,7 @@ export default function Project() {
       <section className="bg-dc-cream2 py-16 text-center">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
           <p className="font-mono text-[11px] text-dc-ink3 mb-4 tracking-[0.1em] opacity-60">
-            // have a project in mind? let&apos;s talk
+            {"// have a project in mind? let's talk"}
           </p>
           <h2
             className="font-serif font-bold text-dc-ink mb-6"

@@ -152,7 +152,9 @@ const PortfolioSection: React.FC = () => {
             </span>
             <div>
               <p className="font-mono text-[10px] text-dc-amber tracking-[0.15em] uppercase mb-2">
-                // web development · app dev · ui/ux · ai/ml · digital marketing
+                {
+                  "// web development · app dev · ui/ux · ai/ml · digital marketing"
+                }
               </p>
               <h2
                 className="font-serif font-bold text-white/90 leading-tight"

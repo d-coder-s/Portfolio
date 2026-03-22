@@ -5,9 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import TornEdge from "@/components/ui/TornEdge";
 
-/* ─────────────────────────────────────────────────────────────
-   Data
-───────────────────────────────────────────────────────────── */
 const STATS = [
   { num: "8+", label: "skilled team members", bg: "bg-dc-sticky-yellow" },
   { num: "7", label: "services under one roof", bg: "bg-dc-sticky-pink" },
@@ -257,7 +254,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
-              // who we are
+              {"// who we are"}
             </p>
             <h1
               className="font-serif font-black text-white/90 leading-tight mb-4"
@@ -268,7 +265,7 @@ export default function About() {
             </h1>
             <p className="font-mono text-[13px] text-white/35 max-w-lg leading-[1.9]">
               web development · mobile apps · ui/ux design · ai/ml solutions ·
-             digital analytics · digital marketing — built by people who
+              digital analytics · digital marketing — built by people who
               genuinely care about your product. remote-first. est. 2024.
             </p>
           </motion.div>
@@ -305,11 +302,12 @@ export default function About() {
                 design, and digital marketing — we bring your ideas to life with
                 precision, creativity, and real technical depth.
               </p>
+             
               <p className="font-mono text-[13px] text-dc-ink2 leading-[2] max-w-[520px] mb-10">
                 We are a remote-first studio, serving clients across India and
                 globally. Small team, big output. You always work directly with
                 the people building your product — not a rotating cast of
-                project managers who've never seen your codebase.
+                project managers who&apos;ve never seen your codebase.
               </p>
 
               {/* Stats */}
@@ -352,7 +350,8 @@ export default function About() {
                   <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                 </div>
                 <p className="font-mono text-[9px] leading-[2]">
-                  <span className="text-dc-amber">// about dcoder</span>
+                
+                  <span className="text-dc-amber">{"// about dcoder"}</span>
                   <br />
                   <span className="text-green-400">const</span>
                   <span className="text-white/70"> studio = {"{"}</span>
@@ -440,9 +439,7 @@ export default function About() {
               <div className="absolute bottom-[40px] right-8 w-[175px] bg-dc-sticky-blue border border-black/[0.07] p-4 rotate-[2deg]">
                 <Tape rotate="-rotate-[1.5deg]" width={52} />
                 <p className="font-hand text-[15px] text-dc-ink2 leading-[1.5]">
-                  avg response
-                  <br />
-                  under 24hrs ⚡<br />
+                  avg response under 24hrs ⚡<br />
                   <span className="font-mono text-[10px] text-dc-ink3">
                     we&apos;re always around
                   </span>
@@ -479,8 +476,9 @@ export default function About() {
                 what we <em className="italic text-dc-red">believe in.</em>
               </h2>
               <p className="font-mono text-[11px] text-white/30 mt-1 tracking-[0.04em]">
-                // the principles we actually operate by — not just put on a
-                slide
+                {
+                  "// the principles we actually operate by — not just put on a slide"
+                }
               </p>
             </div>
           </motion.div>
@@ -626,8 +624,9 @@ export default function About() {
               {/* client_feedback.log */}
               <div className="col-span-2 relative bg-dc-ink border border-white/10 px-5 py-4 rotate-[0.5deg] hover:rotate-0 transition-transform duration-300">
                 <Tape rotate="rotate-[2deg]" width={60} />
+              
                 <p className="font-mono text-[9px] text-dc-amber mb-1.5 tracking-widest">
-                  // client_feedback.log
+                  {"// client_feedback.log"}
                 </p>
                 <p className="font-mono text-[9px] text-white/70 leading-[1.9]">
                   <span className="text-green-400">INFO</span>
@@ -694,7 +693,7 @@ export default function About() {
               transition={{ duration: 0.5 }}
             >
               <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-4">
-                // ready to start a project?
+                {"// ready to start a project?"}
               </p>
               <h2
                 className="font-serif font-black text-white/90 leading-tight mb-5"
@@ -758,8 +757,9 @@ export default function About() {
                 >
                   <path d="M48,48 L28,48 L48,28 Z" fill="#f0ebe0" />
                 </svg>
+            
                 <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-dc-ink3 mb-3">
-                  // start your project today
+                  {"// start your project today"}
                 </p>
                 <p className="font-serif font-bold text-dc-ink text-[22px] mb-6 leading-tight">
                   let&apos;s build something

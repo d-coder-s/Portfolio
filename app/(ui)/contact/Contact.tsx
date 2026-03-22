@@ -210,8 +210,8 @@ const Contact: React.FC = () => {
       setSent(true);
       toast.success("message sent! we'll be in touch soon.");
       setFormData(INITIAL_FORM);
-    } catch(err) {
-      console.error("EmailJS error:", err); 
+    } catch (err) {
+      console.error("EmailJS error:", err);
       toast.error("something went wrong. please try again.");
     } finally {
       setSending(false);
@@ -231,7 +231,7 @@ const Contact: React.FC = () => {
         </span>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
           <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-white/30 mb-3">
-            // hire a digital studio · get a free quote
+            {"// hire a digital studio · get a free quote"}
           </p>
           <h1
             className="font-serif font-black text-white/90 leading-tight mb-4"
@@ -263,7 +263,7 @@ const Contact: React.FC = () => {
                 transition={{ duration: 0.45 }}
               >
                 <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-dc-ink3 mb-5">
-                  // reach us directly
+                  {"// reach us directly"}
                 </p>
                 <ul className="flex flex-col">
                   {CONTACT_ITEMS.map(({ icon, label, value, href }) => (
@@ -329,7 +329,7 @@ const Contact: React.FC = () => {
                 transition={{ duration: 0.45, delay: 0.1 }}
               >
                 <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-dc-ink3 mb-5">
-                  // frequently asked questions
+                  {"// frequently asked questions"}
                 </p>
                 <div className="border-t border-dashed border-black/[0.14]">
                   {FAQS.map(({ q, a }) => (
@@ -393,7 +393,7 @@ const Contact: React.FC = () => {
                           get a free quote ✦
                         </p>
                         <p className="font-mono text-[11px] text-dc-ink3 mt-0.5">
-                          // no commitment · we reply within 24 hrs
+                          {"// no commitment · we reply within 24 hrs"}
                         </p>
                       </div>
                     </div>
@@ -535,8 +535,9 @@ const Contact: React.FC = () => {
                 )}
               </div>
 
+              {/* FIX 5 */}
               <p className="font-mono text-[12px] text-dc-ink3/40 text-center mt-4 tracking-wide">
-                // no spam. no selling your data. just a real conversation.
+                {"// no spam. no selling your data. just a real conversation."}
               </p>
             </motion.div>
           </div>

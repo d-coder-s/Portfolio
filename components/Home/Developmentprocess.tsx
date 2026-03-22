@@ -85,8 +85,9 @@ const Developmentprocess: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
+  
           <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-dc-ink3 mb-3">
-            // our development process
+            {"// our development process"}
           </p>
           <h2
             className="font-serif font-black italic text-dc-ink"

@@ -221,7 +221,6 @@ export default function ServiceDetailClient({
               </div>
 
               <div className="flex gap-3 flex-wrap">
-                {/* ✦ SEO: "get a free quote" — high-intent phrase */}
                 <Link href="/contact" className="dc-btn-primary">
                   → get a free quote
                 </Link>
@@ -285,8 +284,9 @@ export default function ServiceDetailClient({
             >
               <div className="relative bg-dc-sticky-yellow border border-black/[0.08] px-5 py-5 -rotate-[1.5deg]">
                 <Tape rotate="rotate-2" width={56} />
+
                 <p className="font-mono text-[10px] text-dc-ink3 tracking-[0.12em] uppercase mb-1">
-                  // service overview
+                  {"// service overview"}
                 </p>
                 <p className="font-serif font-bold text-dc-ink text-[20px] leading-tight">
                   {service.title}
@@ -311,11 +311,12 @@ export default function ServiceDetailClient({
               whileInView="visible"
               viewport={{ once: true }}
             >
+
               <p
                 className="font-mono text-[11px] tracking-[0.16em] uppercase mb-3"
                 style={{ color: service.accent }}
               >
-                // what we deliver
+                {"// what we deliver"}
               </p>
               <h2
                 className="font-serif font-bold text-dc-ink leading-tight mb-6"
@@ -365,8 +366,9 @@ export default function ServiceDetailClient({
                             >
                               ✦ now available
                             </span>
+
                             <span className="font-mono text-[10px] text-white/30 tracking-[0.12em] uppercase">
-                              // hands-on training & workshops
+                              {"// hands-on training & workshops"}
                             </span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:items-start gap-6">
@@ -482,11 +484,12 @@ export default function ServiceDetailClient({
             viewport={{ once: true }}
             className="mb-12"
           >
+ 
             <p
               className="font-mono text-[11px] tracking-[0.16em] uppercase mb-2"
               style={{ color: service.accent }}
             >
-              // our development process
+              {"// our development process"}
             </p>
             <h2
               className="font-serif font-bold text-dc-ink leading-tight"
@@ -542,8 +545,9 @@ export default function ServiceDetailClient({
             viewport={{ once: true }}
             className="mb-10"
           >
+   
             <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/30 mb-2">
-              // technologies &amp; tools we use
+              {"// technologies & tools we use"}
             </p>
             <h2
               className="font-serif font-bold text-white/90 leading-tight"
@@ -604,11 +608,12 @@ export default function ServiceDetailClient({
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-16 items-start">
             <div className="lg:sticky lg:top-24 flex flex-col gap-6">
               <div>
+      
                 <p
                   className="font-mono text-[11px] tracking-[0.16em] uppercase mb-2"
                   style={{ color: service.accent }}
                 >
-                  // frequently asked questions
+                  {"// frequently asked questions"}
                 </p>
                 <h2
                   className="font-serif font-bold text-dc-ink leading-tight"
@@ -694,8 +699,11 @@ export default function ServiceDetailClient({
         </svg>
 
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12 relative z-10">
+   
           <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-dc-ink2 opacity-50 mb-4">
-            // ready to hire a {service.title.toLowerCase()} agency in India?
+            {"// ready to hire a "}
+            {service.title.toLowerCase()}
+            {" agency in India?"}
           </p>
           <h2
             className="font-serif font-black text-dc-ink leading-tight mb-6"
@@ -726,8 +734,9 @@ export default function ServiceDetailClient({
 
           {/* Other services */}
           <div className="border-t border-dc-ink/[0.12] pt-8">
+       
             <p className="font-mono text-[10px] text-dc-ink2 opacity-40 tracking-[0.14em] uppercase mb-4">
-              // explore our other services
+              {"// explore our other services"}
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
               {[
