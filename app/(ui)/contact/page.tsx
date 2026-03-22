@@ -1,17 +1,12 @@
-import { Metadata } from 'next';
-
-import React from 'react'
-import Contact from './Contact';
+import type { Metadata } from "next";
+import Contact from "./Contact";
 
 export const metadata: Metadata = {
-    title: "Contact",
-    description: "Welcome to our website.",
+  title: "Contact | Dcoder",
+  description:
+    "Get in touch with Dcoder. Let's make something awesome together — web development, app development, data analytics, and more.",
 };
 
-const page = () => {
-    return (
-     <Contact/>
-    )
+export default function ContactPage() {
+  return <Contact />;
 }
-
-export default page

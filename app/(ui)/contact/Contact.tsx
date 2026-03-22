@@ -2,290 +2,549 @@
 
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion";
+import { toast } from "react-hot-toast";
+import { motion, AnimatePresence } from "framer-motion";
+import TornEdge from "@/components/ui/TornEdge";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    location: "",
-    expertise: "",
-    project: "",
-  });
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  expertise: string;
+  project: string;
+}
+
+const INITIAL_FORM: ContactFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  location: "",
+  expertise: "",
+  project: "",
+};
+
+/* ─────────────────────────────────────────────────────────────
+   FAQs — SEO keywords woven naturally
+───────────────────────────────────────────────────────────── */
+const FAQS = [
+  {
+    q: "How long does a web or app development project take?",
+    a: "A landing page or simple website takes 1–2 weeks. A full-stack web app or mobile app project is usually 6–12 weeks. We give you a realistic timeline with clear milestones — not hopeful guesses.",
+  },
+  {
+    q: "What is your web development pricing?",
+    a: "We offer fixed-scope projects and flexible monthly retainers. You get a clear, itemised estimate after the first call — no hidden fees, no surprise invoices. Ever.",
+  },
+  {
+    q: "Do I need a full brief or project plan ready?",
+    a: "Not at all. Most clients come to us with just an idea. We help shape it into a proper scope during the first call — no pressure, no lengthy forms.",
+  },
+  {
+    q: "Do you provide post-launch support and maintenance?",
+    a: "Yes — 30 days of free bug fixes after every launch. After that, most clients work with us on a retainer for ongoing updates and support. We don't disappear after handoff.",
+  },
+  {
+    q: "Can I hire Dcoder for UI/UX design only — no development?",
+    a: "Absolutely. We take on design-only projects too — wireframes, Figma prototypes, full UI kits — that you can hand off to your own development team.",
+  },
+  {
+    q: "Do you work with startups and first-time founders?",
+    a: "Yes, and we love it. Some of our best work has been 0-to-1 MVPs for first-time founders. We're comfortable with ambiguity and good at figuring things out from scratch.",
+  },
+  {
+    q: "Can you work with our existing codebase or legacy project?",
+    a: "Yes. We've jumped into messy legacy codebases before. We'll audit it, tell you what's salvageable, and work from there — no drama, no pressure to start from scratch.",
+  },
+  {
+    q: "What if I don't have a budget in mind yet?",
+    a: "That's completely fine. Just mention it in the form. We'll scope the project and suggest approaches at different price points — you decide what makes sense.",
+  },
+] as const;
+
+const CONTACT_ITEMS = [
+  {
+    icon: "📞",
+    label: "phone",
+    value: "+91-8690896522",
+    href: "tel:+918690896522",
+  },
+  {
+    icon: "📞",
+    label: "phone",
+    value: "+91-9548566064",
+    href: "tel:+919548566064",
+  },
+  {
+    icon: "✉",
+    label: "email",
+    value: "dcoder.atwork@gmail.com",
+    href: "mailto:dcoder.atwork@gmail.com",
+  },
+  { icon: "📍", label: "location", value: "Remote", href: null },
+  {
+    icon: "🌐",
+    label: "web",
+    value: "dcoder.online",
+    href: "dcoder.online",
+  },
+] as const;
+
+/* ─── Tape ─── */
+const Tape = ({
+  rotate = "-rotate-2",
+  width = 65,
+}: {
+  rotate?: string;
+  width?: number;
+}) => (
+  <div
+    className={`dc-tape absolute ${rotate}`}
+    style={{
+      width,
+      height: 19,
+      top: -10,
+      left: "50%",
+      transform: "translateX(-50%)",
+    }}
+    aria-hidden
+  />
+);
+
+/* ─── FAQ accordion ─── */
+const FaqItem = ({ q, a }: { q: string; a: string }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-dashed border-black/[0.14]">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-start justify-between gap-4 py-4 text-left group"
+        aria-expanded={open}
+      >
+        <span className="font-mono text-[14px] text-dc-ink2 group-hover:text-dc-ink transition-colors leading-relaxed">
+          {q}
+        </span>
+        <motion.div
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.22 }}
+          className="w-6 h-6 shrink-0 bg-dc-ink text-dc-cream flex items-center justify-center text-lg font-light leading-none mt-0.5"
+        >
+          +
+        </motion.div>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.p
+            key="body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.26, ease: "easeInOut" }}
+            className="font-mono text-[13px] text-dc-ink3 leading-[1.9] overflow-hidden pb-4 pr-8"
+          >
+            {a}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+/* ─── Shared styles ─── */
+const inputCls = `
+  font-mono text-[16px] text-dc-ink
+  bg-dc-cream border border-black/[0.12]
+  px-3 py-3 w-full outline-none
+  transition-colors duration-200
+  focus:border-dc-ink
+  placeholder:text-dc-ink3/40
+`;
+
+const Field = ({
+  label,
+  id,
+  children,
+}: {
+  label: string;
+  id: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex flex-col gap-2">
+    <label
+      htmlFor={id}
+      className="font-mono text-[13px] tracking-[0.12em] uppercase text-dc-ink3"
+    >
+      {label} *
+    </label>
+    {children}
+  </div>
+);
+
+/* ─────────────────────────────────────────────────────────────
+   Component
+───────────────────────────────────────────────────────────── */
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    emailjs
-      .send(
-        "service_uqmtxdg", // Service ID
-        "template_6i6iiik", // Template ID
-        formData, // Form data sent directly
-        "8ohgmMCekGJIm_2yC" // Public Key
-      )
-      .then(
-        (result) => {
-          toast.success("Message sent successfully!");
-          console.log(result.text);
-          setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            location: "",
-            expertise: "",
-            project: "",
-          });
-        },
-        (error) => {
-          toast.error("Failed to send the message, please try again.");
-          console.log(error.text);
-        }
+    setSending(true);
+    try {
+      await emailjs.send(
+        "service_uqmtxdg",
+        "template_6i6iiik",
+        formData as unknown as Record<string, unknown>,
+        "8ohgmMCekGJIm_2yC",
       );
+      setSent(true);
+      toast.success("message sent! we'll be in touch soon.");
+      setFormData(INITIAL_FORM);
+    } catch(err) {
+      console.error("EmailJS error:", err); 
+      toast.error("something went wrong. please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen">
-      <ToastContainer />
-      <div
-        className="relative bg-cover bg-center min-h-[400px] flex items-center justify-center text-center text-white"
-        style={{
-          backgroundImage: "url('/figma/vv2.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10">
-          <h1 className="text-4xl font-bold mb-2">
-            Let&apos;s make something awesome together.
+    <>
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <section className="bg-dc-ink border-b-2 border-dc-amber pt-16 pb-20 relative overflow-hidden">
+        <span
+          className="absolute -bottom-4 right-6 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none"
+          style={{ fontSize: "clamp(80px, 14vw, 180px)" }}
+          aria-hidden
+        >
+          contact
+        </span>
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-white/30 mb-3">
+            // hire a digital studio · get a free quote
+          </p>
+          <h1
+            className="font-serif font-black text-white/90 leading-tight mb-4"
+            style={{ fontSize: "clamp(40px, 6vw, 80px)" }}
+          >
+            let&apos;s build something{" "}
+            <em className="italic text-dc-red">that works.</em>
           </h1>
-          <p className="text-lg">
-            Drop us a line, or give us a heads-up if you&apos;re interested
-            giving us the opportunity to turn your beautiful idea in an amazing
-            site.
+          <p className="font-mono text-[16px] text-white/35 max-w-lg leading-[1.9]">
+            looking for a web development agency, app developers, or a design
+            team? reach out — no lengthy forms, just a real conversation.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div className="flex items-center justify-center py-12 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-6xl w-full flex flex-col lg:flex-row items-center lg:items-start gap-12"
-        >
-          {/* Left Section */}
-          <div className="lg:w-1/2 w-full">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-              Connect with Our <br />
-              <span className="text-blue-600">Team of Experts</span>
-            </h1>
-            <p className="text-gray-600 mb-8 text-lg font-light">
-              Contact our team of excellence-driven experts today to bring your
-              project to life with precision and creativity.
-            </p>
+      <TornEdge from="dc-ink" to="dc-cream2" flip />
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-white/20">
-              <h2 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
-                <span className="w-2 h-8 bg-blue-500 rounded-full" />
-                Frequently Asked Questions
-              </h2>
-              <div className="space-y-4">
-                <details className="group bg-gray-50 rounded-lg p-3 open:bg-blue-50 transition-colors">
-                  <summary className="font-medium text-gray-700 cursor-pointer flex justify-between items-center outline-none">
-                    How long does it take to complete a project?
-                    <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-                  </summary>
-                  <motion.p
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    className="mt-3 text-gray-600 text-sm leading-relaxed"
-                  >
-                    The timeline depends on the project&apos;s complexity.
-                    Typically, projects take 2-8 weeks.
-                  </motion.p>
-                </details>
-                <details className="group bg-gray-50 rounded-lg p-3 open:bg-blue-50 transition-colors">
-                  <summary className="font-medium text-gray-700 cursor-pointer flex justify-between items-center outline-none">
-                    What is your pricing structure?
-                    <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-                  </summary>
-                  <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-                    We offer flexible pricing based on hourly rates or fixed
-                    packages tailored to your needs.
-                  </p>
-                </details>
-                <details className="group bg-gray-50 rounded-lg p-3 open:bg-blue-50 transition-colors">
-                  <summary className="font-medium text-gray-700 cursor-pointer flex justify-between items-center outline-none">
-                    Do you provide post-launch support?
-                    <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-                  </summary>
-                  <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-                    Yes, we offer ongoing support and maintenance services to
-                    ensure your app runs smoothly.
-                  </p>
-                </details>
-              </div>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-4">
-              <h2 className="text-gray-800 text-2xl font-bold mb-4">Directly reach us</h2>
-              <div className="space-y-3 pl-4 border-l-4 border-blue-500">
-                <p className="text-gray-600 flex items-center gap-3 hover:text-blue-600 transition-colors group cursor-pointer">
-                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-1">📞</span>
-                  +91-8690896522
-                </p>
-                <p className="text-gray-600 flex items-center gap-3 hover:text-blue-600 transition-colors cursor-pointer">
-                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-1">✉️</span>
-                  dcoder.atwork@gmail.com
-                </p>
-                <p className="text-gray-600 flex items-center gap-3 hover:text-blue-600 transition-colors cursor-pointer">
-                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-1">📍</span>
-                  Ghaziabad (UP)
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Section - Form */}
-          <div className="lg:w-1/2 w-full">
-            <motion.form
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              onSubmit={handleSubmit}
-              className="bg-gray-800/90 backdrop-blur-md text-white rounded-2xl shadow-2xl p-8 lg:p-10 space-y-6 border border-gray-700"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-center">Send us a Message</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="name">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
-                    placeholder="John Doe"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="email">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="phone">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
-                    placeholder="+91 98765 43210"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="location">
-                    Location *
-                  </label>
-                  <input
-                    type="text"
-                    name="location"
-                    id="location"
-                    value={formData.location}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all"
-                    placeholder="City, Country"
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="expertise">
-                  What Expertise You&apos;re Interested In *
-                </label>
-                <div className="relative">
-                  <select
-                    name="expertise"
-                    id="expertise"
-                    value={formData.expertise}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white outline-none appearance-none transition-all"
-                    required
-                  >
-                    <option value="" className="bg-gray-800 text-gray-400">Select an option</option>
-                    <option value="Web Development" className="bg-gray-800">Web Development</option>
-                    <option value="Mobile App Development" className="bg-gray-800">Mobile App Development</option>
-                    <option value="UI/UX Design" className="bg-gray-800">UI/UX Design</option>
-                    <option value="Other" className="bg-gray-800">Other</option>
-                  </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">▼</div>
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-300" htmlFor="project">
-                  Tell Us About Your Project *
-                </label>
-                <textarea
-                  name="project"
-                  id="project"
-                  rows={4}
-                  value={formData.project}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 text-white placeholder-gray-400 outline-none transition-all resize-none"
-                  placeholder="Share details about your idea..."
-                  maxLength={1000}
-                  required
-                ></textarea>
-              </div>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all duration-300"
+      {/* ── Main content ─────────────────────────────────── */}
+      <section className="bg-dc-cream2 py-20 lg:py-24">
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+            {/* ── LEFT ──────────────────────────────────── */}
+            <div className="flex flex-col gap-10">
+              {/* Contact info */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
               >
-                SEND MESSAGE →
-              </motion.button>
-            </motion.form>
+                <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-dc-ink3 mb-5">
+                  // reach us directly
+                </p>
+                <ul className="flex flex-col">
+                  {CONTACT_ITEMS.map(({ icon, label, value, href }) => (
+                    <li
+                      key={value}
+                      className="flex items-center gap-4 py-4 border-b border-dashed border-black/[0.12] first:border-t group"
+                    >
+                      <span
+                        className="text-[18px] shrink-0 w-7 text-center"
+                        aria-hidden
+                      >
+                        {icon}
+                      </span>
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-mono text-[11px] tracking-widest uppercase text-dc-ink3/50">
+                          {label}
+                        </span>
+                        {href ? (
+                          <a
+                            href={href}
+                            target={
+                              href.startsWith("http") ? "_blank" : undefined
+                            }
+                            rel={
+                              href.startsWith("http")
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
+                            className="font-mono text-[16px] text-dc-ink2 hover:text-dc-red transition-colors duration-200"
+                          >
+                            {value}
+                          </a>
+                        ) : (
+                          <span className="font-mono text-[16px] text-dc-ink2">
+                            {value}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              {/* Sticky note */}
+              <div
+                className="inline-block relative bg-dc-sticky-yellow border border-black/[0.07] p-5 -rotate-[1.5deg] max-w-[260px]"
+                style={{ boxShadow: "3px 4px 0 rgba(0,0,0,0.08)" }}
+              >
+                <Tape rotate="rotate-[3deg]" width={55} />
+                <p className="font-hand text-[20px] text-dc-ink2 leading-[1.5]">
+                  avg response under 24 hrs ⚡
+                </p>
+                <p className="font-hand text-[16px] text-dc-ink3 mt-1">
+                  we actually check our email 😄
+                </p>
+              </div>
+
+              {/* FAQ */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.1 }}
+              >
+                <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-dc-ink3 mb-5">
+                  // frequently asked questions
+                </p>
+                <div className="border-t border-dashed border-black/[0.14]">
+                  {FAQS.map(({ q, a }) => (
+                    <FaqItem key={q} q={q} a={a} />
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* ── RIGHT: form ───────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <div
+                className="relative bg-dc-paper border border-black/[0.07]"
+                style={{ boxShadow: "5px 7px 0 rgba(0,0,0,0.06)" }}
+              >
+                <Tape rotate="-rotate-[2.5deg]" width={80} />
+
+                {sent ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="p-10 flex flex-col items-center text-center gap-5"
+                  >
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 240,
+                        damping: 16,
+                      }}
+                      className="text-6xl"
+                    >
+                      🎉
+                    </motion.span>
+                    <h3 className="font-serif font-bold text-dc-ink text-2xl">
+                      message received!
+                    </h3>
+                    <p className="font-mono text-[14px] text-dc-ink3 max-w-sm leading-relaxed">
+                      we&apos;ve got your enquiry and will get back within 24
+                      hours. exciting things ahead!
+                    </p>
+                    <button
+                      onClick={() => setSent(false)}
+                      className="font-mono text-[13px] uppercase tracking-wider border-2 border-dc-ink px-6 py-3 hover:bg-dc-ink hover:text-dc-cream transition-all duration-200 mt-2"
+                    >
+                      send another →
+                    </button>
+                  </motion.div>
+                ) : (
+                  <div className="p-8 lg:p-10">
+                    {/* Form header */}
+                    <div className="flex items-center justify-between pb-5 mb-6 border-b border-dashed border-black/[0.1]">
+                      <div>
+                        <p className="font-hand text-[24px] text-dc-ink font-bold">
+                          get a free quote ✦
+                        </p>
+                        <p className="font-mono text-[11px] text-dc-ink3 mt-0.5">
+                          // no commitment · we reply within 24 hrs
+                        </p>
+                      </div>
+                    </div>
+
+                    <form
+                      onSubmit={handleSubmit}
+                      className="flex flex-col gap-5"
+                      noValidate
+                    >
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <Field label="Full name" id="name">
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Your name"
+                            required
+                            className={inputCls}
+                          />
+                        </Field>
+                        <Field label="Email address" id="email">
+                          <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="your@email.com"
+                            required
+                            className={inputCls}
+                          />
+                        </Field>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <Field label="Phone number" id="phone">
+                          <input
+                            type="tel"
+                            name="phone"
+                            id="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="+91 XXXXX XXXXX"
+                            required
+                            className={inputCls}
+                          />
+                        </Field>
+                        <Field label="Your city" id="location">
+                          <input
+                            type="text"
+                            name="location"
+                            id="location"
+                            value={formData.location}
+                            onChange={handleChange}
+                            placeholder="Delhi, Mumbai, Bangalore..."
+                            required
+                            className={inputCls}
+                          />
+                        </Field>
+                      </div>
+
+                      <Field label="Service you need" id="expertise">
+                        <div className="relative">
+                          <select
+                            name="expertise"
+                            id="expertise"
+                            value={formData.expertise}
+                            onChange={handleChange}
+                            required
+                            className={
+                              inputCls + " appearance-none pr-8 cursor-pointer"
+                            }
+                          >
+                            <option value="" disabled>
+                              Select a service...
+                            </option>
+                            <option value="Web Development">
+                              🌐 Web Development
+                            </option>
+                            <option value="App Development">
+                              📱 Mobile App Development
+                            </option>
+                            <option value="UI/UX Design">
+                              🎨 UI/UX Design
+                            </option>
+                            <option value="AI/ML Solutions">
+                              🤖 AI/ML Solutions
+                            </option>
+                            <option value="Digital Analytics">
+                              📊 Digital Analytics
+                            </option>
+                            <option value="Digital Marketing">
+                              📣 Digital Marketing & SEO
+                            </option>
+                            <option value="Training">
+                              🧑‍💻 Training & Workshops
+                            </option>
+                            <option value="Something else">
+                              ✦ Something else
+                            </option>
+                          </select>
+                          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-dc-ink3 pointer-events-none text-[12px]">
+                            ▾
+                          </span>
+                        </div>
+                      </Field>
+
+                      <Field label="Tell us about your project" id="project">
+                        <textarea
+                          name="project"
+                          id="project"
+                          rows={4}
+                          value={formData.project}
+                          onChange={handleChange}
+                          placeholder="What are you building? Share your goals, timeline, or any references — as much or as little as you like."
+                          maxLength={800}
+                          required
+                          className={inputCls + " resize-none"}
+                        />
+                        <p className="font-mono text-[11px] text-dc-ink3/40 text-right mt-1">
+                          {formData.project.length}/800
+                        </p>
+                      </Field>
+
+                      <button
+                        type="submit"
+                        disabled={sending}
+                        className="group relative font-mono text-[14px] font-bold uppercase tracking-[0.15em] bg-dc-ink text-dc-cream w-full py-4 overflow-hidden disabled:opacity-40 disabled:cursor-not-allowed mt-1"
+                      >
+                        <span className="absolute inset-0 bg-dc-red translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                        <span className="relative">
+                          {sending ? "sending..." : "get a free quote ✦"}
+                        </span>
+                      </button>
+                    </form>
+                  </div>
+                )}
+              </div>
+
+              <p className="font-mono text-[12px] text-dc-ink3/40 text-center mt-4 tracking-wide">
+                // no spam. no selling your data. just a real conversation.
+              </p>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
-    </div>
+        </div>
+      </section>
+
+      <TornEdge from="dc-cream2" to="dc-cream" />
+    </>
   );
 };
 

@@ -1,17 +1,12 @@
-import { Metadata } from 'next';
-
-import React from 'react'
-import Home from './Project'
+import type { Metadata } from "next";
+import Project from "./Project";
 
 export const metadata: Metadata = {
-    title: "services",
-    description: "Welcome to our website.",
+  title: "Projects | Dcoder",
+  description:
+    "Real work shipped into the world — explore Dcoder's portfolio of web apps, mobile apps, and data platforms.",
 };
 
-const page = () => {
-    return (
-     <Home/>
-    )
+export default function ProjectPage() {
+  return <Project />;
 }
-
-export default page

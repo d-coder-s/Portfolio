@@ -1,78 +1,176 @@
+"use client";
 
+import React from "react";
+import { motion } from "framer-motion";
 
-import React, { useState, useEffect } from 'react';
-import { FaSearch, FaCode, FaBug, FaRocket, FaProjectDiagram } from 'react-icons/fa';
+/* ─────────────────────────────────────────────────────────────
+   Process steps data — SEO optimized
+───────────────────────────────────────────────────────────── */
+const STEPS = [
+  {
+    num: "1",
+    title: "You reach out",
+    description:
+      "Share your idea — no formal brief needed. A rough outline or voice note is enough to get started.",
+    style: {
+      bg: "bg-dc-ink",
+      text: "text-dc-cream",
+      circle: "bg-dc-ink border-dc-ink text-dc-cream",
+    },
+  },
+  {
+    num: "2",
+    title: "We scope & quote",
+    description:
+      "Clear deliverables, honest pricing, realistic timeline. No hidden costs, no surprise 'phase 2' invoices.",
+    style: {
+      bg: "bg-dc-sticky-yellow",
+      text: "text-dc-ink",
+      circle: "bg-dc-sticky-yellow border-dc-ink text-dc-ink",
+    },
+  },
+  {
+    num: "3",
+    title: "We design & build",
+    description:
+      "Weekly progress updates, async-friendly communication, and real developers responding to your messages.",
+    style: {
+      bg: "bg-dc-ink",
+      text: "text-dc-cream",
+      circle: "bg-dc-ink border-dc-ink text-dc-cream",
+    },
+  },
+  {
+    num: "4",
+    title: "You launch & grow",
+    description:
+      "Clean handoff with full documentation. We stick around post-launch for support, fixes, and future updates.",
+    style: {
+      bg: "bg-dc-sticky-yellow",
+      text: "text-dc-ink",
+      circle: "bg-dc-sticky-yellow border-dc-ink text-dc-ink",
+    },
+  },
+] as const;
 
-const Developmentprocess = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+/* ─────────────────────────────────────────────────────────────
+   Vertical offsets
+───────────────────────────────────────────────────────────── */
+const OFFSETS = ["mt-6", "mt-0", "mt-4", "mt-8"] as const;
 
-  const steps = [
-    { icon: <FaSearch size={64} className="text-blue-500" />, title: 'Understanding Your Needs', description: 'Understanding your needs and setting a clear roadmap.' },
-    { icon: <FaCode size={64} className="text-green-500" />, title: 'Development', description: 'Bringing your vision to life.' },
-    { icon: <FaBug size={64} className="text-red-500" />, title: 'Deployment & Support', description: 'Deploying the project and providing ongoing assistance.' },
-    { icon: <FaProjectDiagram size={64} className="text-yellow-500" />, title: 'Quality Assurance', description: 'Ensuring the product is error-free and meets quality standards.' },
-    { icon: <FaRocket size={64} className="text-purple-500" />, title: 'Launch & Feedback', description: 'Launching the product and gathering user feedback for improvement.' },
-  ];
+/* ─────────────────────────────────────────────────────────────
+   Animation variants
+───────────────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut", delay: i * 0.1 },
+  }),
+};
 
-
-  // Automatic swipe for development process
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [steps.length]);
+/* ─────────────────────────────────────────────────────────────
+   Component
+───────────────────────────────────────────────────────────── */
+const Developmentprocess: React.FC = () => {
   return (
-    <div className="w-full">
-      {/* Development Process Section */}
-      <section className="container mx-auto px-4 md:px-6 py-20 bg-gray-50/50">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Our Proven Development Process</h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-            We follow a structured agile methodology to ensure transparency, quality, and timely delivery of your project.
+    <section className="bg-dc-cream2 py-20 lg:py-24 overflow-hidden">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+        {/* ── Section header ────────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-14 text-center"
+        >
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-dc-ink3 mb-3">
+            // our development process
           </p>
-        </div>
+          <h2
+            className="font-serif font-black italic text-dc-ink"
+            style={{ fontSize: "clamp(38px, 5vw, 60px)" }}
+          >
+            Simple. Transparent. Fast.
+          </h2>
+        </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          {/* Progress Bar / Steps Indicator */}
-          <div className="flex justify-between items-center mb-16 relative">
-            {/* Line Background */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 -translate-y-1/2 rounded-full" />
-            {/* Active Line */}
-            <div
-              className="absolute top-1/2 left-0 h-1 bg-blue-600 -z-10 -translate-y-1/2 rounded-full transition-all duration-500"
-              style={{ width: `${(currentStep / (steps.length - 1)) * 100}%` }}
-            />
+        {/* ── Steps row ─────────────────────────────────────── */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-start">
+          {STEPS.map(({ num, title, description, style }, i) => (
+            <motion.div
+              key={num}
+              custom={i}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className={`relative ${OFFSETS[i]}`}
+            >
+              {/* Dashed connector line */}
+              {i < STEPS.length - 1 && (
+                <div
+                  className="hidden lg:block absolute top-7 left-[calc(100%+4px)] w-[calc(100%-8px)] border-t-2 border-dashed border-black/20 pointer-events-none"
+                  aria-hidden
+                />
+              )}
 
-            {steps.map((step, index) => (
+              {/* Tape */}
               <div
-                key={index}
-                className={`w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center border-4 transition-all duration-300 z-10 ${index <= currentStep ? 'bg-blue-600 border-blue-600 text-white scale-110' : 'bg-white border-gray-300 text-gray-400'}`}
+                className="dc-tape absolute -rotate-2"
+                style={{
+                  width: 60,
+                  height: 18,
+                  top: -9,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                }}
+                aria-hidden
+              />
+
+              {/* Card */}
+              <div
+                className={`
+                  ${style.bg} ${style.text}
+                  border border-black/[0.08]
+                  p-5 lg:p-6
+                  flex flex-col gap-3
+                `}
               >
-                {index + 1}
+                <div
+                  className={`
+                    w-12 h-12 rounded-full border-[2.5px]
+                    ${style.circle}
+                    flex items-center justify-center
+                    font-serif font-black text-xl
+                    shrink-0
+                  `}
+                >
+                  {num}
+                </div>
+
+                <h3
+                  className="font-serif font-bold italic leading-tight"
+                  style={{ fontSize: "clamp(17px, 1.6vw, 20px)" }}
+                >
+                  {title}
+                </h3>
+
+                <p
+                  className={`font-mono leading-[1.9] ${
+                    style.bg === "bg-dc-ink" ? "text-white/60" : "text-dc-ink3"
+                  }`}
+                  style={{ fontSize: "clamp(12px, 1vw, 13px)" }}
+                >
+                  {description}
+                </p>
               </div>
-            ))}
-          </div>
-
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center border border-gray-100 relative overflow-hidden">
-
-            {/* Decorative blob */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
-
-            <div className="relative z-10">
-              <div className="inline-block p-6 rounded-full bg-blue-50 mb-8 animate-pulse-slow">
-                {steps[currentStep].icon}
-              </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">{steps[currentStep].title}</h3>
-              <p className="text-gray-500 text-lg leading-relaxed max-w-xl mx-auto">{steps[currentStep].description}</p>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
-      </section>
-
-
-    </div>
+      </div>
+    </section>
   );
 };
 

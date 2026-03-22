@@ -1,131 +1,185 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   BsInstagram,
   BsGithub,
   BsLinkedin,
-  BsTwitter,
+  BsTwitterX,
   BsWhatsapp,
+  BsEnvelope,
 } from "react-icons/bs";
-import Image from "next/image";
-import { motion } from "framer-motion";
 
-const Projects = () => {
-  const projects = [
-    { title: "Project 1", image: "/figma/p1.webp" },
-    { title: "Project 2", image: "/figma/p2.webp" },
-    { title: "Project 3", image: "/figma/p3.webp" },
-  ];
+const SOCIAL_LINKS = [
+  {
+    Icon: BsLinkedin,
+    href: "https://www.linkedin.com/company/d-coder-s/",
+    label: "LinkedIn",
+  },
+  { Icon: BsWhatsapp, href: "https://wa.me/+918690896522", label: "WhatsApp" },
+  {
+    Icon: BsWhatsapp,
+    href: "https://wa.me/+919548566064",
+    label: "WhatsApp 2",
+  },
+  // { Icon: BsGithub, href: "https://github.com/d-coder-s", label: "GitHub" },
+  { Icon: BsTwitterX, href: "https://x.com/dcoder_atwork", label: "X" },
+  {
+    Icon: BsInstagram,
+    href: "https://www.instagram.com/dcoder_atwork/",
+    label: "Instagram",
+  },
+  { Icon: BsEnvelope, href: "mailto:dcoder.atwork@gmail.com", label: "Email" },
+] as const;
 
-  const carouselContent = [...projects, ...projects, ...projects, ...projects];
+const NAV_LINKS = [
+  { label: "home", href: "/home" },
+  { label: "services", href: "/services" },
+  { label: "our work", href: "/project" },
+  { label: "about", href: "/about" },
+  { label: "contact", href: "/contact" },
+] as const;
 
-  return (
-    <section className="py-16 bg-gradient-to-b from-[#162343] to-gray-900 border-t border-white/5 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 rounded-full blur-[100px] -z-10" />
+const SERVICES = [
+  { label: "web development", href: "/services/web-development" },
+  { label: "mobile app development", href: "/services/app-development" },
+  { label: "ui/ux design", href: "/services/ui-ux-design" },
+  { label: "ai / ml solutions", href: "/services/ai-ml-solutions" },
+  { label: "digital analytics", href: "/services/digital-analytics" },
+  { label: "digital marketing", href: "/services/digital-marketing" },
+  { label: "training & workshops", href: "/services/training" },
+] as const;
 
-      <h2 className="text-3xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-        Our Latest Projects
-      </h2>
+const CONTACT_ITEMS = [
+  { icon: "📞", val: "+91-8690896522", href: "tel:+918690896522" },
+  { icon: "📞", val: "+91-9548566064", href: "tel:+919548566064" },
+  
+   { icon: "✉️", val: "dcoder.atwork@gmail.com", href: "mailto:dcoder.atwork@gmail.com" },
+  
+  { icon: "🌐", val: "dcoder.online", href: "https://dcoder.online" },
+  { icon: "📍", val: "Remote — India", href: null },
+] as const;
 
-      <div className="relative w-full overflow-hidden">
-        <motion.div
-          className="flex gap-8 w-max"
-          animate={{ x: [0, "-50%"] }}
-          transition={{
-            repeat: Infinity,
-            ease: "linear",
-            duration: 40,
-          }}
-        >
-          {carouselContent.map((project, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="relative w-[300px] h-[200px] rounded-xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer"
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 300px"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <h3 className="text-lg font-bold text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  {project.title}
-                </h3>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+const ColHead = ({ children }: { children: React.ReactNode }) => (
+  <h5 className="font-mono text-[13px] font-bold tracking-[0.14em] uppercase text-dc-amber mb-6 flex items-center gap-2">
+    <span className="w-5 h-0.5 bg-dc-amber inline-block" />
+    {children}
+  </h5>
+);
 
-        {/* Edges fade */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none" />
+const Footer: React.FC = () => (
+  <footer
+    className="bg-dc-ink w-full"
+    style={{ borderTop: "3px solid #c8860a" }}
+  >
+    {/* ── Top strip ─────────────────────────────────────── */}
+    <div className="border-b border-white/[0.08]">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 py-3 flex items-center justify-between gap-4 flex-wrap">
+        <p className="font-mono text-[12px] tracking-[0.14em] uppercase text-white/50">
+          // remote-first digital studio &nbsp;·&nbsp; est. 2024
+        </p>
+        <p className="font-mono text-[12px] text-white/30 tracking-widest">
+          d&lt;coder/&gt;
+        </p>
       </div>
-    </section>
-  );
-};
+    </div>
 
-const Footer = () => {
-  const socialIcons = [
-    { Icon: BsLinkedin, link: "https://www.linkedin.com/company/d-coder-s/", color: "hover:text-[#0A66C2]" },
-    { Icon: BsWhatsapp, link: "https://wa.me/+918690896522", color: "hover:text-[#25D366]" },
-    { Icon: BsGithub, link: "https://github.com/d-coder-s", color: "hover:text-white" },
-    { Icon: BsTwitter, link: "https://x.com/dcoder_atwork?t=gnvKHiHKKt4MObKNBomSow&s=08", color: "hover:text-[#1DA1F2]" },
-    { Icon: BsInstagram, link: "https://www.instagram.com/dcoder_atwork/#", color: "hover:text-[#E1306C]" },
-  ];
-
-  return (
-    <footer className="w-full bg-gray-900 text-white border-t border-white/10 relative">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 py-16 relative z-10">
-        {/* Company Info */}
-        <div className="space-y-6">
-          <Link href="/" className="inline-block">
-            <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-              Dcoder
-            </h2>
+    {/* ── Main grid ─────────────────────────────────────── */}
+    <div className="max-w-[1500px] mx-auto px-6 lg:px-12 pt-14 pb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr] gap-12 lg:gap-10">
+        {/* Brand */}
+        <div>
+          {/* Logo */}
+          <Link href="/home" className="inline-flex items-center gap-2.5 mb-5">
+            <Image
+              src="/figma/dcode.png"
+              alt="Dcoder icon"
+              width={160}
+              height={40}
+              className="h-14 w-auto object-contain"
+            />
           </Link>
-          <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-            Decoder empowers businesses with tailored solutions, delivering
-            creative, precise, and impactful results through expertise,
-            efficiency, and innovation.
+
+          <p className="font-mono text-[13px] text-white/75 leading-[2] max-w-[280px] mb-3">
+            independent digital studio building websites, apps, ai solutions
+            &amp; providing various IT services — tailored to your business goals, shipped on time.
           </p>
-          <div className="flex space-x-4">
-            {socialIcons.map(({ Icon, link, color }, idx) => (
+          <p className="font-mono text-[12px] text-white/40 mb-7">
+            // no fluff. just real, handcrafted code.
+          </p>
+
+          {/* Sticky note */}
+          <div className="relative inline-block bg-dc-sticky-yellow border border-black/[0.1] px-4 py-3 -rotate-[1.5deg] mb-8">
+            <div
+              className="dc-tape absolute -rotate-2"
+              style={{
+                width: 52,
+                height: 16,
+                top: -8,
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
+              aria-hidden
+            />
+            <p className="font-hand text-[18px] text-dc-ink2 leading-[1.4]">
+              open for projects ✦
+            </p>
+          </div>
+
+          {/* Socials */}
+          <div className="flex items-center gap-2.5 flex-wrap">
+            {SOCIAL_LINKS.map(({ Icon, href, label }) => (
               <a
-                key={idx}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`bg-white/5 p-3 rounded-full transition-all duration-300 transform hover:scale-110 hover:bg-white/10 ${color}`}
+                key={label}
+                href={href}
+                target={href.startsWith("mailto") ? undefined : "_blank"}
+                rel={
+                  href.startsWith("mailto") ? undefined : "noopener noreferrer"
+                }
+                aria-label={label}
+                className="w-9 h-9 flex items-center justify-center border border-white/20 text-white/60 transition-all duration-200 hover:text-dc-amber hover:border-dc-amber/60"
               >
-                <Icon size={20} />
+                <Icon size={15} />
               </a>
             ))}
           </div>
         </div>
 
-        {/* Navigation */}
+        {/* Navigate */}
         <div>
-          <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-            <span className="w-8 h-1 bg-blue-500 rounded-full"></span>
-            Navigation
-          </h3>
-          <ul className="space-y-3 text-gray-400">
-            {['Home', 'Services', 'About', 'Projects', 'Contact'].map((item) => (
-              <li key={item}>
+          <ColHead>navigate</ColHead>
+          <ul className="flex flex-col gap-0.5">
+            {NAV_LINKS.map(({ label, href }) => (
+              <li key={label}>
                 <Link
-                  href={item === "Home" ? "/" : `/${item.toLowerCase().replace('projects', 'project').replace('contact', 'contact')}`}
-                  className="hover:text-blue-400 transition-colors flex items-center gap-2 group"
+                  href={href}
+                  className="group flex items-center gap-2 font-mono text-[13.5px] text-white/70 py-1.5 transition-colors duration-200 hover:text-white"
                 >
-                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {item}
+                  <span className="text-dc-red text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                    →
+                  </span>
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Services */}
+        <div>
+          <ColHead>services</ColHead>
+          <ul className="flex flex-col gap-0.5">
+            {SERVICES.map(({ label, href }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  className="group flex items-center gap-2 font-mono text-[13.5px] text-white/70 py-1.5 transition-colors duration-200 hover:text-white"
+                >
+                  <span className="text-dc-amber text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                    ✦
+                  </span>
+                  {label}
                 </Link>
               </li>
             ))}
@@ -134,72 +188,72 @@ const Footer = () => {
 
         {/* Contact */}
         <div>
-          <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-            <span className="w-8 h-1 bg-purple-500 rounded-full"></span>
-            Contact
-          </h3>
-          <ul className="space-y-4 text-gray-400">
-            <li className="flex items-start gap-3">
-              <span className="mt-1">📞</span>
-              <span className="hover:text-white transition-colors cursor-pointer">+91-8690896522</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1">🌐</span>
-              <a href="https://d-coder-s.netlify.app/" className="hover:text-blue-400 transition-colors break-all">
-                d-coder-s.netlify.app
-              </a>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1">✉️</span>
-              <a href="mailto:dcoder.atwork@gmail.com" className="hover:text-blue-400 transition-colors">
-                dcoder.atwork@gmail.com
-              </a>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1">📍</span>
-              <span>C 8/14 Ghaziabad, Uttar Pradesh</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Services */}
-        <div>
-          <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-            <span className="w-8 h-1 bg-green-500 rounded-full"></span>
-            Services
-          </h3>
-          <ul className="space-y-3 text-gray-400">
-            {['Web Development', 'Mobile App Development', 'UI/UX Design', 'AI/ML', 'Game Development'].map((service, i) => (
-              <li key={i} className="hover:text-green-400 transition-colors cursor-default">
-                {service}
-              </li>
+          <ColHead>get in touch</ColHead>
+          <div className="flex flex-col gap-4 mb-8">
+            {CONTACT_ITEMS.map(({ icon, val, href }) => (
+              <div key={val} className="flex items-start gap-3">
+                <span className="text-[15px] shrink-0 mt-0.5" aria-hidden>
+                  {icon}
+                </span>
+                {href ? (
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="font-mono text-[13px] text-white/75 hover:text-white transition-colors duration-200 break-all leading-[1.7]"
+                  >
+                    {val}
+                  </a>
+                ) : (
+                  <span className="font-mono text-[13px] text-white/75 leading-[1.7]">
+                    {val}
+                  </span>
+                )}
+              </div>
             ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className="border-t border-white/5 py-8 bg-black/20 backdrop-blur-sm">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500">
-            Copyright © 2024 <span className="text-white font-bold">Dcoder</span>. All Rights Reserved.
-          </p>
-          <div className="flex text-sm text-gray-500 gap-6">
-            <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
           </div>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 font-mono text-[12px] font-bold tracking-[0.1em] uppercase bg-dc-red text-white px-5 py-3 transition-colors duration-200 hover:bg-[#a93226]"
+          >
+            ✦ get a free quote
+          </Link>
         </div>
       </div>
-    </footer>
-  );
-};
+    </div>
 
-const FooterWithProjects = () => {
-  return (
-    <footer className="relative bg-gray-900">
-      <Projects />
-      <Footer />
-    </footer>
-  );
-};
+    {/* ── Bottom bar ────────────────────────────────────── */}
+    <div className="border-t border-white/[0.08]">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="font-mono text-[12px] text-white/50">
+          © {new Date().getFullYear()} dcoder. all rights reserved.
+        </p>
+        <p className="font-hand text-[22px] text-white/50">
+          made with ♥ in india
+        </p>
+        <div className="flex items-center gap-5">
+          <a
+            href="#"
+            className="font-mono text-[12px] text-white/50 hover:text-white transition-colors duration-200"
+          >
+            terms
+          </a>
+          <span className="text-white/25">·</span>
+          <a
+            href="#"
+            className="font-mono text-[12px] text-white/50 hover:text-white transition-colors duration-200"
+          >
+            privacy
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+);
 
-export default FooterWithProjects;
+export default Footer;

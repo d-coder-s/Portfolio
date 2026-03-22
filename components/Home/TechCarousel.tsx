@@ -1,97 +1,256 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 import {
-    FaReact,
-    FaNodeJs,
-    FaHtml5,
-    FaCss3Alt,
-    FaJs,
-    FaPython,
-    FaJava,
-    FaAws
+  FaReact,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaPython,
+  FaJava,
+  FaAws,
+  FaFigma,
+  FaGitAlt,
 } from "react-icons/fa";
 import {
-    SiNextdotjs,
-    SiTailwindcss,
-    SiMongodb,
-    SiTypescript,
-    SiFirebase,
-    SiVercel
+  SiNextdotjs,
+  SiTailwindcss,
+  SiMongodb,
+  SiTypescript,
+  SiFirebase,
+  SiVercel,
+  SiPostgresql,
+  SiFlutter,
+  SiRedux,
+  SiGraphql,
+  SiAdobe,
+  SiGoogleanalytics,
 } from "react-icons/si";
 
-const TechCarousel = () => {
-    const technologies = [
-        { name: "React", Icon: FaReact, color: "text-[#61DAFB]" },
-        { name: "Next.js", Icon: SiNextdotjs, color: "text-white" },
-        { name: "Node.js", Icon: FaNodeJs, color: "text-[#339933]" },
-        { name: "Tailwind CSS", Icon: SiTailwindcss, color: "text-[#06B6D4]" },
-        { name: "MongoDB", Icon: SiMongodb, color: "text-[#47A248]" },
-        { name: "TypeScript", Icon: SiTypescript, color: "text-[#3178C6]" },
-        { name: "JavaScript", Icon: FaJs, color: "text-[#F7DF1E]" },
-        { name: "HTML5", Icon: FaHtml5, color: "text-[#E34F26]" },
-        { name: "CSS3", Icon: FaCss3Alt, color: "text-[#1572B6]" },
-        { name: "Python", Icon: FaPython, color: "text-[#3776AB]" },
-        { name: "Java", Icon: FaJava, color: "text-[#007396]" },
-        { name: "AWS", Icon: FaAws, color: "text-[#FF9900]" },
-        { name: "Firebase", Icon: SiFirebase, color: "text-[#FFCA28]" },
-        { name: "Vercel", Icon: SiVercel, color: "text-white" },
-    ];
+/* ── Tech data unchanged ── */
+const ROW_1 = [
+  { name: "React", Icon: FaReact, color: "#61DAFB", bg: "#e8f9ff" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#000000", bg: "#f0f0f0" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6", bg: "#e8f0ff" },
+  {
+    name: "Tailwind CSS",
+    Icon: SiTailwindcss,
+    color: "#06B6D4",
+    bg: "#e8f9ff",
+  },
+  { name: "Node.js", Icon: FaNodeJs, color: "#339933", bg: "#e8f5e8" },
+  { name: "Python", Icon: FaPython, color: "#3776AB", bg: "#e8f0ff" },
+  { name: "MongoDB", Icon: SiMongodb, color: "#47A248", bg: "#e8f5e8" },
+  { name: "AWS", Icon: FaAws, color: "#FF9900", bg: "#fff5e8" },
+  { name: "Flutter", Icon: SiFlutter, color: "#02569B", bg: "#e8f0ff" },
+  { name: "Redux", Icon: SiRedux, color: "#764ABC", bg: "#f0e8ff" },
+  { name: "Adobe XD", Icon: SiAdobe, color: "#FF61F6", bg: "#ffe8ff" },
+  {
+    name: "G. Analytics",
+    Icon: SiGoogleanalytics,
+    color: "#E37400",
+    bg: "#fff3e8",
+  },
+] as const;
 
-    // Tripling the array to ensure smooth infinite scrolling for wider screens
-    const carouselContent = [...technologies, ...technologies, ...technologies];
+const ROW_2 = [
+  { name: "JavaScript", Icon: FaJs, color: "#F7DF1E", bg: "#fffde8" },
+  { name: "HTML5", Icon: FaHtml5, color: "#E34F26", bg: "#ffe8e8" },
+  { name: "CSS3", Icon: FaCss3Alt, color: "#1572B6", bg: "#e8f0ff" },
+  { name: "Firebase", Icon: SiFirebase, color: "#FFCA28", bg: "#fffde8" },
+  { name: "PostgreSQL", Icon: SiPostgresql, color: "#336791", bg: "#e8f0ff" },
+  { name: "Java", Icon: FaJava, color: "#007396", bg: "#e8f5ff" },
+  { name: "Vercel", Icon: SiVercel, color: "#000000", bg: "#f0f0f0" },
+  { name: "Figma", Icon: FaFigma, color: "#F24E1E", bg: "#ffe8e8" },
+  { name: "Git", Icon: FaGitAlt, color: "#F05032", bg: "#ffe8e8" },
+  { name: "GraphQL", Icon: SiGraphql, color: "#E10098", bg: "#ffe8f5" },
+] as const;
 
-    return (
-        <section className="py-20 bg-gray-900 border-t border-white/5 relative overflow-hidden">
-            {/* Decorative Background */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-900 to-gray-900 -z-10" />
+const LOOP_1 = [...ROW_1, ...ROW_1];
+const LOOP_2 = [...ROW_2, ...ROW_2];
+const ROTATIONS = [-2.5, 1.8, -1.2, 2.2, -1.8, 1.2, -2, 1.5, -0.8, 2.5];
 
-            <div className="text-center mb-16">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 inline-block"
-                >
-                    Technologies We Work With
-                </motion.h2>
-                <p className="text-gray-400 mt-4 max-w-2xl mx-auto px-6">
-                    We leverage the latest and most powerful tools in the industry to build robust, scalable, and high-performance solutions.
-                </p>
+type Tech = {
+  name: string;
+  Icon: React.ElementType;
+  color: string;
+  bg: string;
+};
+
+function Sticker({ tech, index }: { tech: Tech; index: number }) {
+  const [hovered, setHovered] = useState(false);
+  const rot = ROTATIONS[index % ROTATIONS.length];
+
+  return (
+    <div
+      className="relative shrink-0 cursor-default select-none"
+      style={{ width: 100 }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div
+        className="flex flex-col items-center gap-2.5 py-4 px-3 border border-black/[0.1] transition-all duration-300"
+        style={{
+          background: tech.bg,
+          transform: hovered
+            ? "rotate(0deg) translateY(-6px) scale(1.08)"
+            : `rotate(${rot}deg)`,
+          boxShadow: hovered
+            ? `4px 6px 0 rgba(0,0,0,0.15), 0 0 0 2px ${tech.color}40`
+            : "2px 3px 0 rgba(0,0,0,0.1)",
+          transition: "transform 0.25s ease, box-shadow 0.25s ease",
+        }}
+      >
+        {index % 4 === 0 && (
+          <div
+            className="dc-tape absolute -rotate-1"
+            style={{
+              width: 44,
+              height: 14,
+              top: -8,
+              left: "50%",
+              transform: "translateX(-50%) rotate(-1deg)",
+            }}
+            aria-hidden
+          />
+        )}
+        <tech.Icon style={{ color: tech.color, fontSize: 32 }} aria-hidden />
+        <div
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: tech.color, opacity: 0.6 }}
+          aria-hidden
+        />
+        <span className="font-mono text-[9.5px] font-bold text-dc-ink tracking-wide text-center leading-tight whitespace-nowrap">
+          {tech.name}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Component
+───────────────────────────────────────────────────────────── */
+const TechCarousel: React.FC = () => {
+  const [paused, setPaused] = useState(false);
+
+  return (
+    <section className="bg-dc-cream2 py-16 lg:py-20 relative overflow-hidden">
+      {/* ── Header ────────────────────────────────────────── */}
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 mb-10">
+        <div className="flex items-end justify-between flex-wrap gap-4">
+          <div className="flex items-baseline gap-4">
+            <span
+              className="font-serif font-black text-black/[0.04] leading-none select-none"
+              style={{ fontSize: "clamp(70px, 9vw, 110px)" }}
+              aria-hidden
+            >
+              04
+            </span>
+            <div>
+              {/* ✦ SEO: lists specific tech stack keywords */}
+              <p className="font-mono text-[10px] text-dc-red tracking-[0.15em] uppercase mb-1">
+                // react · next.js · node.js · flutter · python · aws
+              </p>
+              <h2
+                className="font-serif font-bold text-dc-ink leading-tight"
+                style={{ fontSize: "clamp(28px, 3.8vw, 44px)" }}
+              >
+                technologies we{" "}
+                <em className="italic text-dc-red">actually use.</em>
+              </h2>
+              {/* ✦ SEO: "web & app development" keyword */}
+              <p className="font-mono text-[11px] text-dc-ink3 mt-1.5 tracking-[0.04em]">
+                // the tools powering our web &amp; app development projects.
+              </p>
             </div>
+          </div>
 
-            <div className="relative w-full overflow-hidden">
-                <motion.div
-                    className="flex gap-12 w-max"
-                    animate={{ x: [0, "-50%"] }}
-                    transition={{
-                        repeat: Infinity,
-                        ease: "linear",
-                        duration: 50, // Slower duration for a steady tech showcase
-                    }}
-                >
-                    {carouselContent.map((tech, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col items-center justify-center gap-4 group min-w-[100px]"
-                        >
-                            <div className={`text-6xl ${tech.color} drop-shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]`}>
-                                <tech.Icon />
-                            </div>
-                            <span className="text-gray-400 text-sm font-medium tracking-wide group-hover:text-white transition-colors">
-                                {tech.name}
-                            </span>
-                        </div>
-                    ))}
-                </motion.div>
+          {/* Sticky note */}
+          <div
+            className="bg-dc-sticky-yellow border border-black/10 px-4 py-3 max-w-[200px] hidden md:block"
+            style={{
+              transform: "rotate(-1.5deg)",
+              boxShadow: "2px 3px 0 rgba(0,0,0,0.08)",
+            }}
+          >
+            <p className="font-hand text-[15px] text-dc-ink leading-snug">
+              always learning,
+              <br />
+              always shipping ✦
+            </p>
+          </div>
+        </div>
+      </div>
 
-                {/* Edges fade - stronger for this section */}
-                <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-gray-900 via-gray-900/80 to-transparent pointer-events-none" />
-            </div>
-        </section>
-    );
+      {/* ── Row 1 — scroll left ───────────────────────────── */}
+      <div
+        className="relative w-full mb-4 py-4"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div
+          className="flex gap-4 w-max"
+          style={{
+            animation: "scroll-left 32s linear infinite",
+            animationPlayState: paused ? "paused" : "running",
+          }}
+        >
+          {LOOP_1.map((tech, i) => (
+            <Sticker key={`r1-${i}`} tech={tech} index={i} />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Row 2 — scroll right ──────────────────────────── */}
+      <div
+        className="relative w-full py-4"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div
+          className="flex gap-4 w-max"
+          style={{
+            animation: "scroll-right 28s linear infinite",
+            animationPlayState: paused ? "paused" : "running",
+          }}
+        >
+          {LOOP_2.map((tech, i) => (
+            <Sticker key={`r2-${i}`} tech={tech} index={i} />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Footer line ───────────────────────────────────── */}
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 mt-10">
+        <div className="border-t border-dashed border-black/10 pt-5 flex items-center justify-between flex-wrap gap-3">
+          {/* ✦ SEO: mentions "stack" — common search term */}
+          <p className="font-hand text-[18px] text-dc-ink3">
+            + more tools added to our stack every sprint ✦
+          </p>
+          <p className="font-mono text-[10px] text-dc-ink3 tracking-[0.1em] uppercase">
+            // always learning · always building
+          </p>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes scroll-left {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+          from { transform: translateX(-50%); }
+          to   { transform: translateX(0); }
+        }
+      `}</style>
+    </section>
+  );
 };
 
 export default TechCarousel;

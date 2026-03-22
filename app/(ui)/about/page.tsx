@@ -1,18 +1,12 @@
-import { Metadata } from 'next';
-
-import React from 'react'
-
-import About from './About';
+import type { Metadata } from "next";
+import About from "./About";
 
 export const metadata: Metadata = {
-    title: "About",
-    description: "Welcome to our website.",
+  title: "About | Dcoder",
+  description:
+    "Meet the Dcoder team — a small, opinionated studio building websites, apps, AI/ML solutions, and more from Ghaziabad, UP.",
 };
 
-const page = () => {
-    return (
-     <About/>
-    )
+export default function AboutPage() {
+  return <About />;
 }
-
-export default page
