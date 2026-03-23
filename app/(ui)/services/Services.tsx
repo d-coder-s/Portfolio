@@ -27,13 +27,12 @@ const fadeRight = {
   },
 };
 
-
 /* ─────────────────────────────────────────────────────────────
    Tape strip
 ───────────────────────────────────────────────────────────── */
 const Tape = ({
   rotate = "-rotate-2",
-  width = 65,
+  width = 60,
 }: {
   rotate?: string;
   width?: number;
@@ -42,8 +41,8 @@ const Tape = ({
     className={`dc-tape absolute ${rotate}`}
     style={{
       width,
-      height: 19,
-      top: -10,
+      height: 17,
+      top: -9,
       left: "50%",
       transform: "translateX(-50%)",
     }}
@@ -83,7 +82,7 @@ const ServiceRow = ({
         whileInView="visible"
         viewport={{ once: true }}
         className={`relative overflow-hidden ${isEven ? "" : "lg:order-2"}`}
-        style={{ minHeight: 380 }}
+        style={{ minHeight: 300 }}
       >
         <Image
           src={service.imgSrc}
@@ -95,8 +94,8 @@ const ServiceRow = ({
 
         {/* Big number overlay */}
         <span
-          className="absolute top-4 left-6 font-serif font-black text-white/20 leading-none select-none pointer-events-none"
-          style={{ fontSize: "clamp(80px, 12vw, 140px)" }}
+          className="absolute top-3 left-5 font-serif font-black text-white/20 leading-none select-none pointer-events-none"
+          style={{ fontSize: "clamp(60px, 9vw, 110px)" }}
           aria-hidden
         >
           {service.num}
@@ -112,14 +111,14 @@ const ServiceRow = ({
         {/* Sticky note on image */}
         <div
           className={`
-            absolute top-6 right-6
+            absolute top-5 right-5
             ${service.stickyBg}
-            border border-black/[0.08] px-4 py-3
+            border border-black/[0.08] px-3 py-2.5
             rotate-[2.5deg]
           `}
         >
-          <Tape rotate="-rotate-[2deg]" width={52} />
-          <p className="font-hand text-[16px] text-dc-ink2 leading-[1.5] whitespace-pre-line">
+          <Tape rotate="-rotate-[2deg]" width={48} />
+          <p className="font-hand text-[14px] text-dc-ink2 leading-[1.5] whitespace-pre-line">
             {service.stickyText}
           </p>
         </div>
@@ -131,26 +130,25 @@ const ServiceRow = ({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className={`flex flex-col justify-center px-10 lg:px-14 py-14 ${isEven ? "" : "lg:order-1"}`}
+        className={`flex flex-col justify-center px-8 lg:px-11 py-10 ${isEven ? "" : "lg:order-1"}`}
       >
         {/* Number + tagline */}
-    
-        <div className="flex items-center gap-4 mb-5 flex-wrap">
-          <span className="font-mono text-[11px] tracking-[0.18em] text-dc-ink3 uppercase">
+        <div className="flex items-center gap-3 mb-4 flex-wrap">
+          <span className="font-mono text-[10px] tracking-[0.18em] text-dc-ink3 uppercase">
             {"// "}
             {service.num}
           </span>
-          <span className="font-hand text-[17px] px-3 py-0.5 border border-dashed border-black/20 text-dc-ink3">
+          <span className="font-hand text-[15px] px-3 py-0.5 border border-dashed border-black/20 text-dc-ink3">
             {service.tagline}
           </span>
         </div>
 
-        {/* Title — links to detail page */}
+        {/* Title */}
         <Link href={`/services/${service.slug}`}>
           <h2
-            className="font-serif font-black text-dc-ink leading-tight mb-4 hover:underline underline-offset-4 cursor-pointer"
+            className="font-serif font-black text-dc-ink leading-tight mb-3 hover:underline underline-offset-4 cursor-pointer"
             style={{
-              fontSize: "clamp(32px, 3.5vw, 52px)",
+              fontSize: "clamp(26px, 2.8vw, 42px)",
               textDecorationColor: service.accent,
             }}
           >
@@ -160,13 +158,13 @@ const ServiceRow = ({
 
         {/* Accent underline */}
         <div
-          className="h-[3px] w-16 mb-6"
+          className="h-[3px] w-12 mb-5"
           style={{ background: service.accent }}
           aria-hidden
         />
 
         {/* Description */}
-        <p className="font-mono text-[13px] text-dc-ink2 leading-[2] mb-2 max-w-[500px]">
+        <p className="font-mono text-[11px] text-dc-ink2 leading-[1.9] mb-2 max-w-[500px]">
           {expanded
             ? service.description
             : `${service.description.slice(0, 140)}...`}
@@ -180,11 +178,11 @@ const ServiceRow = ({
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mt-5 mb-8">
+        <div className="flex flex-wrap gap-1.5 mt-4 mb-6">
           {service.tags.map((tag) => (
             <span
               key={tag}
-              className="font-mono text-[11px] text-dc-ink3 dc-border-dashed px-3 py-1"
+              className="font-mono text-[10px] text-dc-ink3 dc-border-dashed px-2.5 py-1"
             >
               {tag}
             </span>
@@ -192,13 +190,12 @@ const ServiceRow = ({
         </div>
 
         {/* CTAs */}
-        <div className="flex gap-3 flex-wrap">
-          {/* Learn more → detail page */}
+        <div className="flex gap-2.5 flex-wrap">
           <Link
             href={`/services/${service.slug}`}
             className="
-              font-mono text-[11px] font-bold tracking-[0.1em] uppercase
-              text-white px-5 py-3
+              font-mono text-[10px] font-bold tracking-[0.1em] uppercase
+              text-white px-4 py-2.5
               border-l-2 border-dc-amber
               transition-all duration-200
               hover:opacity-85
@@ -208,12 +205,11 @@ const ServiceRow = ({
             learn more →
           </Link>
 
-          {/* Get a quote */}
           <Link
             href="/contact"
             className="
-              font-mono text-[11px] font-bold tracking-[0.1em] uppercase
-              border border-dc-ink text-dc-ink px-5 py-3
+              font-mono text-[10px] font-bold tracking-[0.1em] uppercase
+              border border-dc-ink text-dc-ink px-4 py-2.5
               transition-all duration-200
               hover:bg-dc-ink hover:text-dc-cream
             "
@@ -233,10 +229,10 @@ const Services: React.FC = () => {
   return (
     <>
       {/* ── Page hero ─────────────────────────────────────── */}
-      <section className="bg-dc-ink border-b-2 border-dc-amber pt-16 pb-20 relative overflow-hidden">
+      <section className="bg-dc-ink border-b-2 border-dc-amber pt-10 pb-14 relative overflow-hidden">
         <span
           className="absolute -bottom-4 right-6 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none"
-          style={{ fontSize: "clamp(80px, 14vw, 180px)" }}
+          style={{ fontSize: "clamp(60px, 10vw, 130px)" }}
           aria-hidden
         >
           services
@@ -248,33 +244,32 @@ const Services: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-         
-            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
+            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-2">
               {"// what we offer"}
             </p>
             <h1
-              className="font-serif font-black text-white/90 leading-tight mb-5"
-              style={{ fontSize: "clamp(36px, 6vw, 76px)" }}
+              className="font-serif font-black text-white/90 leading-tight mb-4"
+              style={{ fontSize: "clamp(28px, 4.5vw, 58px)" }}
             >
               digital services{" "}
               <em className="italic text-dc-red">that deliver.</em>
             </h1>
-            <p className="font-mono text-[13px] text-white/40 max-w-xl leading-[1.9] mb-10">
+            <p className="font-mono text-[11px] text-white/40 max-w-xl leading-[1.8] mb-7">
               strategic, innovative solutions built around your unique business
               needs — web development, app development, ai/ml, data analytics
               &amp; more.
             </p>
 
             {/* Quick-jump pills */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {SERVICES_DATA.map((s) => (
                 <a
                   key={s.num}
                   href={`#service-${s.num}`}
                   className="
-                    font-mono text-[11px] tracking-wide
+                    font-mono text-[10px] tracking-wide
                     border border-white/15 text-white/40
-                    px-4 py-1.5
+                    px-3 py-1
                     transition-all duration-200
                     hover:border-white/40 hover:text-white/80
                   "
@@ -302,14 +297,14 @@ const Services: React.FC = () => {
       <TornEdge from="dc-cream2" to="dc-cream" />
 
       <section
-        className="py-20 lg:py-28 relative overflow-hidden"
+        className="py-14 lg:py-20 relative overflow-hidden"
         style={{ background: "#f0ebe0" }}
       >
         {/* Watermark */}
         <span
           className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-serif font-black select-none pointer-events-none leading-none whitespace-nowrap"
           style={{
-            fontSize: "clamp(60px, 12vw, 160px)",
+            fontSize: "clamp(48px, 9vw, 120px)",
             color: "rgba(0,0,0,0.05)",
           }}
           aria-hidden
@@ -319,7 +314,7 @@ const Services: React.FC = () => {
 
         {/* Doodles */}
         <svg
-          className="absolute top-10 right-16 w-14 h-14 opacity-15 pointer-events-none"
+          className="absolute top-10 right-16 w-12 h-12 opacity-15 pointer-events-none"
           viewBox="0 0 56 56"
           fill="none"
           aria-hidden
@@ -330,7 +325,7 @@ const Services: React.FC = () => {
           />
         </svg>
         <svg
-          className="absolute bottom-12 left-12 w-20 h-10 opacity-15 pointer-events-none"
+          className="absolute bottom-12 left-12 w-16 h-8 opacity-15 pointer-events-none"
           viewBox="0 0 80 32"
           fill="none"
           aria-hidden
@@ -349,7 +344,7 @@ const Services: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="font-mono text-[11px] tracking-[0.22em] uppercase text-dc-ink2 mb-6 text-center opacity-50"
+            className="font-mono text-[10px] tracking-[0.22em] uppercase text-dc-ink2 mb-5 text-center opacity-50"
           >
             {"// not sure which service you need?"}
           </motion.p>
@@ -359,8 +354,8 @@ const Services: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="font-serif font-black text-dc-ink leading-[0.95] text-center mb-12"
-            style={{ fontSize: "clamp(48px, 8vw, 110px)" }}
+            className="font-serif font-black text-dc-ink leading-[0.95] text-center mb-9"
+            style={{ fontSize: "clamp(38px, 6vw, 86px)" }}
           >
             let&apos;s figure
             <br />
@@ -373,7 +368,7 @@ const Services: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-5 mb-14"
+            className="flex flex-wrap justify-center gap-4 mb-10"
           >
             {[
               {
@@ -397,20 +392,20 @@ const Services: React.FC = () => {
             ].map(({ bg, rotate, text, sub }) => (
               <div
                 key={text}
-                className={`relative ${bg} ${rotate} border border-black/[0.07] px-6 py-5 min-w-[160px]`}
+                className={`relative ${bg} ${rotate} border border-black/[0.07] px-5 py-4 min-w-[148px]`}
               >
                 <div
                   className="dc-tape absolute -rotate-2"
                   style={{
-                    width: 52,
-                    height: 16,
-                    top: -8,
+                    width: 48,
+                    height: 14,
+                    top: -7,
                     left: "50%",
                     transform: "translateX(-50%)",
                   }}
                   aria-hidden
                 />
-                <p className="font-hand text-[20px] text-dc-ink leading-[1.4] whitespace-pre-line font-bold mb-1">
+                <p className="font-hand text-[17px] text-dc-ink leading-[1.4] whitespace-pre-line font-bold mb-1">
                   {text}
                 </p>
                 <p className="font-mono text-[10px] text-dc-ink3">{sub}</p>
@@ -424,21 +419,21 @@ const Services: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.3 }}
-            className="flex flex-col items-center gap-6"
+            className="flex flex-col items-center gap-5"
           >
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/contact"
-                className="dc-btn-primary text-[14px] px-10 py-4 justify-center"
+                className="dc-btn-primary text-[13px] px-8 py-3.5 justify-center"
               >
                 → start a conversation
               </Link>
               <Link
                 href="/project"
                 className="
-                  font-mono text-[12px] font-bold tracking-[0.1em] uppercase
+                  font-mono text-[11px] font-bold tracking-[0.1em] uppercase
                   border-2 border-dc-ink text-dc-ink
-                  px-10 py-4 text-center
+                  px-8 py-3.5 text-center
                   transition-all duration-200
                   hover:bg-dc-ink hover:text-dc-cream
                 "
@@ -447,7 +442,7 @@ const Services: React.FC = () => {
               </Link>
             </div>
 
-            <div className="flex items-center gap-6 flex-wrap justify-center">
+            <div className="flex items-center gap-5 flex-wrap justify-center">
               <a
                 href="mailto:dcoder.atwork@gmail.com"
                 className="font-mono text-[11px] text-dc-ink2 opacity-60 hover:opacity-100 transition-opacity duration-200"

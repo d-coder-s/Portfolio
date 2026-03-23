@@ -22,7 +22,6 @@ const SOCIAL_LINKS = [
     href: "https://wa.me/+919548566064",
     label: "WhatsApp 2",
   },
-  // { Icon: BsGithub, href: "https://github.com/d-coder-s", label: "GitHub" },
   { Icon: BsTwitterX, href: "https://x.com/dcoder_atwork", label: "X" },
   {
     Icon: BsInstagram,
@@ -47,7 +46,7 @@ const SERVICES = [
   { label: "ai / ml solutions", href: "/services/ai-ml-solutions" },
   { label: "digital analytics", href: "/services/digital-analytics" },
   { label: "digital marketing", href: "/services/digital-marketing" },
-  { label: "training & workshops", href: "/services/training" },
+  // { label: "training & workshops", href: "/services/training" },
 ] as const;
 
 const CONTACT_ITEMS = [
@@ -63,8 +62,8 @@ const CONTACT_ITEMS = [
 ] as const;
 
 const ColHead = ({ children }: { children: React.ReactNode }) => (
-  <h5 className="font-mono text-[13px] font-bold tracking-[0.14em] uppercase text-dc-amber mb-6 flex items-center gap-2">
-    <span className="w-5 h-0.5 bg-dc-amber inline-block" />
+  <h5 className="font-mono text-[11px] font-bold tracking-[0.14em] uppercase text-dc-amber mb-4 flex items-center gap-2">
+    <span className="w-4 h-0.5 bg-dc-amber inline-block" />
     {children}
   </h5>
 );
@@ -76,63 +75,62 @@ const Footer: React.FC = () => (
   >
     {/* ── Top strip ─────────────────────────────────────── */}
     <div className="border-b border-white/[0.08]">
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 py-3 flex items-center justify-between gap-4 flex-wrap">
- 
-        <p className="font-mono text-[12px] tracking-[0.14em] uppercase text-white/50">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 py-2.5 flex items-center justify-between gap-4 flex-wrap">
+        <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-white/50">
           {"// remote-first digital studio · est. 2024"}
         </p>
-        <p className="font-mono text-[12px] text-white/30 tracking-widest">
+        <p className="font-mono text-[11px] text-white/30 tracking-widest">
           d&lt;coder/&gt;
         </p>
       </div>
     </div>
 
     {/* ── Main grid ─────────────────────────────────────── */}
-    <div className="max-w-[1500px] mx-auto px-6 lg:px-12 pt-14 pb-12">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr] gap-12 lg:gap-10">
+    <div className="max-w-[1500px] mx-auto px-6 lg:px-12 pt-10 pb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr] gap-10 lg:gap-8">
         {/* Brand */}
         <div>
           {/* Logo */}
-          <Link href="/home" className="inline-flex items-center gap-2.5 mb-5">
+          <Link href="/home" className="inline-flex items-center gap-2 mb-4">
             <Image
               src="/figma/dcode.png"
               alt="Dcoder icon"
-              width={160}
-              height={40}
-              className="h-14 w-auto object-contain"
+              width={140}
+              height={36}
+              className="h-10 w-auto object-contain"
             />
           </Link>
 
-          <p className="font-mono text-[13px] text-white/75 leading-[2] max-w-[280px] mb-3">
+          <p className="font-mono text-[11px] text-white/75 leading-[1.9] max-w-[260px] mb-2.5">
             independent digital studio building websites, apps, ai solutions
             &amp; providing various IT services — tailored to your business
             goals, shipped on time.
           </p>
-    
-          <p className="font-mono text-[12px] text-white/40 mb-7">
+
+          <p className="font-mono text-[11px] text-white/40 mb-5">
             {"// no fluff. just real, handcrafted code."}
           </p>
 
           {/* Sticky note */}
-          <div className="relative inline-block bg-dc-sticky-yellow border border-black/[0.1] px-4 py-3 -rotate-[1.5deg] mb-8">
+          <div className="relative inline-block bg-dc-sticky-yellow border border-black/[0.1] px-3 py-2.5 -rotate-[1.5deg] mb-6">
             <div
               className="dc-tape absolute -rotate-2"
               style={{
-                width: 52,
-                height: 16,
-                top: -8,
+                width: 48,
+                height: 14,
+                top: -7,
                 left: "50%",
                 transform: "translateX(-50%)",
               }}
               aria-hidden
             />
-            <p className="font-hand text-[18px] text-dc-ink2 leading-[1.4]">
+            <p className="font-hand text-[15px] text-dc-ink2 leading-[1.4]">
               open for projects ✦
             </p>
           </div>
 
           {/* Socials */}
-          <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
             {SOCIAL_LINKS.map(({ Icon, href, label }) => (
               <a
                 key={label}
@@ -142,9 +140,9 @@ const Footer: React.FC = () => (
                   href.startsWith("mailto") ? undefined : "noopener noreferrer"
                 }
                 aria-label={label}
-                className="w-9 h-9 flex items-center justify-center border border-white/20 text-white/60 transition-all duration-200 hover:text-dc-amber hover:border-dc-amber/60"
+                className="w-8 h-8 flex items-center justify-center border border-white/20 text-white/60 transition-all duration-200 hover:text-dc-amber hover:border-dc-amber/60"
               >
-                <Icon size={15} />
+                <Icon size={13} />
               </a>
             ))}
           </div>
@@ -153,14 +151,14 @@ const Footer: React.FC = () => (
         {/* Navigate */}
         <div>
           <ColHead>navigate</ColHead>
-          <ul className="flex flex-col gap-0.5">
+          <ul className="flex flex-col gap-0">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={label}>
                 <Link
                   href={href}
-                  className="group flex items-center gap-2 font-mono text-[13.5px] text-white/70 py-1.5 transition-colors duration-200 hover:text-white"
+                  className="group flex items-center gap-2 font-mono text-[12px] text-white/70 py-1 transition-colors duration-200 hover:text-white"
                 >
-                  <span className="text-dc-red text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                  <span className="text-dc-red text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                     →
                   </span>
                   {label}
@@ -173,12 +171,12 @@ const Footer: React.FC = () => (
         {/* Services */}
         <div>
           <ColHead>services</ColHead>
-          <ul className="flex flex-col gap-0.5">
+          <ul className="flex flex-col gap-0">
             {SERVICES.map(({ label, href }) => (
               <li key={label}>
                 <Link
                   href={href}
-                  className="group flex items-center gap-2 font-mono text-[13.5px] text-white/70 py-1.5 transition-colors duration-200 hover:text-white"
+                  className="group flex items-center gap-2 font-mono text-[12px] text-white/70 py-1 transition-colors duration-200 hover:text-white"
                 >
                   <span className="text-dc-amber text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                     ✦
@@ -193,10 +191,10 @@ const Footer: React.FC = () => (
         {/* Contact */}
         <div>
           <ColHead>get in touch</ColHead>
-          <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-col gap-3 mb-6">
             {CONTACT_ITEMS.map(({ icon, val, href }) => (
-              <div key={val} className="flex items-start gap-3">
-                <span className="text-[15px] shrink-0 mt-0.5" aria-hidden>
+              <div key={val} className="flex items-start gap-2.5">
+                <span className="text-[13px] shrink-0 mt-0.5" aria-hidden>
                   {icon}
                 </span>
                 {href ? (
@@ -208,12 +206,12 @@ const Footer: React.FC = () => (
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="font-mono text-[13px] text-white/75 hover:text-white transition-colors duration-200 break-all leading-[1.7]"
+                    className="font-mono text-[11px] text-white/75 hover:text-white transition-colors duration-200 break-all leading-[1.6]"
                   >
                     {val}
                   </a>
                 ) : (
-                  <span className="font-mono text-[13px] text-white/75 leading-[1.7]">
+                  <span className="font-mono text-[11px] text-white/75 leading-[1.6]">
                     {val}
                   </span>
                 )}
@@ -223,7 +221,7 @@ const Footer: React.FC = () => (
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 font-mono text-[12px] font-bold tracking-[0.1em] uppercase bg-dc-red text-white px-5 py-3 transition-colors duration-200 hover:bg-[#a93226]"
+            className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-[0.1em] uppercase bg-dc-red text-white px-4 py-2.5 transition-colors duration-200 hover:bg-[#a93226]"
           >
             ✦ get a free quote
           </Link>
@@ -233,24 +231,24 @@ const Footer: React.FC = () => (
 
     {/* ── Bottom bar ────────────────────────────────────── */}
     <div className="border-t border-white/[0.08]">
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="font-mono text-[12px] text-white/50">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+        <p className="font-mono text-[11px] text-white/50">
           © {new Date().getFullYear()} dcoder. all rights reserved.
         </p>
-        <p className="font-hand text-[22px] text-white/50">
+        <p className="font-hand text-[18px] text-white/50">
           made with ♥ in india
         </p>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-4">
           <a
             href="#"
-            className="font-mono text-[12px] text-white/50 hover:text-white transition-colors duration-200"
+            className="font-mono text-[11px] text-white/50 hover:text-white transition-colors duration-200"
           >
             terms
           </a>
           <span className="text-white/25">·</span>
           <a
             href="#"
-            className="font-mono text-[12px] text-white/50 hover:text-white transition-colors duration-200"
+            className="font-mono text-[11px] text-white/50 hover:text-white transition-colors duration-200"
           >
             privacy
           </a>

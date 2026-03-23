@@ -14,9 +14,6 @@ type Item = {
   accent: string;
 };
 
-/* ─────────────────────────────────────────────────────────────
-   Items — SEO optimized content
-───────────────────────────────────────────────────────────── */
 const ITEMS: Item[] = [
   {
     type: "service",
@@ -103,9 +100,6 @@ const ITEMS: Item[] = [
 
 const INTERVAL = 3200;
 
-/* ─────────────────────────────────────────────────────────────
-   Component — unchanged
-───────────────────────────────────────────────────────────── */
 const PortfolioSection: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -138,32 +132,38 @@ const PortfolioSection: React.FC = () => {
   };
 
   return (
-    <section className="bg-dc-ink py-16 lg:py-24">
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-        {/* ── Section header ──────────────────────────────── */}
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
-          <div className="flex items-baseline gap-4">
+    <section className="bg-dc-ink py-10 lg:py-16">
+    
+      <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        {/* ── Section header ── */}
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
+    
+          <div className="flex items-baseline gap-3">
             <span
               className="font-serif font-black text-white/[0.04] leading-none select-none"
-              style={{ fontSize: "clamp(70px, 9vw, 110px)" }}
+              style={{
+                fontSize: "clamp(38px, 5vw, 60px)",
+              }} 
               aria-hidden
             >
               03
             </span>
             <div>
-              <p className="font-mono text-[10px] text-dc-amber tracking-[0.15em] uppercase mb-2">
+              <p className="font-mono text-[9px] text-dc-amber tracking-[0.15em] uppercase mb-1.5">
                 {
                   "// web development · app dev · ui/ux · ai/ml · digital marketing"
                 }
               </p>
               <h2
                 className="font-serif font-bold text-white/90 leading-tight"
-                style={{ fontSize: "clamp(28px, 3.8vw, 44px)" }}
+                style={{
+                  fontSize: "clamp(18px, 2.4vw, 28px)",
+                }}
               >
                 services &amp; projects that{" "}
                 <em className="italic text-dc-red">deliver results.</em>
               </h2>
-              <p className="font-mono text-[12px] text-white/40 mt-2 max-w-md leading-relaxed">
+              <p className="font-mono text-[10px] text-white/40 mt-1.5 max-w-md leading-relaxed">
                 From concept to launch — custom web development, mobile apps,
                 design &amp; marketing. Everything your business needs, under
                 one roof.
@@ -171,26 +171,28 @@ const PortfolioSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2.5 items-end">
+          <div className="flex flex-col gap-2 items-end">
             <Link
               href="/project"
-              className="font-mono text-[11px] font-bold tracking-[0.1em] uppercase border border-white/20 text-white/50 px-5 py-2.5 transition-all duration-200 hover:border-white/50 hover:text-white hover:bg-white/5 w-full text-center"
+              className="font-mono text-[10px] font-bold tracking-[0.1em] uppercase border border-white/20 text-white/50 px-4 py-2 transition-all duration-200 hover:border-white/50 hover:text-white hover:bg-white/5 w-full text-center"
             >
               view our portfolio →
             </Link>
             <Link
               href="/services"
-              className="font-mono text-[11px] font-bold tracking-[0.1em] uppercase bg-dc-amber text-dc-ink px-5 py-2.5 transition-all duration-200 hover:bg-dc-amber/80 w-full text-center"
+              className="font-mono text-[10px] font-bold tracking-[0.1em] uppercase bg-dc-amber text-dc-ink px-4 py-2 transition-all duration-200 hover:bg-dc-amber/80 w-full text-center"
             >
               explore all services →
             </Link>
           </div>
         </div>
 
-        {/* ── Spotlight card ──────────────────────────────── */}
+        {/* ── Spotlight card ── */}
         <div
           className="relative w-full overflow-hidden"
-          style={{ height: "clamp(340px, 50vw, 560px)" }}
+          style={{
+            height: "clamp(260px, 38vw, 420px)",
+          }} 
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
@@ -211,27 +213,22 @@ const PortfolioSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
 
-          {/* <div
-            className="dc-tape absolute z-10 rotate-[-3deg]"
-            style={{ width: 80, height: 22, top: 18, left: 32 }}
-            aria-hidden
-          /> */}
-
           <div
-            className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 transition-all duration-500"
+            className="absolute inset-0 flex flex-col justify-end p-6 lg:p-8 transition-all duration-500"
+           
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(16px)",
             }}
           >
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-2.5 mb-2">
               <span
-                className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 text-white"
+                className="font-mono text-[9px] font-bold uppercase tracking-[0.15em] px-2 py-0.5 text-white"
                 style={{ background: item.accent }}
               >
                 {item.type}
               </span>
-              <span className="font-mono text-[10px] text-white/30 tracking-wider">
+              <span className="font-mono text-[9px] text-white/30 tracking-wider">
                 {String(current + 1).padStart(2, "0")} /{" "}
                 {String(ITEMS.length).padStart(2, "0")}
               </span>
@@ -239,19 +236,24 @@ const PortfolioSection: React.FC = () => {
 
             <h3
               className="font-serif font-bold text-white leading-tight mb-1"
-              style={{ fontSize: "clamp(28px, 4vw, 54px)" }}
+              style={{
+                fontSize: "clamp(20px, 2.8vw, 36px)",
+              }}
             >
               {item.label}
             </h3>
 
             <p
-              className="font-hand text-white/70 mb-3"
-              style={{ fontSize: "clamp(14px, 1.6vw, 20px)" }}
+              className="font-hand text-white/70 mb-2"
+              style={{
+                fontSize: "clamp(12px, 1.2vw, 15px)",
+              }} 
             >
               {item.tagline}
             </p>
 
-            <p className="font-mono text-[12px] text-white/50 max-w-lg leading-relaxed mb-6 hidden sm:block">
+            <p className="font-mono text-[10px] text-white/50 max-w-lg leading-relaxed mb-4 hidden sm:block">
+             
               {item.desc}
             </p>
 
@@ -264,7 +266,8 @@ const PortfolioSection: React.FC = () => {
             >
               <Link
                 href={item.href}
-                className="inline-block font-mono text-[11px] font-bold tracking-[0.12em] uppercase border-2 text-white px-6 py-3 transition-colors duration-200 hover:text-dc-ink"
+                className="inline-block font-mono text-[10px] font-bold tracking-[0.12em] uppercase border-2 text-white px-4 py-2 transition-colors duration-200 hover:text-dc-ink"
+                
                 style={{
                   borderColor: item.accent,
                   backgroundColor: hovered ? item.accent : "transparent",
@@ -284,26 +287,27 @@ const PortfolioSection: React.FC = () => {
           />
         </div>
 
-        {/* ── Dot nav ─────────────────────────────────────── */}
-        <div className="flex items-center gap-2 mt-5 flex-wrap">
+        {/* ── Dot nav ── */}
+        <div className="flex items-center gap-1.5 mt-4 flex-wrap">
           {ITEMS.map((it, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="group flex items-center gap-1.5 transition-all duration-200"
+              className="group flex items-center gap-1 transition-all duration-200"
               aria-label={it.label}
             >
               <span
                 className="block rounded-full transition-all duration-300"
                 style={{
-                  width: i === current ? 28 : 8,
-                  height: 8,
+                  width: i === current ? 22 : 6,
+                  height: 6,
                   background:
                     i === current ? item.accent : "rgba(255,255,255,0.2)",
                 }}
+                
               />
               <span
-                className="font-mono text-[9px] tracking-wider uppercase transition-all duration-200 hidden sm:block"
+                className="font-mono text-[8px] tracking-wider uppercase transition-all duration-200 hidden sm:block"
                 style={{
                   color:
                     i === current
@@ -320,19 +324,21 @@ const PortfolioSection: React.FC = () => {
           ))}
         </div>
 
-        {/* ── Stats + CTA strip ───────────────────────────── */}
-        <div className="mt-10 border border-white/10 p-6 flex flex-col sm:flex-row items-center justify-between gap-6 bg-white/[0.02]">
-          <div className="flex gap-8 flex-wrap">
+        {/* ── Stats + CTA strip ── */}
+        <div className="mt-7 border border-white/10 p-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/[0.02]">
+          
+          <div className="flex gap-6 flex-wrap">
             {[
               { num: "20+", label: "projects shipped" },
               { num: "7", label: "services offered" },
               { num: "100%", label: "client satisfaction" },
             ].map(({ num, label }) => (
-              <div key={label} className="flex items-baseline gap-2">
-                <span className="font-serif font-bold text-dc-amber text-2xl">
+              <div key={label} className="flex items-baseline gap-1.5">
+                <span className="font-serif font-bold text-dc-amber text-lg">
                   {num}
                 </span>
-                <span className="font-mono text-[10px] text-white/30 uppercase tracking-wider">
+              
+                <span className="font-mono text-[9px] text-white/30 uppercase tracking-wider">
                   {label}
                 </span>
               </div>
@@ -340,7 +346,8 @@ const PortfolioSection: React.FC = () => {
           </div>
           <Link
             href="/contact"
-            className="font-mono text-[12px] font-bold tracking-[0.12em] uppercase bg-dc-red text-white px-8 py-3 hover:bg-dc-red/80 transition-colors duration-200 shrink-0"
+            className="font-mono text-[10px] font-bold tracking-[0.12em] uppercase bg-dc-red text-white px-6 py-2.5 hover:bg-dc-red/80 transition-colors duration-200 shrink-0"
+           
           >
             get a free quote →
           </Link>

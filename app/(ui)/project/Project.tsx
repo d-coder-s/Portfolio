@@ -87,7 +87,7 @@ const PROJECTS: Project[] = [
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   Animation variants — unchanged
+   Animation variants
 ───────────────────────────────────────────────────────────── */
 const fadeLeft = {
   hidden: { opacity: 0, x: -32 },
@@ -195,7 +195,7 @@ const ProjectCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.55, ease: "easeOut" }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center py-16 border-b border-dashed border-black/[0.1] last:border-none"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-12 items-center py-10 border-b border-dashed border-black/[0.1] last:border-none"
     >
       {/* Image */}
       <motion.div
@@ -214,7 +214,7 @@ const ProjectCard = ({
             title={project.title}
             containImage={project.containImage}
           />
-          <p className="font-hand text-[15px] text-dc-ink3 text-center mt-2.5">
+          <p className="font-hand text-[13px] text-dc-ink3 text-center mt-2">
             {project.title} ✦
             <span className="font-mono text-[10px] ml-2">
               {project.category}
@@ -231,19 +231,19 @@ const ProjectCard = ({
         viewport={{ once: true }}
         className={isEven ? "" : "lg:order-1"}
       >
-        <p className="font-mono text-[10px] text-dc-ink3 tracking-[0.14em] mb-3">
+        <p className="font-mono text-[10px] text-dc-ink3 tracking-[0.14em] mb-2">
           {project.num}
         </p>
         <h2
-          className="font-serif font-bold text-dc-ink leading-tight mb-4"
-          style={{ fontSize: "clamp(26px, 3vw, 40px)" }}
+          className="font-serif font-bold text-dc-ink leading-tight mb-3"
+          style={{ fontSize: "clamp(22px, 2.4vw, 32px)" }}
         >
           {project.title}
         </h2>
-        <p className="font-mono text-[12px] text-dc-ink2 leading-[2] mb-6 max-w-[480px]">
+        <p className="font-mono text-[11px] text-dc-ink2 leading-[1.8] mb-4 max-w-[480px]">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-1.5 mb-5">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -273,26 +273,26 @@ export default function Project() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="bg-dc-ink border-b-2 border-dc-amber pt-16 pb-20 relative overflow-hidden">
+      <section className="bg-dc-ink border-b-2 border-dc-amber pt-10 pb-14 relative overflow-hidden">
         <span
           className="absolute -bottom-4 right-6 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none"
-          style={{ fontSize: "clamp(80px, 14vw, 180px)" }}
+          style={{ fontSize: "clamp(60px, 10vw, 130px)" }}
           aria-hidden
         >
           projects
         </span>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-2">
             {"// our work · web apps · mobile apps · ui/ux"}
           </p>
           <h1
-            className="font-serif font-black text-white/90 leading-tight mb-4"
-            style={{ fontSize: "clamp(36px, 6vw, 76px)" }}
+            className="font-serif font-black text-white/90 leading-tight mb-3"
+            style={{ fontSize: "clamp(28px, 4.5vw, 58px)" }}
           >
             web &amp; app development{" "}
             <em className="italic text-dc-red">portfolio.</em>
           </h1>
-          <p className="font-mono text-[13px] text-white/35 max-w-lg leading-[1.9]">
+          <p className="font-mono text-[11px] text-white/35 max-w-lg leading-[1.8]">
             real products, shipped into the world — from healthcare platforms
             and data analytics tools to talent tech and delivery apps. no
             mockups, no fakes.
@@ -303,7 +303,7 @@ export default function Project() {
       <TornEdge from="dc-ink" to="dc-cream" flip />
 
       {/* ── Project list ──────────────────────────────────── */}
-      <section className="max-w-[1500px] mx-auto px-6 lg:px-12 py-10 lg:py-16">
+      <section className="max-w-[1500px] mx-auto px-6 lg:px-12 py-6 lg:py-10">
         {PROJECTS.map((project, i) => (
           <ProjectCard key={project.title} project={project} index={i} />
         ))}
@@ -312,14 +312,14 @@ export default function Project() {
       <TornEdge from="dc-cream" to="dc-cream2" />
 
       {/* ── Bottom CTA ────────────────────────────────────── */}
-      <section className="bg-dc-cream2 py-16 text-center">
+      <section className="bg-dc-cream2 py-10 text-center">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-          <p className="font-mono text-[11px] text-dc-ink3 mb-4 tracking-[0.1em] opacity-60">
+          <p className="font-mono text-[11px] text-dc-ink3 mb-3 tracking-[0.1em] opacity-60">
             {"// have a project in mind? let's talk"}
           </p>
           <h2
-            className="font-serif font-bold text-dc-ink mb-6"
-            style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}
+            className="font-serif font-bold text-dc-ink mb-5"
+            style={{ fontSize: "clamp(20px, 2.8vw, 32px)" }}
           >
             ready to build your next{" "}
             <em className="italic text-dc-red">digital product?</em>

@@ -28,7 +28,6 @@ import {
   SiGoogleanalytics,
 } from "react-icons/si";
 
-/* ── Tech data unchanged ── */
 const ROW_1 = [
   { name: "React", Icon: FaReact, color: "#61DAFB", bg: "#e8f9ff" },
   { name: "Next.js", Icon: SiNextdotjs, color: "#000000", bg: "#f0f0f0" },
@@ -85,16 +84,16 @@ function Sticker({ tech, index }: { tech: Tech; index: number }) {
   return (
     <div
       className="relative shrink-0 cursor-default select-none"
-      style={{ width: 100 }}
+      style={{ width: 76 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="flex flex-col items-center gap-2.5 py-4 px-3 border border-black/[0.1] transition-all duration-300"
+        className="flex flex-col items-center gap-1.5 py-3 px-2 border border-black/[0.1] transition-all duration-300"
         style={{
           background: tech.bg,
           transform: hovered
-            ? "rotate(0deg) translateY(-6px) scale(1.08)"
+            ? "rotate(0deg) translateY(-5px) scale(1.07)"
             : `rotate(${rot}deg)`,
           boxShadow: hovered
             ? `4px 6px 0 rgba(0,0,0,0.15), 0 0 0 2px ${tech.color}40`
@@ -106,22 +105,22 @@ function Sticker({ tech, index }: { tech: Tech; index: number }) {
           <div
             className="dc-tape absolute -rotate-1"
             style={{
-              width: 44,
-              height: 14,
-              top: -8,
+              width: 36,
+              height: 11,
+              top: -6,
               left: "50%",
               transform: "translateX(-50%) rotate(-1deg)",
             }}
             aria-hidden
           />
         )}
-        <tech.Icon style={{ color: tech.color, fontSize: 32 }} aria-hidden />
+        <tech.Icon style={{ color: tech.color, fontSize: 22 }} aria-hidden />{" "}
         <div
-          className="w-1.5 h-1.5 rounded-full"
+          className="w-1 h-1 rounded-full"
           style={{ background: tech.color, opacity: 0.6 }}
           aria-hidden
         />
-        <span className="font-mono text-[9.5px] font-bold text-dc-ink tracking-wide text-center leading-tight whitespace-nowrap">
+        <span className="font-mono text-[8px] font-bold text-dc-ink tracking-wide text-center leading-tight whitespace-nowrap">
           {tech.name}
         </span>
       </div>
@@ -129,38 +128,38 @@ function Sticker({ tech, index }: { tech: Tech; index: number }) {
   );
 }
 
-/* ─────────────────────────────────────────────────────────────
-   Component
-───────────────────────────────────────────────────────────── */
 const TechCarousel: React.FC = () => {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="bg-dc-cream2 py-16 lg:py-20 relative overflow-hidden">
-      {/* ── Header ────────────────────────────────────────── */}
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 mb-10">
-        <div className="flex items-end justify-between flex-wrap gap-4">
-          <div className="flex items-baseline gap-4">
+    <section className="bg-dc-cream2 py-10 lg:py-14 relative overflow-hidden">
+      {/* ── Header ── */}
+      <div className="max-w-[1300px] mx-auto px-5 lg:px-10 mb-7">
+        <div className="flex items-end justify-between flex-wrap gap-3">
+          <div className="flex items-baseline gap-3">
             <span
               className="font-serif font-black text-black/[0.04] leading-none select-none"
-              style={{ fontSize: "clamp(70px, 9vw, 110px)" }}
+              style={{
+                fontSize: "clamp(38px, 5vw, 60px)",
+              }}
               aria-hidden
             >
               04
             </span>
             <div>
-              <p className="font-mono text-[10px] text-dc-red tracking-[0.15em] uppercase mb-1">
+              <p className="font-mono text-[9px] text-dc-red tracking-[0.15em] uppercase mb-1">
                 {"// react · next.js · node.js · flutter · python · aws"}
               </p>
               <h2
                 className="font-serif font-bold text-dc-ink leading-tight"
-                style={{ fontSize: "clamp(28px, 3.8vw, 44px)" }}
+                style={{
+                  fontSize: "clamp(18px, 2.4vw, 28px)",
+                }}
               >
                 technologies we{" "}
                 <em className="italic text-dc-red">actually use.</em>
               </h2>
-
-              <p className="font-mono text-[11px] text-dc-ink3 mt-1.5 tracking-[0.04em]">
+              <p className="font-mono text-[10px] text-dc-ink3 mt-1 tracking-[0.04em]">
                 {"// the tools powering our web & app development projects."}
               </p>
             </div>
@@ -168,13 +167,13 @@ const TechCarousel: React.FC = () => {
 
           {/* Sticky note */}
           <div
-            className="bg-dc-sticky-yellow border border-black/10 px-4 py-3 max-w-[200px] hidden md:block"
+            className="bg-dc-sticky-yellow border border-black/10 px-3 py-2.5 max-w-[160px] hidden md:block"
             style={{
               transform: "rotate(-1.5deg)",
               boxShadow: "2px 3px 0 rgba(0,0,0,0.08)",
             }}
           >
-            <p className="font-hand text-[15px] text-dc-ink leading-snug">
+            <p className="font-hand text-[13px] text-dc-ink leading-snug">
               always learning,
               <br />
               always shipping ✦
@@ -183,16 +182,16 @@ const TechCarousel: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Row 1 — scroll left ───────────────────────────── */}
+      {/* ── Row 1 ── */}
       <div
-        className="relative w-full mb-4 py-4"
+        className="relative w-full mb-3 py-3"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-dc-cream2 to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-dc-cream2 to-transparent pointer-events-none z-10" />
         <div
-          className="flex gap-4 w-max"
+          className="flex gap-3 w-max"
           style={{
             animation: "scroll-left 32s linear infinite",
             animationPlayState: paused ? "paused" : "running",
@@ -204,16 +203,16 @@ const TechCarousel: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Row 2 — scroll right ──────────────────────────── */}
+      {/* ── Row 2 ── */}
       <div
-        className="relative w-full py-4"
+        className="relative w-full py-3"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-dc-cream2 to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-dc-cream2 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-dc-cream2 to-transparent pointer-events-none z-10" />
         <div
-          className="flex gap-4 w-max"
+          className="flex gap-3 w-max"
           style={{
             animation: "scroll-right 28s linear infinite",
             animationPlayState: paused ? "paused" : "running",
@@ -225,28 +224,21 @@ const TechCarousel: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Footer line ───────────────────────────────────── */}
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 mt-10">
-        <div className="border-t border-dashed border-black/10 pt-5 flex items-center justify-between flex-wrap gap-3">
-          <p className="font-hand text-[18px] text-dc-ink3">
+      {/* ── Footer line ── */}
+      <div className="max-w-[1300px] mx-auto px-5 lg:px-10 mt-7">
+        <div className="border-t border-dashed border-black/10 pt-4 flex items-center justify-between flex-wrap gap-2">
+          <p className="font-hand text-[15px] text-dc-ink3">
             + more tools added to our stack every sprint ✦
           </p>
-  
-          <p className="font-mono text-[10px] text-dc-ink3 tracking-[0.1em] uppercase">
+          <p className="font-mono text-[9px] text-dc-ink3 tracking-[0.1em] uppercase">
             {"// always learning · always building"}
           </p>
         </div>
       </div>
 
       <style>{`
-        @keyframes scroll-left {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-        @keyframes scroll-right {
-          from { transform: translateX(-50%); }
-          to   { transform: translateX(0); }
-        }
+        @keyframes scroll-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+        @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
       `}</style>
     </section>
   );

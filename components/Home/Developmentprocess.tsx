@@ -3,9 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-/* ─────────────────────────────────────────────────────────────
-   Process steps data — SEO optimized
-───────────────────────────────────────────────────────────── */
 const STEPS = [
   {
     num: "1",
@@ -53,14 +50,8 @@ const STEPS = [
   },
 ] as const;
 
-/* ─────────────────────────────────────────────────────────────
-   Vertical offsets
-───────────────────────────────────────────────────────────── */
-const OFFSETS = ["mt-6", "mt-0", "mt-4", "mt-8"] as const;
+const OFFSETS = ["mt-5", "mt-0", "mt-3", "mt-6"] as const;
 
-/* ─────────────────────────────────────────────────────────────
-   Animation variants
-───────────────────────────────────────────────────────────── */
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
@@ -70,35 +61,34 @@ const fadeUp = {
   }),
 };
 
-/* ─────────────────────────────────────────────────────────────
-   Component
-───────────────────────────────────────────────────────────── */
 const Developmentprocess: React.FC = () => {
   return (
-    <section className="bg-dc-cream2 py-20 lg:py-24 overflow-hidden">
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-        {/* ── Section header ────────────────────────────────── */}
+    <section className="bg-dc-cream2 py-12 lg:py-16 overflow-hidden">
+  
+      <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        {/* ── Section header ── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-14 text-center"
+          className="mb-9 text-center" 
         >
-  
-          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-dc-ink3 mb-3">
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-dc-ink3 mb-2">
             {"// our development process"}
           </p>
           <h2
             className="font-serif font-black italic text-dc-ink"
-            style={{ fontSize: "clamp(38px, 5vw, 60px)" }}
+            style={{
+              fontSize: "clamp(24px, 3.2vw, 38px)",
+            }} 
           >
             Simple. Transparent. Fast.
           </h2>
         </motion.div>
 
-        {/* ── Steps row ─────────────────────────────────────── */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-start">
+        {/* ── Steps row ── */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 items-start">
           {STEPS.map(({ num, title, description, style }, i) => (
             <motion.div
               key={num}
@@ -109,10 +99,10 @@ const Developmentprocess: React.FC = () => {
               viewport={{ once: true }}
               className={`relative ${OFFSETS[i]}`}
             >
-              {/* Dashed connector line */}
+              {/* Dashed connector */}
               {i < STEPS.length - 1 && (
                 <div
-                  className="hidden lg:block absolute top-7 left-[calc(100%+4px)] w-[calc(100%-8px)] border-t-2 border-dashed border-black/20 pointer-events-none"
+                  className="hidden lg:block absolute top-6 left-[calc(100%+4px)] w-[calc(100%-8px)] border-t-2 border-dashed border-black/20 pointer-events-none"
                   aria-hidden
                 />
               )}
@@ -121,9 +111,9 @@ const Developmentprocess: React.FC = () => {
               <div
                 className="dc-tape absolute -rotate-2"
                 style={{
-                  width: 60,
-                  height: 18,
-                  top: -9,
+                  width: 50,
+                  height: 14,
+                  top: -7,
                   left: "50%",
                   transform: "translateX(-50%)",
                 }}
@@ -132,37 +122,30 @@ const Developmentprocess: React.FC = () => {
 
               {/* Card */}
               <div
-                className={`
-                  ${style.bg} ${style.text}
-                  border border-black/[0.08]
-                  p-5 lg:p-6
-                  flex flex-col gap-3
-                `}
+                className={`${style.bg} ${style.text} border border-black/[0.08] p-4 flex flex-col gap-2.5`}
               >
+       
                 <div
-                  className={`
-                    w-12 h-12 rounded-full border-[2.5px]
-                    ${style.circle}
-                    flex items-center justify-center
-                    font-serif font-black text-xl
-                    shrink-0
-                  `}
+                  className={`w-9 h-9 rounded-full border-[2px] ${style.circle} flex items-center justify-center font-serif font-black text-base shrink-0`}
+                  
                 >
                   {num}
                 </div>
 
                 <h3
                   className="font-serif font-bold italic leading-tight"
-                  style={{ fontSize: "clamp(17px, 1.6vw, 20px)" }}
+                  style={{
+                    fontSize: "clamp(13px, 1.2vw, 16px)",
+                  }} 
                 >
                   {title}
                 </h3>
 
                 <p
-                  className={`font-mono leading-[1.9] ${
-                    style.bg === "bg-dc-ink" ? "text-white/60" : "text-dc-ink3"
-                  }`}
-                  style={{ fontSize: "clamp(12px, 1vw, 13px)" }}
+                  className={`font-mono leading-[1.8] ${style.bg === "bg-dc-ink" ? "text-white/60" : "text-dc-ink3"}`}
+                  style={{
+                    fontSize: "clamp(10px, 0.8vw, 11px)",
+                  }}
                 >
                   {description}
                 </p>

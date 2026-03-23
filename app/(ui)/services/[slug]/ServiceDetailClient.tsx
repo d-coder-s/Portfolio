@@ -7,9 +7,6 @@ import { motion } from "framer-motion";
 import type { ServiceDetail } from "@/lib/servicesData";
 import TornEdge from "@/components/ui/TornEdge";
 
-/* ── Animation variants, Tape, PaperPin, FaqItem, STEP_* constants
-   all unchanged — only string content below is modified ── */
-
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
@@ -37,7 +34,7 @@ const fadeRight = {
 
 const Tape = ({
   rotate = "-rotate-2",
-  width = 65,
+  width = 60,
 }: {
   rotate?: string;
   width?: number;
@@ -46,8 +43,8 @@ const Tape = ({
     className={`dc-tape absolute ${rotate}`}
     style={{
       width,
-      height: 19,
-      top: -10,
+      height: 17,
+      top: -9,
       left: "50%",
       transform: "translateX(-50%)",
     }}
@@ -63,8 +60,8 @@ const PaperPin = ({
   className?: string;
 }) => (
   <svg
-    width="20"
-    height="28"
+    width="18"
+    height="24"
     viewBox="0 0 20 28"
     fill="none"
     className={`absolute pointer-events-none z-10 ${className}`}
@@ -98,14 +95,14 @@ const FaqItem = ({
     <div className="border-b border-dashed border-black/[0.12]">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer"
+        className="w-full flex items-center justify-between gap-4 py-4 text-left cursor-pointer"
         aria-expanded={open}
       >
-        <span className="font-mono text-[13px] font-bold text-dc-ink leading-[1.6]">
+        <span className="font-mono text-[12px] font-bold text-dc-ink leading-[1.6]">
           {q}
         </span>
         <div
-          className="w-7 h-7 flex items-center justify-center shrink-0 text-white font-light text-xl leading-none transition-transform duration-300"
+          className="w-6 h-6 flex items-center justify-center shrink-0 text-white font-light text-lg leading-none transition-transform duration-300"
           style={{
             background: accent,
             transform: open ? "rotate(45deg)" : "rotate(0deg)",
@@ -116,7 +113,7 @@ const FaqItem = ({
         </div>
       </button>
       <div
-        className={`font-mono text-[12px] text-dc-ink3 leading-[1.9] overflow-hidden transition-all duration-300 ${open ? "max-h-48 pb-5" : "max-h-0"}`}
+        className={`font-mono text-[11px] text-dc-ink3 leading-[1.9] overflow-hidden transition-all duration-300 ${open ? "max-h-48 pb-4" : "max-h-0"}`}
       >
         {a}
       </div>
@@ -163,24 +160,24 @@ export default function ServiceDetailClient({
         />
         <span
           className="absolute -bottom-4 right-0 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none"
-          style={{ fontSize: "clamp(60px, 12vw, 160px)" }}
+          style={{ fontSize: "clamp(50px, 9vw, 120px)" }}
           aria-hidden
         >
           {service.title}
         </span>
 
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-12 pt-16 pb-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-12 pt-10 pb-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end">
             {/* Left */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="pb-16"
+              className="pb-10"
             >
               <nav
                 aria-label="Breadcrumb"
-                className="flex items-center gap-2 font-mono text-[11px] text-white/30 mb-6"
+                className="flex items-center gap-2 font-mono text-[10px] text-white/30 mb-4"
               >
                 <Link
                   href="/services"
@@ -194,25 +191,25 @@ export default function ServiceDetailClient({
                 </span>
               </nav>
 
-              <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-white/30 mb-3">
+              <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/30 mb-2">
                 {service.heroLabel}
               </p>
               <h1
-                className="font-serif font-black text-white/90 leading-tight mb-5"
-                style={{ fontSize: "clamp(36px, 5.5vw, 72px)" }}
+                className="font-serif font-black text-white/90 leading-tight mb-4"
+                style={{ fontSize: "clamp(28px, 4.5vw, 58px)" }}
               >
                 {service.title}.<br />
                 <em className="italic text-dc-red">{service.tagline}</em>
               </h1>
-              <p className="font-mono text-[13px] text-white/45 max-w-lg leading-[1.9] mb-8">
+              <p className="font-mono text-[11px] text-white/45 max-w-lg leading-[1.8] mb-6">
                 {service.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-1.5 mb-6">
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[11px] border px-3 py-1 text-white/50"
+                    className="font-mono text-[10px] border px-2.5 py-1 text-white/50"
                     style={{ borderColor: `${service.accent}55` }}
                   >
                     {tag}
@@ -220,13 +217,13 @@ export default function ServiceDetailClient({
                 ))}
               </div>
 
-              <div className="flex gap-3 flex-wrap">
+              <div className="flex gap-2.5 flex-wrap">
                 <Link href="/contact" className="dc-btn-primary">
                   → get a free quote
                 </Link>
                 <Link
                   href="/project"
-                  className="font-mono text-[11px] font-bold tracking-[0.1em] uppercase border border-white/20 text-white/50 px-5 py-3 hover:border-white/40 hover:text-white transition-all duration-200"
+                  className="font-mono text-[10px] font-bold tracking-[0.1em] uppercase border border-white/20 text-white/50 px-4 py-2.5 hover:border-white/40 hover:text-white transition-all duration-200"
                 >
                   view our portfolio
                 </Link>
@@ -240,8 +237,8 @@ export default function ServiceDetailClient({
               transition={{ duration: 0.65, delay: 0.15 }}
               className="relative self-end hidden lg:block"
             >
-              <div className="relative bg-dc-paper p-3 pb-12 -rotate-[1.5deg] hover:rotate-0 transition-transform duration-300">
-                <Tape rotate="-rotate-2" width={90} />
+              <div className="relative bg-dc-paper p-3 pb-10 -rotate-[1.5deg] hover:rotate-0 transition-transform duration-300">
+                <Tape rotate="-rotate-2" width={80} />
                 <PaperPin color={service.accent} className="-top-3 left-6" />
                 <PaperPin color={service.accent} className="-top-3 right-6" />
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -259,7 +256,7 @@ export default function ServiceDetailClient({
                     aria-hidden
                   />
                 </div>
-                <p className="font-hand text-[17px] text-dc-ink3 text-center mt-4">
+                <p className="font-hand text-[15px] text-dc-ink3 text-center mt-3">
                   {service.title} ✦
                 </p>
               </div>
@@ -271,31 +268,30 @@ export default function ServiceDetailClient({
       <TornEdge from="dc-ink" to="dc-cream" flip />
 
       {/* ══ OVERVIEW + HIGHLIGHTS ═══════════════════════════ */}
-      <section className="bg-dc-cream py-16 lg:py-20">
+      <section className="bg-dc-cream py-12 lg:py-16">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 items-start">
             {/* Sidebar */}
             <motion.div
               variants={fadeLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="lg:sticky lg:top-24 flex flex-col gap-4"
+              className="lg:sticky lg:top-24 flex flex-col gap-3"
             >
-              <div className="relative bg-dc-sticky-yellow border border-black/[0.08] px-5 py-5 -rotate-[1.5deg]">
-                <Tape rotate="rotate-2" width={56} />
-
+              <div className="relative bg-dc-sticky-yellow border border-black/[0.08] px-4 py-4 -rotate-[1.5deg]">
+                <Tape rotate="rotate-2" width={52} />
                 <p className="font-mono text-[10px] text-dc-ink3 tracking-[0.12em] uppercase mb-1">
                   {"// service overview"}
                 </p>
-                <p className="font-serif font-bold text-dc-ink text-[20px] leading-tight">
+                <p className="font-serif font-bold text-dc-ink text-[17px] leading-tight">
                   {service.title}
                 </p>
               </div>
               <p
-                className="font-serif font-black leading-none select-none opacity-10 mt-2"
+                className="font-serif font-black leading-none select-none opacity-10 mt-1"
                 style={{
-                  fontSize: "clamp(80px, 10vw, 130px)",
+                  fontSize: "clamp(64px, 8vw, 110px)",
                   color: service.accent,
                 }}
                 aria-hidden
@@ -311,16 +307,15 @@ export default function ServiceDetailClient({
               whileInView="visible"
               viewport={{ once: true }}
             >
-
               <p
-                className="font-mono text-[11px] tracking-[0.16em] uppercase mb-3"
+                className="font-mono text-[10px] tracking-[0.16em] uppercase mb-2"
                 style={{ color: service.accent }}
               >
                 {"// what we deliver"}
               </p>
               <h2
-                className="font-serif font-bold text-dc-ink leading-tight mb-6"
-                style={{ fontSize: "clamp(26px, 3vw, 40px)" }}
+                className="font-serif font-bold text-dc-ink leading-tight mb-5"
+                style={{ fontSize: "clamp(22px, 2.5vw, 34px)" }}
               >
                 why hire us for{" "}
                 <em className="italic" style={{ color: service.accent }}>
@@ -329,14 +324,14 @@ export default function ServiceDetailClient({
                 ?
               </h2>
               <p
-                className="font-mono text-[13.5px] text-dc-ink2 leading-[2.1] mb-10 border-l-4 pl-5"
+                className="font-mono text-[12px] text-dc-ink2 leading-[2] mb-8 border-l-4 pl-4"
                 style={{ borderColor: service.accent }}
               >
                 {service.overview}
               </p>
 
               {/* Highlights */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {service.highlights.map(
                   ({ icon, title, body, featured }, i) => {
                     if (featured) {
@@ -348,32 +343,31 @@ export default function ServiceDetailClient({
                           initial="hidden"
                           whileInView="visible"
                           viewport={{ once: true }}
-                          className="sm:col-span-2 relative bg-dc-ink border-2 p-7 overflow-hidden"
+                          className="sm:col-span-2 relative bg-dc-ink border-2 p-6 overflow-hidden"
                           style={{ borderColor: service.accent }}
                         >
-                          <Tape rotate="-rotate-2" width={70} />
+                          <Tape rotate="-rotate-2" width={65} />
                           <div
-                            className="absolute top-0 right-0 w-32 h-32 opacity-10 pointer-events-none"
+                            className="absolute top-0 right-0 w-28 h-28 opacity-10 pointer-events-none"
                             style={{
                               background: `radial-gradient(circle at top right, ${service.accent}, transparent)`,
                             }}
                             aria-hidden
                           />
-                          <div className="flex items-center gap-3 mb-4 flex-wrap">
+                          <div className="flex items-center gap-3 mb-3 flex-wrap">
                             <span
-                              className="font-mono text-[10px] font-bold tracking-[0.16em] uppercase px-3 py-1.5 text-dc-ink"
+                              className="font-mono text-[10px] font-bold tracking-[0.16em] uppercase px-2.5 py-1 text-dc-ink"
                               style={{ background: service.accent }}
                             >
                               ✦ now available
                             </span>
-
                             <span className="font-mono text-[10px] text-white/30 tracking-[0.12em] uppercase">
                               {"// hands-on training & workshops"}
                             </span>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+                          <div className="flex flex-col sm:flex-row sm:items-start gap-5">
                             <div
-                              className="w-16 h-16 flex items-center justify-center text-[32px] shrink-0 border border-white/10"
+                              className="w-14 h-14 flex items-center justify-center text-[28px] shrink-0 border border-white/10"
                               style={{ background: `${service.accent}20` }}
                               aria-hidden
                             >
@@ -381,12 +375,12 @@ export default function ServiceDetailClient({
                             </div>
                             <div className="flex-1">
                               <h3
-                                className="font-serif font-black text-white leading-tight mb-3"
-                                style={{ fontSize: "clamp(18px, 2vw, 24px)" }}
+                                className="font-serif font-black text-white leading-tight mb-2"
+                                style={{ fontSize: "clamp(16px, 1.8vw, 21px)" }}
                               >
                                 {title}
                               </h3>
-                              <p className="font-mono text-[12.5px] text-white/60 leading-[1.9] mb-5 max-w-2xl">
+                              <p className="font-mono text-[11px] text-white/60 leading-[1.9] mb-4 max-w-2xl">
                                 We offer structured online training programmes
                                 covering{" "}
                                 <span
@@ -407,10 +401,10 @@ export default function ServiceDetailClient({
                                 access. Available for marketing, product, and
                                 data teams of 2 to 50+.
                               </p>
-                              <div className="flex flex-wrap gap-3 items-center">
+                              <div className="flex flex-wrap gap-2.5 items-center">
                                 <Link
                                   href="/contact"
-                                  className="font-mono text-[11px] font-bold tracking-[0.1em] uppercase text-dc-ink px-5 py-2.5 transition-opacity duration-200 hover:opacity-85"
+                                  className="font-mono text-[10px] font-bold tracking-[0.1em] uppercase text-dc-ink px-4 py-2 transition-opacity duration-200 hover:opacity-85"
                                   style={{ background: service.accent }}
                                 >
                                   → enquire about training
@@ -443,7 +437,7 @@ export default function ServiceDetailClient({
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="relative bg-dc-paper border border-black/[0.07] p-5"
+                        className="relative bg-dc-paper border border-black/[0.07] p-4"
                       >
                         <div
                           className="absolute top-0 left-4 right-4 h-[2.5px]"
@@ -451,16 +445,16 @@ export default function ServiceDetailClient({
                           aria-hidden
                         />
                         <div
-                          className="w-10 h-10 flex items-center justify-center text-[20px] mb-3 border border-black/[0.07]"
+                          className="w-9 h-9 flex items-center justify-center text-[18px] mb-2.5 border border-black/[0.07]"
                           style={{ background: `${service.accent}18` }}
                           aria-hidden
                         >
                           {icon}
                         </div>
-                        <h3 className="font-serif font-bold text-dc-ink text-[16px] mb-2">
+                        <h3 className="font-serif font-bold text-dc-ink text-[14px] mb-1.5">
                           {title}
                         </h3>
-                        <p className="font-mono text-[11.5px] text-dc-ink3 leading-[1.85]">
+                        <p className="font-mono text-[11px] text-dc-ink3 leading-[1.8]">
                           {body}
                         </p>
                       </motion.div>
@@ -476,30 +470,29 @@ export default function ServiceDetailClient({
       <TornEdge from="dc-cream" to="dc-cream2" />
 
       {/* ══ APPROACH ════════════════════════════════════════ */}
-      <section className="bg-dc-cream2 py-16 lg:py-20">
+      <section className="bg-dc-cream2 py-12 lg:py-16">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12"
+            className="mb-9"
           >
- 
             <p
-              className="font-mono text-[11px] tracking-[0.16em] uppercase mb-2"
+              className="font-mono text-[10px] tracking-[0.16em] uppercase mb-2"
               style={{ color: service.accent }}
             >
               {"// our development process"}
             </p>
             <h2
               className="font-serif font-bold text-dc-ink leading-tight"
-              style={{ fontSize: "clamp(26px, 3.5vw, 44px)" }}
+              style={{ fontSize: "clamp(22px, 2.8vw, 36px)" }}
             >
               how we <em className="italic text-dc-red">deliver.</em>
             </h2>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row gap-5 items-start">
+          <div className="flex flex-col lg:flex-row gap-4 items-start">
             {service.approach.map(({ step, title, desc }, i) => (
               <motion.div
                 key={step}
@@ -508,24 +501,24 @@ export default function ServiceDetailClient({
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className={`relative ${STEP_BG[i]} border border-black/[0.07] p-6 flex-1 ${STEP_ROTATE[i]} ${STEP_OFFSET[i]} hover:rotate-0 transition-transform duration-300`}
+                className={`relative ${STEP_BG[i]} border border-black/[0.07] p-5 flex-1 ${STEP_ROTATE[i]} ${STEP_OFFSET[i]} hover:rotate-0 transition-transform duration-300`}
               >
                 <Tape
                   rotate={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
-                  width={52}
+                  width={48}
                 />
                 <PaperPin color={service.accent} className="-top-3 right-5" />
                 <span
-                  className="font-serif font-black text-[52px] leading-none opacity-10 block mb-2"
+                  className="font-serif font-black text-[42px] leading-none opacity-10 block mb-1.5"
                   style={{ color: service.accent }}
                   aria-hidden
                 >
                   {step}
                 </span>
-                <h3 className="font-serif font-bold italic text-dc-ink text-[17px] mb-2">
+                <h3 className="font-serif font-bold italic text-dc-ink text-[15px] mb-1.5">
                   {title}
                 </h3>
-                <p className="font-mono text-[11.5px] text-dc-ink3 leading-[1.85]">
+                <p className="font-mono text-[11px] text-dc-ink3 leading-[1.8]">
                   {desc}
                 </p>
               </motion.div>
@@ -537,27 +530,26 @@ export default function ServiceDetailClient({
       <TornEdge from="dc-cream2" to="dc-ink" />
 
       {/* ══ TECH STACK ══════════════════════════════════════ */}
-      <section className="bg-dc-ink py-16 lg:py-20">
+      <section className="bg-dc-ink py-12 lg:py-16">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-10"
+            className="mb-8"
           >
-   
-            <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/30 mb-2">
+            <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-white/30 mb-2">
               {"// technologies & tools we use"}
             </p>
             <h2
               className="font-serif font-bold text-white/90 leading-tight"
-              style={{ fontSize: "clamp(26px, 3.5vw, 44px)" }}
+              style={{ fontSize: "clamp(22px, 2.8vw, 36px)" }}
             >
               our <em className="italic text-dc-red">tech stack.</em>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {service.stack.map(({ category, items }, i) => (
               <motion.div
                 key={category}
@@ -566,24 +558,24 @@ export default function ServiceDetailClient({
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="bg-white/[0.04] border border-white/[0.08] p-5"
+                className="bg-white/[0.04] border border-white/[0.08] p-4"
               >
                 <div
-                  className="h-[3px] w-full mb-4"
+                  className="h-[3px] w-full mb-3"
                   style={{ background: service.accent }}
                   aria-hidden
                 />
                 <p
-                  className="font-mono text-[10px] tracking-[0.14em] uppercase mb-3"
+                  className="font-mono text-[10px] tracking-[0.14em] uppercase mb-2.5"
                   style={{ color: service.accent }}
                 >
                   {category}
                 </p>
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-2">
                   {items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-2 font-mono text-[12px] text-white/65"
+                      className="flex items-center gap-2 font-mono text-[11px] text-white/65"
                     >
                       <span
                         className="w-1.5 h-1.5 rounded-full shrink-0"
@@ -603,40 +595,39 @@ export default function ServiceDetailClient({
       <TornEdge from="dc-ink" to="dc-cream" flip />
 
       {/* ══ FAQ ═════════════════════════════════════════════ */}
-      <section className="bg-dc-cream py-16 lg:py-20">
+      <section className="bg-dc-cream py-12 lg:py-16">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-16 items-start">
-            <div className="lg:sticky lg:top-24 flex flex-col gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12 items-start">
+            <div className="lg:sticky lg:top-24 flex flex-col gap-5">
               <div>
-      
                 <p
-                  className="font-mono text-[11px] tracking-[0.16em] uppercase mb-2"
+                  className="font-mono text-[10px] tracking-[0.16em] uppercase mb-2"
                   style={{ color: service.accent }}
                 >
                   {"// frequently asked questions"}
                 </p>
                 <h2
                   className="font-serif font-bold text-dc-ink leading-tight"
-                  style={{ fontSize: "clamp(24px, 3vw, 38px)" }}
+                  style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}
                 >
                   common <em className="italic text-dc-red">questions.</em>
                 </h2>
               </div>
 
               <div
-                className={`relative ${service.stickyBg} border border-black/[0.07] p-5 -rotate-[1.5deg] max-w-[220px]`}
+                className={`relative ${service.stickyBg} border border-black/[0.07] p-4 -rotate-[1.5deg] max-w-[200px]`}
               >
-                <Tape rotate="rotate-2" width={56} />
-                <p className="font-hand text-[18px] text-dc-ink2 leading-[1.5] whitespace-pre-line font-bold">
+                <Tape rotate="rotate-2" width={52} />
+                <p className="font-hand text-[15px] text-dc-ink2 leading-[1.5] whitespace-pre-line font-bold">
                   {service.stickyText}
                 </p>
-                <p className="font-mono text-[10px] text-dc-ink3 mt-2">
+                <p className="font-mono text-[10px] text-dc-ink3 mt-1.5">
                   — dcoder
                 </p>
               </div>
 
-              <div className="border-t border-dashed border-black/[0.12] pt-6">
-                <p className="font-mono text-[12px] text-dc-ink3 mb-4 leading-[1.8]">
+              <div className="border-t border-dashed border-black/[0.12] pt-5">
+                <p className="font-mono text-[11px] text-dc-ink3 mb-3 leading-[1.8]">
                   still have questions? we&apos;re happy to walk through your
                   specific requirements — no commitment needed.
                 </p>
@@ -659,13 +650,13 @@ export default function ServiceDetailClient({
 
       {/* ══ BOTTOM CTA ══════════════════════════════════════ */}
       <section
-        className="py-20 text-center relative overflow-hidden"
+        className="py-14 text-center relative overflow-hidden"
         style={{ background: "#fef9c3" }}
       >
         <span
           className="absolute inset-x-0 top-1/2 -translate-y-1/2 font-serif font-black select-none pointer-events-none leading-none text-center"
           style={{
-            fontSize: "clamp(100px, 20vw, 240px)",
+            fontSize: "clamp(80px, 15vw, 190px)",
             color: "rgba(0,0,0,0.05)",
           }}
           aria-hidden
@@ -674,7 +665,7 @@ export default function ServiceDetailClient({
         </span>
 
         <svg
-          className="absolute top-10 right-16 w-14 h-14 opacity-15 pointer-events-none"
+          className="absolute top-10 right-16 w-12 h-12 opacity-15 pointer-events-none"
           viewBox="0 0 56 56"
           fill="none"
           aria-hidden
@@ -685,7 +676,7 @@ export default function ServiceDetailClient({
           />
         </svg>
         <svg
-          className="absolute bottom-12 left-12 w-20 h-10 opacity-15 pointer-events-none"
+          className="absolute bottom-12 left-12 w-16 h-8 opacity-15 pointer-events-none"
           viewBox="0 0 80 32"
           fill="none"
           aria-hidden
@@ -699,46 +690,44 @@ export default function ServiceDetailClient({
         </svg>
 
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12 relative z-10">
-   
-          <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-dc-ink2 opacity-50 mb-4">
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-dc-ink2 opacity-50 mb-3">
             {"// ready to hire a "}
             {service.title.toLowerCase()}
             {" agency in India?"}
           </p>
           <h2
-            className="font-serif font-black text-dc-ink leading-tight mb-6"
-            style={{ fontSize: "clamp(36px, 6vw, 80px)" }}
+            className="font-serif font-black text-dc-ink leading-tight mb-5"
+            style={{ fontSize: "clamp(28px, 4.5vw, 62px)" }}
           >
             let&apos;s build something{" "}
             <em className="italic text-dc-red">that delivers.</em>
           </h2>
-          <p className="font-mono text-[13px] text-dc-ink2 opacity-60 mb-10 max-w-lg mx-auto leading-[1.9]">
+          <p className="font-mono text-[11px] text-dc-ink2 opacity-60 mb-8 max-w-lg mx-auto leading-[1.8]">
             no long briefs needed. just drop us a message — we&apos;ll scope it,
             price it, and get started fast.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
             <Link
               href="/contact"
-              className="dc-btn-primary px-10 py-4 text-[13px]"
+              className="dc-btn-primary px-8 py-3.5 text-[12px]"
             >
               → get a free quote
             </Link>
             <Link
               href="/services"
-              className="font-mono text-[11px] font-bold tracking-[0.1em] uppercase border-2 border-dc-ink text-dc-ink px-8 py-4 transition-all duration-200 hover:bg-dc-ink hover:text-dc-cream"
+              className="font-mono text-[11px] font-bold tracking-[0.1em] uppercase border-2 border-dc-ink text-dc-ink px-7 py-3.5 transition-all duration-200 hover:bg-dc-ink hover:text-dc-cream"
             >
               ← all services
             </Link>
           </div>
 
           {/* Other services */}
-          <div className="border-t border-dc-ink/[0.12] pt-8">
-       
-            <p className="font-mono text-[10px] text-dc-ink2 opacity-40 tracking-[0.14em] uppercase mb-4">
+          <div className="border-t border-dc-ink/[0.12] pt-6">
+            <p className="font-mono text-[10px] text-dc-ink2 opacity-40 tracking-[0.14em] uppercase mb-3">
               {"// explore our other services"}
             </p>
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-wrap gap-1.5 justify-center">
               {[
                 { slug: "web-development", label: "web development" },
                 { slug: "app-development", label: "app development" },
@@ -753,7 +742,7 @@ export default function ServiceDetailClient({
                   <Link
                     key={slug}
                     href={`/services/${slug}`}
-                    className="font-mono text-[11px] border border-dc-ink/20 text-dc-ink2 px-4 py-1.5 opacity-60 transition-all duration-200 hover:opacity-100 hover:border-dc-ink"
+                    className="font-mono text-[10px] border border-dc-ink/20 text-dc-ink2 px-3.5 py-1 opacity-60 transition-all duration-200 hover:opacity-100 hover:border-dc-ink"
                   >
                     {label}
                   </Link>

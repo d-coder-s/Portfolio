@@ -102,8 +102,7 @@ const LeadPopup: React.FC = () => {
   useEffect(() => {
     const seen = localStorage.getItem("dcoder_popup_shown");
     if (!seen) {
-      /* Small delay so page loads first */
-      const t = setTimeout(() => setVisible(true), 800);
+      const t = setTimeout(() => setVisible(true), 3000);
       return () => clearTimeout(t);
     }
   }, []);
@@ -359,8 +358,7 @@ const LeadPopup: React.FC = () => {
                 </div>
               ) : (
                 /* ── Form state ── */
-                <div style={{ padding: "36px 36px 32px" }}>
-   
+                <div style={{ padding: "18px 24px 16px" }}>
                   <p
                     style={{
                       fontFamily: "'Space Mono', monospace",
@@ -373,20 +371,17 @@ const LeadPopup: React.FC = () => {
                   >
                     {"// let's talk"}
                   </p>
-
                   <h2
                     style={{
                       fontFamily: "'Playfair Display', serif",
-                      fontSize: "clamp(20px, 3vw, 27px)",
+                      fontSize: "clamp(18px, 3vw, 22px)",
                       fontWeight: 900,
                       color: "#1a1208",
                       lineHeight: 1.1,
-                      marginBottom: 8,
+                      marginBottom: 4,
                     }}
                   >
-                    tell us what&apos;s
-                    <br />
-                    in your{" "}
+                    tell us what&apos;s in your{" "}
                     <em style={{ fontStyle: "italic", color: "#c0392b" }}>
                       mind.
                     </em>
@@ -395,13 +390,13 @@ const LeadPopup: React.FC = () => {
                   <p
                     style={{
                       fontFamily: "'Space Mono', monospace",
-                      fontSize: 11.5,
+                      fontSize: 10.5,
                       color: "#7a7060",
-                      lineHeight: 1.8,
-                      marginBottom: 22,
+                      lineHeight: 1.6,
+                      marginBottom: 10,
                     }}
                   >
-                    no lengthy forms — just the essentials.
+                    just the essentials.
                     <br />
                     we&apos;ll take it from there.
                   </p>
@@ -410,7 +405,7 @@ const LeadPopup: React.FC = () => {
                     style={{
                       border: "none",
                       borderTop: "1px dashed rgba(0,0,0,0.14)",
-                      marginBottom: 22,
+                      marginBottom: 10,
                     }}
                   />
 
@@ -419,8 +414,8 @@ const LeadPopup: React.FC = () => {
                     style={{
                       display: "grid",
                       gridTemplateColumns: "1fr 1fr",
-                      gap: 12,
-                      marginBottom: 14,
+                      gap: 8,
+                      marginBottom: 8,
                     }}
                   >
                     <div>
@@ -448,7 +443,7 @@ const LeadPopup: React.FC = () => {
                   </div>
 
                   {/* Email */}
-                  <div style={{ marginBottom: 14 }}>
+                  <div style={{ marginBottom: 8 }}>
                     <label style={labelStyle}>email address *</label>
                     <input
                       name="email"
@@ -461,7 +456,7 @@ const LeadPopup: React.FC = () => {
                   </div>
 
                   {/* Service */}
-                  <div style={{ marginBottom: 14 }}>
+                  <div style={{ marginBottom: 8 }}>
                     <label style={labelStyle}>what do you need? *</label>
                     <select
                       name="service"
@@ -479,7 +474,7 @@ const LeadPopup: React.FC = () => {
                   </div>
 
                   {/* Description — optional */}
-                  <div style={{ marginBottom: 6 }}>
+                  <div style={{ marginBottom: 4 }}>
                     <label
                       style={{
                         ...labelStyle,
@@ -506,7 +501,7 @@ const LeadPopup: React.FC = () => {
                       placeholder="a quick line about what you're building..."
                       value={formData.description}
                       onChange={handleChange}
-                      rows={3}
+                      rows={2}
                       style={{ ...inputStyle, resize: "none" }}
                     />
                   </div>
@@ -544,7 +539,7 @@ const LeadPopup: React.FC = () => {
                       borderLeft: "3px solid #c8860a",
                       cursor: sending ? "not-allowed" : "pointer",
                       opacity: sending ? 0.6 : 1,
-                      marginTop: 8,
+                      marginTop: 4,
                       transition: "background .2s",
                     }}
                   >
@@ -556,7 +551,7 @@ const LeadPopup: React.FC = () => {
                     onClick={close}
                     style={{
                       textAlign: "center",
-                      marginTop: 14,
+                      marginTop: 8,
                       fontFamily: "'Caveat', cursive",
                       fontSize: 16,
                       color: "#b0a898",

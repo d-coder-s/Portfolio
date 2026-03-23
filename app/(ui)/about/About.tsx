@@ -17,7 +17,7 @@ const EXPERTISE = [
     label: "Web Development",
     bg: "bg-dc-sticky-yellow",
     rotate: "-rotate-[2deg]",
-    offset: "mt-4",
+    offset: "mt-3",
   },
   {
     label: "App Development",
@@ -29,19 +29,19 @@ const EXPERTISE = [
     label: "UI/UX Design",
     bg: "bg-dc-sticky-blue",
     rotate: "-rotate-[1deg]",
-    offset: "mt-6",
+    offset: "mt-4",
   },
   {
     label: "AI/ML Solutions",
     bg: "bg-dc-sticky-mint",
     rotate: "rotate-[2.5deg]",
-    offset: "mt-2",
+    offset: "mt-1",
   },
   {
     label: "Digital Analytics",
     bg: "bg-dc-sticky-yellow",
     rotate: "-rotate-[1.5deg]",
-    offset: "mt-8",
+    offset: "mt-5",
   },
   {
     label: "Game Development",
@@ -53,13 +53,13 @@ const EXPERTISE = [
     label: "Digital Marketing",
     bg: "bg-dc-sticky-blue",
     rotate: "-rotate-[2.5deg]",
-    offset: "mt-4",
+    offset: "mt-3",
   },
   {
     label: "AI Chatbots",
     bg: "bg-dc-sticky-mint",
     rotate: "rotate-[2deg]",
-    offset: "mt-2",
+    offset: "mt-1",
   },
 ] as const;
 
@@ -144,9 +144,6 @@ const TESTIMONIALS = [
   },
 ] as const;
 
-/* ─────────────────────────────────────────────────────────────
-   Animation variants
-───────────────────────────────────────────────────────────── */
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
@@ -155,7 +152,6 @@ const fadeUp = {
     transition: { duration: 0.45, ease: "easeOut", delay: i * 0.07 },
   }),
 };
-
 const fadeLeft = {
   hidden: { opacity: 0, x: -32 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -169,12 +165,9 @@ const fadeRight = {
   },
 };
 
-/* ─────────────────────────────────────────────────────────────
-   Tape strip
-───────────────────────────────────────────────────────────── */
 const Tape = ({
   rotate = "-rotate-2",
-  width = 60,
+  width = 48,
 }: {
   rotate?: string;
   width?: number;
@@ -183,8 +176,8 @@ const Tape = ({
     className={`dc-tape absolute ${rotate}`}
     style={{
       width,
-      height: 18,
-      top: -9,
+      height: 14,
+      top: -7,
       left: "50%",
       transform: "translateX(-50%)",
     }}
@@ -192,9 +185,6 @@ const Tape = ({
   />
 );
 
-/* ─────────────────────────────────────────────────────────────
-   Section heading
-───────────────────────────────────────────────────────────── */
 const SectionHead = ({
   num,
   title,
@@ -209,11 +199,13 @@ const SectionHead = ({
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
-    className="flex items-baseline gap-4 mb-12"
+    className="flex items-baseline gap-3 mb-8" 
   >
     <span
       className="font-serif font-black text-black/[0.05] leading-none select-none shrink-0"
-      style={{ fontSize: "clamp(70px, 9vw, 110px)" }}
+      style={{
+        fontSize: "clamp(38px, 5vw, 60px)",
+      }} 
       aria-hidden
     >
       {num}
@@ -221,49 +213,53 @@ const SectionHead = ({
     <div>
       <h2
         className="font-serif font-bold text-dc-ink leading-tight"
-        style={{ fontSize: "clamp(28px, 3.8vw, 44px)" }}
+        style={{ fontSize: "clamp(18px, 2.4vw, 28px)" }}
       >
+
         {title}
       </h2>
-      <p className="font-mono text-[11px] text-dc-ink3 mt-1 tracking-[0.04em]">
+      <p className="font-mono text-[10px] text-dc-ink3 mt-1 tracking-[0.04em]">
         {sub}
       </p>
     </div>
   </motion.div>
 );
 
-/* ─────────────────────────────────────────────────────────────
-   Component
-───────────────────────────────────────────────────────────── */
 export default function About() {
   return (
     <>
-      {/* ══ HERO ════════════════════════════════════════════ */}
-      <section className="bg-dc-ink border-b-2 border-dc-amber pt-16 pb-20 relative overflow-hidden">
+      {/* ══ HERO ══ */}
+      <section className="bg-dc-ink border-b-2 border-dc-amber pt-10 pb-14 relative overflow-hidden">
+     
         <span
           className="absolute -bottom-4 right-6 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none"
-          style={{ fontSize: "clamp(80px, 14vw, 180px)" }}
+          style={{
+            fontSize: "clamp(55px, 10vw, 120px)",
+          }} 
           aria-hidden
         >
           about
         </span>
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
+            <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30 mb-2">
               {"// who we are"}
             </p>
             <h1
-              className="font-serif font-black text-white/90 leading-tight mb-4"
-              style={{ fontSize: "clamp(36px, 6vw, 76px)" }}
+              className="font-serif font-black text-white/90 leading-tight mb-3"
+              style={{
+                fontSize: "clamp(24px, 4vw, 50px)",
+              }}
             >
               independent digital studio.{" "}
               <em className="italic text-dc-red">real results.</em>
             </h1>
-            <p className="font-mono text-[13px] text-white/35 max-w-lg leading-[1.9]">
+            <p className="font-mono text-[11px] text-white/35 max-w-lg leading-[1.9]">
+
               web development · mobile apps · ui/ux design · ai/ml solutions ·
               digital analytics · digital marketing — built by people who
               genuinely care about your product. remote-first. est. 2024.
@@ -274,9 +270,10 @@ export default function About() {
 
       <TornEdge from="dc-ink" to="dc-cream" flip />
 
-      {/* ══ ABOUT US ════════════════════════════════════════ */}
-      <section className="bg-dc-cream py-16 lg:py-20">
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+      {/* ══ ABOUT US ══ */}
+      <section className="bg-dc-cream py-10 lg:py-14">
+   
+        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
           <SectionHead
             num="01"
             title={
@@ -287,23 +284,23 @@ export default function About() {
             sub="// the story so far"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Left — text + stats */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            {/* Left */}
             <motion.div
               variants={fadeLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <p className="font-mono text-[13px] text-dc-ink2 leading-[2] mb-6 max-w-[520px]">
+              <p className="font-mono text-[11px] text-dc-ink2 leading-[2] mb-4 max-w-[520px]">
+              
                 Dcoder is an independent digital studio helping startups and
                 businesses build high-quality digital products. From custom web
                 development and mobile app development to AI/ML solutions, UI/UX
                 design, and digital marketing — we bring your ideas to life with
                 precision, creativity, and real technical depth.
               </p>
-             
-              <p className="font-mono text-[13px] text-dc-ink2 leading-[2] max-w-[520px] mb-10">
+              <p className="font-mono text-[11px] text-dc-ink2 leading-[2] max-w-[520px] mb-7">
                 We are a remote-first studio, serving clients across India and
                 globally. Small team, big output. You always work directly with
                 the people building your product — not a rotating cast of
@@ -311,20 +308,22 @@ export default function About() {
               </p>
 
               {/* Stats */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 {STATS.map(({ num, label, bg }, i) => (
                   <div
                     key={label}
-                    className={`relative ${bg} border border-black/[0.08] px-5 py-4 ${i % 2 === 0 ? "-rotate-1" : "rotate-1"}`}
+                    className={`relative ${bg} border border-black/[0.08] px-4 py-3 ${i % 2 === 0 ? "-rotate-1" : "rotate-1"}`}
                   >
+                 
                     <Tape
                       rotate={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
-                      width={50}
+                      width={40}
                     />
-                    <p className="font-serif font-black text-[40px] text-dc-ink leading-none">
+                    <p className="font-serif font-black text-[28px] text-dc-ink leading-none">
                       {num}
                     </p>
-                    <p className="font-mono text-[10px] text-dc-ink3 mt-1">
+                   
+                    <p className="font-mono text-[9px] text-dc-ink3 mt-0.5">
                       {label}
                     </p>
                   </div>
@@ -338,19 +337,19 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="relative hidden lg:block h-[460px]"
+              className="relative hidden lg:block h-[360px]" 
               aria-hidden
             >
               {/* Code card */}
-              <div className="absolute top-0 left-0 w-[300px] bg-[#0d1117] border border-white/10 p-5 -rotate-[1.5deg]">
-                <Tape rotate="-rotate-2" width={72} />
-                <div className="flex gap-1.5 mb-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+              <div className="absolute top-0 left-0 w-[240px] bg-[#0d1117] border border-white/10 p-4 -rotate-[1.5deg]">
+               
+                <Tape rotate="-rotate-2" width={56} />
+                <div className="flex gap-1 mb-2">
+                  <span className="w-2 h-2 rounded-full bg-red-500/80" />
+                  <span className="w-2 h-2 rounded-full bg-yellow-400/80" />
+                  <span className="w-2 h-2 rounded-full bg-green-500/80" />
                 </div>
-                <p className="font-mono text-[9px] leading-[2]">
-                
+                <p className="font-mono text-[8px] leading-[2]">
                   <span className="text-dc-amber">{"// about dcoder"}</span>
                   <br />
                   <span className="text-green-400">const</span>
@@ -382,9 +381,10 @@ export default function About() {
               </div>
 
               {/* Yellow sticky */}
-              <div className="absolute top-4 right-0 w-[175px] bg-dc-sticky-yellow border border-black/[0.07] p-4 rotate-[3deg]">
-                <Tape rotate="rotate-[2deg]" width={52} />
-                <p className="font-hand text-[17px] text-dc-ink2 leading-[1.5]">
+              <div className="absolute top-3 right-0 w-[140px] bg-dc-sticky-yellow border border-black/[0.07] p-3 rotate-[3deg]">
+               
+                <Tape rotate="rotate-[2deg]" width={44} />
+                <p className="font-hand text-[14px] text-dc-ink2 leading-[1.5]">
                   <span className="font-bold">est. 2024</span>
                   <br />
                   remote-first 🌐
@@ -394,9 +394,10 @@ export default function About() {
               </div>
 
               {/* Git log */}
-              <div className="absolute top-[200px] left-8 w-[240px] bg-dc-ink border border-white/10 p-4 rotate-[1.5deg]">
-                <Tape rotate="rotate-[2deg]" width={56} />
-                <p className="font-mono text-[9px] text-dc-amber mb-2 tracking-widest">
+              <div className="absolute top-[155px] left-6 w-[195px] bg-dc-ink border border-white/10 p-3 rotate-[1.5deg]">
+               
+                <Tape rotate="rotate-[2deg]" width={46} />
+                <p className="font-mono text-[8px] text-dc-amber mb-1.5 tracking-widest">
                   $ git log --oneline
                 </p>
                 {[
@@ -405,7 +406,7 @@ export default function About() {
                   { hash: "c2a8f1", msg: "chore: hire great devs" },
                   { hash: "d5f2e8", msg: "feat: 20+ projects live" },
                 ].map(({ hash, msg }) => (
-                  <p key={hash} className="font-mono text-[9px] leading-[1.8]">
+                  <p key={hash} className="font-mono text-[8px] leading-[1.8]">
                     <span className="text-yellow-400">{hash}</span>
                     <span className="text-white/45"> {msg}</span>
                   </p>
@@ -413,9 +414,10 @@ export default function About() {
               </div>
 
               {/* Pink sticky */}
-              <div className="absolute top-[210px] right-4 w-[160px] bg-dc-sticky-pink border border-black/[0.07] p-4 -rotate-[2.5deg]">
-                <Tape rotate="-rotate-[2deg]" width={52} />
-                <p className="font-hand text-[16px] text-dc-ink2 leading-[1.5]">
+              <div className="absolute top-[158px] right-3 w-[130px] bg-dc-sticky-pink border border-black/[0.07] p-3 -rotate-[2.5deg]">
+     
+                <Tape rotate="-rotate-[2deg]" width={44} />
+                <p className="font-hand text-[13px] text-dc-ink2 leading-[1.5]">
                   ✦ open for
                   <br />
                   new projects
@@ -425,8 +427,9 @@ export default function About() {
               </div>
 
               {/* Badge */}
-              <div className="absolute bottom-[60px] left-4 w-[88px] h-[88px] rounded-full bg-dc-sticky-yellow border-2 border-dc-ink flex items-center justify-center text-center -rotate-[8deg]">
-                <span className="font-hand text-[13px] text-dc-ink leading-[1.3]">
+              <div className="absolute bottom-[40px] left-3 w-[70px] h-[70px] rounded-full bg-dc-sticky-yellow border-2 border-dc-ink flex items-center justify-center text-center -rotate-[8deg]">
+              
+                <span className="font-hand text-[11px] text-dc-ink leading-[1.3]">
                   hand-
                   <br />
                   crafted
@@ -436,11 +439,12 @@ export default function About() {
               </div>
 
               {/* Blue sticky */}
-              <div className="absolute bottom-[40px] right-8 w-[175px] bg-dc-sticky-blue border border-black/[0.07] p-4 rotate-[2deg]">
-                <Tape rotate="-rotate-[1.5deg]" width={52} />
-                <p className="font-hand text-[15px] text-dc-ink2 leading-[1.5]">
+              <div className="absolute bottom-[28px] right-6 w-[145px] bg-dc-sticky-blue border border-black/[0.07] p-3 rotate-[2deg]">
+               
+                <Tape rotate="-rotate-[1.5deg]" width={44} />
+                <p className="font-hand text-[13px] text-dc-ink2 leading-[1.5]">
                   avg response under 24hrs ⚡<br />
-                  <span className="font-mono text-[10px] text-dc-ink3">
+                  <span className="font-mono text-[9px] text-dc-ink3">
                     we&apos;re always around
                   </span>
                 </p>
@@ -452,18 +456,18 @@ export default function About() {
 
       <TornEdge from="dc-cream" to="dc-ink" />
 
-      {/* ══ VALUES ══════════════════════════════════════════ */}
-      <section className="bg-dc-ink py-16 lg:py-20">
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+      {/* ══ VALUES ══ */}
+      <section className="bg-dc-ink py-10 lg:py-14">
+        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-baseline gap-4 mb-12"
+            className="flex items-baseline gap-3 mb-8"
           >
             <span
               className="font-serif font-black text-white/[0.05] leading-none select-none shrink-0"
-              style={{ fontSize: "clamp(70px, 9vw, 110px)" }}
+              style={{ fontSize: "clamp(38px, 5vw, 60px)" }}
               aria-hidden
             >
               02
@@ -471,11 +475,11 @@ export default function About() {
             <div>
               <h2
                 className="font-serif font-bold text-white/90 leading-tight"
-                style={{ fontSize: "clamp(28px, 3.8vw, 44px)" }}
+                style={{ fontSize: "clamp(18px, 2.4vw, 28px)" }}
               >
                 what we <em className="italic text-dc-red">believe in.</em>
               </h2>
-              <p className="font-mono text-[11px] text-white/30 mt-1 tracking-[0.04em]">
+              <p className="font-mono text-[10px] text-white/30 mt-1 tracking-[0.04em]">
                 {
                   "// the principles we actually operate by — not just put on a slide"
                 }
@@ -483,7 +487,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {VALUES.map(({ icon, title, body }, i) => (
               <motion.div
                 key={title}
@@ -492,20 +496,24 @@ export default function About() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="bg-white/[0.04] border border-white/[0.08] p-6 hover:bg-white/[0.07] transition-colors duration-200"
+                className="bg-white/[0.04] border border-white/[0.08] p-4 hover:bg-white/[0.07] transition-colors duration-200"
+              
               >
                 <div
-                  className="font-mono text-[22px] text-dc-amber mb-4"
+                  className="font-mono text-[18px] text-dc-amber mb-3"
                   aria-hidden
                 >
                   {icon}
                 </div>
-                <h3 className="font-serif font-bold text-white/90 text-[17px] mb-3 leading-tight">
+           
+                <h3 className="font-serif font-bold text-white/90 text-[14px] mb-2 leading-tight">
                   {title}
                 </h3>
-                <p className="font-mono text-[11.5px] text-white/45 leading-[1.85]">
+            
+                <p className="font-mono text-[10px] text-white/45 leading-[1.8]">
                   {body}
                 </p>
+               
               </motion.div>
             ))}
           </div>
@@ -514,9 +522,9 @@ export default function About() {
 
       <TornEdge from="dc-ink" to="dc-cream2" flip />
 
-      {/* ══ EXPERTISE ═══════════════════════════════════════ */}
-      <section className="bg-dc-cream2 py-16 lg:py-20">
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+      {/* ══ EXPERTISE ══ */}
+      <section className="bg-dc-cream2 py-10 lg:py-14">
+        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
           <SectionHead
             num="03"
             title={
@@ -526,7 +534,7 @@ export default function About() {
             }
             sub="// full-stack digital services — web, mobile, design, AI & more"
           />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 items-start">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-start">
             {EXPERTISE.map(({ label, bg, rotate, offset }, i) => (
               <motion.div
                 key={label}
@@ -535,16 +543,18 @@ export default function About() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                whileHover={{ rotate: 0, y: -6 }}
-                className={`relative ${bg} ${rotate} ${offset} border border-black/[0.07] px-5 py-5 text-center transition-all duration-300 hover:shadow-[3px_4px_0_rgba(0,0,0,0.07)] cursor-default`}
+                whileHover={{ rotate: 0, y: -5 }}
+                className={`relative ${bg} ${rotate} ${offset} border border-black/[0.07] px-4 py-4 text-center transition-all duration-300 hover:shadow-[3px_4px_0_rgba(0,0,0,0.07)] cursor-default`}
+            
               >
                 <Tape
                   rotate={i % 2 === 0 ? "-rotate-2" : "rotate-3"}
-                  width={52}
+                  width={42}
                 />
-                <span className="font-hand text-[18px] text-dc-ink2 leading-tight">
+                <span className="font-hand text-[15px] text-dc-ink2 leading-tight">
                   {label}
                 </span>
+             
               </motion.div>
             ))}
           </div>
@@ -553,9 +563,9 @@ export default function About() {
 
       <TornEdge from="dc-cream2" to="dc-cream" />
 
-      {/* ══ WHY US ══════════════════════════════════════════ */}
-      <section className="bg-dc-cream py-16 lg:py-20">
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+      {/* ══ WHY US ══ */}
+      <section className="bg-dc-cream py-10 lg:py-14">
+        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
           <SectionHead
             num="04"
             title={
@@ -566,7 +576,7 @@ export default function About() {
             sub="// not by accident — every decision is intentional"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <ul className="flex flex-col">
               {WHY_ITEMS.map(({ text, tag }, i) => (
                 <motion.li
@@ -576,16 +586,17 @@ export default function About() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="flex items-start gap-4 py-4 border-b border-dashed border-black/[0.14] first:border-t first:border-dashed first:border-black/[0.14] group"
+                  className="flex items-start gap-3 py-3 border-b border-dashed border-black/[0.14] first:border-t first:border-dashed first:border-black/[0.14] group"
                 >
-                  <span className="font-mono text-[13px] font-bold text-dc-red mt-0.5 shrink-0 group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="font-mono text-[11px] font-bold text-dc-red mt-0.5 shrink-0 group-hover:translate-x-1 transition-transform duration-200">
                     →
                   </span>
                   <div className="flex flex-col gap-0.5">
-                    <span className="font-mono text-[13px] text-dc-ink2 leading-[1.8]">
+                    <span className="font-mono text-[11px] text-dc-ink2 leading-[1.8]">
                       {text}
                     </span>
-                    <span className="font-mono text-[10px] text-dc-ink3 tracking-[0.1em] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+
+                    <span className="font-mono text-[9px] text-dc-ink3 tracking-[0.1em] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       {tag}
                     </span>
                   </div>
@@ -599,36 +610,34 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55 }}
-              className="hidden lg:grid grid-cols-2 gap-4"
+              className="hidden lg:grid grid-cols-2 gap-3"
             >
               {TESTIMONIALS.map(({ quote, author, bg, rotate, stars }) => (
                 <div
                   key={author}
-                  className={`relative ${bg} ${rotate} border border-black/[0.07] p-4 font-hand hover:rotate-0 transition-transform duration-300`}
+                  className={`relative ${bg} ${rotate} border border-black/[0.07] p-3 font-hand hover:rotate-0 transition-transform duration-300`}
                 >
-                  <Tape rotate="-rotate-2" width={52} />
+                  <Tape rotate="-rotate-2" width={44} />
                   {stars && (
-                    <p className="text-dc-amber tracking-[2px] text-[13px] mb-1.5">
+                    <p className="text-dc-amber tracking-[2px] text-[11px] mb-1">
                       ★★★★★
                     </p>
                   )}
-                  <blockquote className="text-[15px] text-dc-ink2 leading-[1.5] mb-2">
+                  <blockquote className="text-[12px] text-dc-ink2 leading-[1.5] mb-1.5">
                     {quote}
                   </blockquote>
-                  <cite className="font-mono text-[10px] text-dc-ink3 not-italic">
+               
+                  <cite className="font-mono text-[9px] text-dc-ink3 not-italic">
                     — {author}
                   </cite>
                 </div>
               ))}
-
-              {/* client_feedback.log */}
-              <div className="col-span-2 relative bg-dc-ink border border-white/10 px-5 py-4 rotate-[0.5deg] hover:rotate-0 transition-transform duration-300">
-                <Tape rotate="rotate-[2deg]" width={60} />
-              
-                <p className="font-mono text-[9px] text-dc-amber mb-1.5 tracking-widest">
+              <div className="col-span-2 relative bg-dc-ink border border-white/10 px-4 py-3 rotate-[0.5deg] hover:rotate-0 transition-transform duration-300">
+                <Tape rotate="rotate-[2deg]" width={52} />
+                <p className="font-mono text-[8px] text-dc-amber mb-1 tracking-widest">
                   {"// client_feedback.log"}
                 </p>
-                <p className="font-mono text-[9px] text-white/70 leading-[1.9]">
+                <p className="font-mono text-[8px] text-white/70 leading-[1.9]">
                   <span className="text-green-400">INFO</span>
                   <span className="text-white/50"> client_satisfaction: </span>
                   <span className="text-yellow-300">100%</span>
@@ -649,18 +658,21 @@ export default function About() {
 
       <TornEdge from="dc-cream" to="dc-ink" />
 
-      {/* ══ PARTNER CTA ═════════════════════════════════════ */}
-      <section className="bg-dc-ink py-20 lg:py-24 relative overflow-hidden">
+      {/* ══ PARTNER CTA ══ */}
+      <section className="bg-dc-ink py-14 lg:py-18 relative overflow-hidden">
+
         <span
           className="absolute -bottom-4 left-1/2 -translate-x-1/2 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none whitespace-nowrap"
-          style={{ fontSize: "clamp(60px, 10vw, 140px)" }}
+          style={{
+            fontSize: "clamp(40px, 7vw, 90px)",
+          }} 
           aria-hidden
         >
           let&apos;s build
         </span>
 
         <svg
-          className="absolute top-10 right-16 w-14 h-14 opacity-10 pointer-events-none"
+          className="absolute top-8 right-12 w-10 h-10 opacity-10 pointer-events-none"
           viewBox="0 0 56 56"
           fill="none"
           aria-hidden
@@ -671,7 +683,7 @@ export default function About() {
           />
         </svg>
         <svg
-          className="absolute bottom-12 left-12 w-20 h-10 opacity-10 pointer-events-none"
+          className="absolute bottom-8 left-10 w-16 h-8 opacity-10 pointer-events-none"
           viewBox="0 0 80 32"
           fill="none"
           aria-hidden
@@ -684,30 +696,32 @@ export default function About() {
           />
         </svg>
 
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-[1300px] mx-auto px-5 lg:px-10 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-4">
+              <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30 mb-3">
                 {"// ready to start a project?"}
               </p>
               <h2
-                className="font-serif font-black text-white/90 leading-tight mb-5"
-                style={{ fontSize: "clamp(32px, 5vw, 60px)" }}
+                className="font-serif font-black text-white/90 leading-tight mb-4"
+                style={{
+                  fontSize: "clamp(22px, 3.5vw, 42px)",
+                }} 
               >
                 partner with <em className="italic text-dc-red">dcoder.</em>
               </h2>
-              <p className="font-mono text-[13px] text-white/40 leading-[1.9] max-w-md mb-8">
+              <p className="font-mono text-[11px] text-white/40 leading-[1.9] max-w-md mb-6">
+                
                 ready to build a website, app, or digital product that actually
                 works? no full brief needed — a quick 15-minute call is all it
                 takes to get started.
               </p>
-
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2.5">
                 {[
                   {
                     icon: "✉",
@@ -721,19 +735,19 @@ export default function About() {
                   },
                   { icon: "🌐", val: "Remote — India & Worldwide", href: null },
                 ].map(({ icon, val, href }) => (
-                  <div key={val} className="flex items-center gap-3">
-                    <span className="text-[13px]" aria-hidden>
+                  <div key={val} className="flex items-center gap-2.5">
+                    <span className="text-[11px]" aria-hidden>
                       {icon}
                     </span>
                     {href ? (
                       <a
                         href={href}
-                        className="font-mono text-[12px] text-white/40 hover:text-white/70 transition-colors duration-200"
+                        className="font-mono text-[10px] text-white/40 hover:text-white/70 transition-colors duration-200"
                       >
                         {val}
                       </a>
                     ) : (
-                      <span className="font-mono text-[12px] text-white/40">
+                      <span className="font-mono text-[10px] text-white/40">
                         {val}
                       </span>
                     )}
@@ -748,27 +762,28 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: 0.15 }}
             >
-              <div className="relative bg-dc-paper border border-black/[0.08] p-8 -rotate-[1deg] hover:rotate-0 transition-transform duration-300">
-                <Tape rotate="-rotate-2" width={80} />
+              <div className="relative bg-dc-paper border border-black/[0.08] p-6 -rotate-[1deg] hover:rotate-0 transition-transform duration-300">
+               
+                <Tape rotate="-rotate-2" width={64} />
                 <svg
-                  className="absolute bottom-0 right-0 w-12 h-12 pointer-events-none"
+                  className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none"
                   viewBox="0 0 48 48"
                   aria-hidden
                 >
                   <path d="M48,48 L28,48 L48,28 Z" fill="#f0ebe0" />
                 </svg>
-            
-                <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-dc-ink3 mb-3">
+                <p className="font-mono text-[9px] tracking-[0.16em] uppercase text-dc-ink3 mb-2">
                   {"// start your project today"}
                 </p>
-                <p className="font-serif font-bold text-dc-ink text-[22px] mb-6 leading-tight">
+                <p className="font-serif font-bold text-dc-ink text-[17px] mb-4 leading-tight">
+              
                   let&apos;s build something
                   <br />
                   <em className="italic text-dc-red">
                     people will actually use.
                   </em>
                 </p>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2.5">
                   <Link
                     href="/contact"
                     className="dc-btn-primary w-full justify-center"
@@ -777,12 +792,13 @@ export default function About() {
                   </Link>
                   <Link
                     href="/services"
-                    className="font-mono text-[11px] font-bold tracking-[0.1em] uppercase border border-dc-ink text-dc-ink px-5 py-3 text-center transition-all duration-200 hover:bg-dc-ink hover:text-dc-cream"
+                    className="font-mono text-[10px] font-bold tracking-[0.1em] uppercase border border-dc-ink text-dc-ink px-4 py-2.5 text-center transition-all duration-200 hover:bg-dc-ink hover:text-dc-cream"
                   >
                     explore our services
                   </Link>
                 </div>
-                <p className="font-hand text-[16px] text-dc-ink3 mt-5 text-center">
+                <p className="font-hand text-[13px] text-dc-ink3 mt-4 text-center">
+             
                   free consultation · avg response under 24hrs ⚡
                 </p>
               </div>
