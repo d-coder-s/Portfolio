@@ -51,7 +51,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="sticky top-0 z-50 w-full bg-dc-ink border-b-2 border-dc-amber">
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10 h-[46px] flex items-center justify-between">        
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10 h-[46px] flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/home"
@@ -64,13 +64,12 @@ const Navbar = () => {
               width={200}
               height={50}
               priority
-              className="h-9 w-auto object-contain" 
+              className="h-9 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-5">
-        
             {NAV_LINKS.map(({ name, href }) => {
               const isActive =
                 pathname === href || pathname?.startsWith(href.split("#")[0]);
@@ -83,7 +82,6 @@ const Navbar = () => {
                         ? "text-white"
                         : "text-white/60 hover:text-white/90"
                     }`}
- 
                   >
                     {name}
                   </Link>
@@ -110,12 +108,10 @@ const Navbar = () => {
             className="md:hidden text-white p-1 transition-colors hover:text-dc-amber"
           >
             {isOpen ? <FiX size={18} /> : <FiMenu size={18} />}
-     
           </button>
         </div>
       </nav>
 
-      
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -125,7 +121,6 @@ const Navbar = () => {
             exit="closed"
             variants={overlayVariants}
             className="fixed inset-0 z-40 bg-dc-ink flex flex-col justify-center px-8"
-     
           >
             <span
               className="absolute top-6 right-8 font-serif font-black text-white/[0.03] select-none pointer-events-none"
@@ -146,7 +141,7 @@ const Navbar = () => {
                     className="font-serif font-black italic text-white/80 hover:text-white transition-colors duration-200 block py-1.5 border-b border-white/[0.06]"
                     style={{
                       fontSize: "clamp(26px, 7vw, 42px)",
-                    }} 
+                    }}
                   >
                     {name}
                     <span className="text-dc-red ml-2 not-italic text-[0.5em] align-middle">
@@ -160,7 +155,6 @@ const Navbar = () => {
             <motion.div
               variants={itemVariants}
               className="absolute bottom-8 left-8 right-8 flex items-center justify-between"
-           
             >
               <Link
                 href="/contact"

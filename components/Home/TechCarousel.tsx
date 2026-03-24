@@ -134,7 +134,7 @@ const TechCarousel: React.FC = () => {
   return (
     <section className="bg-dc-cream2 py-10 lg:py-14 relative overflow-hidden">
       {/* ── Header ── */}
-      <div className="max-w-[1300px] mx-auto px-5 lg:px-10 mb-7">
+      <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10 mb-7">
         <div className="flex items-end justify-between flex-wrap gap-3">
           <div className="flex items-baseline gap-3">
             <span
@@ -225,7 +225,7 @@ const TechCarousel: React.FC = () => {
       </div>
 
       {/* ── Footer line ── */}
-      <div className="max-w-[1300px] mx-auto px-5 lg:px-10 mt-7">
+      <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10 mt-7">
         <div className="border-t border-dashed border-black/10 pt-4 flex items-center justify-between flex-wrap gap-2">
           <p className="font-hand text-[15px] text-dc-ink3">
             + more tools added to our stack every sprint ✦

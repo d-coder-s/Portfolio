@@ -199,13 +199,13 @@ const SectionHead = ({
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
-    className="flex items-baseline gap-3 mb-8" 
+    className="flex items-baseline gap-3 mb-8"
   >
     <span
       className="font-serif font-black text-black/[0.05] leading-none select-none shrink-0"
       style={{
         fontSize: "clamp(38px, 5vw, 60px)",
-      }} 
+      }}
       aria-hidden
     >
       {num}
@@ -215,7 +215,6 @@ const SectionHead = ({
         className="font-serif font-bold text-dc-ink leading-tight"
         style={{ fontSize: "clamp(18px, 2.4vw, 28px)" }}
       >
-
         {title}
       </h2>
       <p className="font-mono text-[10px] text-dc-ink3 mt-1 tracking-[0.04em]">
@@ -230,17 +229,16 @@ export default function About() {
     <>
       {/* ══ HERO ══ */}
       <section className="bg-dc-ink border-b-2 border-dc-amber pt-10 pb-14 relative overflow-hidden">
-     
         <span
           className="absolute -bottom-4 right-6 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none"
           style={{
             fontSize: "clamp(55px, 10vw, 120px)",
-          }} 
+          }}
           aria-hidden
         >
           about
         </span>
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -259,7 +257,6 @@ export default function About() {
               <em className="italic text-dc-red">real results.</em>
             </h1>
             <p className="font-mono text-[11px] text-white/35 max-w-lg leading-[1.9]">
-
               web development · mobile apps · ui/ux design · ai/ml solutions ·
               digital analytics · digital marketing — built by people who
               genuinely care about your product. remote-first. est. 2024.
@@ -272,8 +269,7 @@ export default function About() {
 
       {/* ══ ABOUT US ══ */}
       <section className="bg-dc-cream py-10 lg:py-14">
-   
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
           <SectionHead
             num="01"
             title={
@@ -293,7 +289,6 @@ export default function About() {
               viewport={{ once: true }}
             >
               <p className="font-mono text-[11px] text-dc-ink2 leading-[2] mb-4 max-w-[520px]">
-              
                 Dcoder is an independent digital studio helping startups and
                 businesses build high-quality digital products. From custom web
                 development and mobile app development to AI/ML solutions, UI/UX
@@ -314,7 +309,6 @@ export default function About() {
                     key={label}
                     className={`relative ${bg} border border-black/[0.08] px-4 py-3 ${i % 2 === 0 ? "-rotate-1" : "rotate-1"}`}
                   >
-                 
                     <Tape
                       rotate={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
                       width={40}
@@ -322,7 +316,7 @@ export default function About() {
                     <p className="font-serif font-black text-[28px] text-dc-ink leading-none">
                       {num}
                     </p>
-                   
+
                     <p className="font-mono text-[9px] text-dc-ink3 mt-0.5">
                       {label}
                     </p>
@@ -337,12 +331,11 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="relative hidden lg:block h-[360px]" 
+              className="relative hidden lg:block h-[360px]"
               aria-hidden
             >
               {/* Code card */}
               <div className="absolute top-0 left-0 w-[240px] bg-[#0d1117] border border-white/10 p-4 -rotate-[1.5deg]">
-               
                 <Tape rotate="-rotate-2" width={56} />
                 <div className="flex gap-1 mb-2">
                   <span className="w-2 h-2 rounded-full bg-red-500/80" />
@@ -382,7 +375,6 @@ export default function About() {
 
               {/* Yellow sticky */}
               <div className="absolute top-3 right-0 w-[140px] bg-dc-sticky-yellow border border-black/[0.07] p-3 rotate-[3deg]">
-               
                 <Tape rotate="rotate-[2deg]" width={44} />
                 <p className="font-hand text-[14px] text-dc-ink2 leading-[1.5]">
                   <span className="font-bold">est. 2024</span>
@@ -395,7 +387,6 @@ export default function About() {
 
               {/* Git log */}
               <div className="absolute top-[155px] left-6 w-[195px] bg-dc-ink border border-white/10 p-3 rotate-[1.5deg]">
-               
                 <Tape rotate="rotate-[2deg]" width={46} />
                 <p className="font-mono text-[8px] text-dc-amber mb-1.5 tracking-widest">
                   $ git log --oneline
@@ -415,7 +406,6 @@ export default function About() {
 
               {/* Pink sticky */}
               <div className="absolute top-[158px] right-3 w-[130px] bg-dc-sticky-pink border border-black/[0.07] p-3 -rotate-[2.5deg]">
-     
                 <Tape rotate="-rotate-[2deg]" width={44} />
                 <p className="font-hand text-[13px] text-dc-ink2 leading-[1.5]">
                   ✦ open for
@@ -428,7 +418,6 @@ export default function About() {
 
               {/* Badge */}
               <div className="absolute bottom-[40px] left-3 w-[70px] h-[70px] rounded-full bg-dc-sticky-yellow border-2 border-dc-ink flex items-center justify-center text-center -rotate-[8deg]">
-              
                 <span className="font-hand text-[11px] text-dc-ink leading-[1.3]">
                   hand-
                   <br />
@@ -440,7 +429,6 @@ export default function About() {
 
               {/* Blue sticky */}
               <div className="absolute bottom-[28px] right-6 w-[145px] bg-dc-sticky-blue border border-black/[0.07] p-3 rotate-[2deg]">
-               
                 <Tape rotate="-rotate-[1.5deg]" width={44} />
                 <p className="font-hand text-[13px] text-dc-ink2 leading-[1.5]">
                   avg response under 24hrs ⚡<br />
@@ -458,7 +446,7 @@ export default function About() {
 
       {/* ══ VALUES ══ */}
       <section className="bg-dc-ink py-10 lg:py-14">
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -497,7 +485,6 @@ export default function About() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="bg-white/[0.04] border border-white/[0.08] p-4 hover:bg-white/[0.07] transition-colors duration-200"
-              
               >
                 <div
                   className="font-mono text-[18px] text-dc-amber mb-3"
@@ -505,15 +492,14 @@ export default function About() {
                 >
                   {icon}
                 </div>
-           
+
                 <h3 className="font-serif font-bold text-white/90 text-[14px] mb-2 leading-tight">
                   {title}
                 </h3>
-            
+
                 <p className="font-mono text-[10px] text-white/45 leading-[1.8]">
                   {body}
                 </p>
-               
               </motion.div>
             ))}
           </div>
@@ -524,7 +510,7 @@ export default function About() {
 
       {/* ══ EXPERTISE ══ */}
       <section className="bg-dc-cream2 py-10 lg:py-14">
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
           <SectionHead
             num="03"
             title={
@@ -545,7 +531,6 @@ export default function About() {
                 viewport={{ once: true }}
                 whileHover={{ rotate: 0, y: -5 }}
                 className={`relative ${bg} ${rotate} ${offset} border border-black/[0.07] px-4 py-4 text-center transition-all duration-300 hover:shadow-[3px_4px_0_rgba(0,0,0,0.07)] cursor-default`}
-            
               >
                 <Tape
                   rotate={i % 2 === 0 ? "-rotate-2" : "rotate-3"}
@@ -554,7 +539,6 @@ export default function About() {
                 <span className="font-hand text-[15px] text-dc-ink2 leading-tight">
                   {label}
                 </span>
-             
               </motion.div>
             ))}
           </div>
@@ -565,7 +549,7 @@ export default function About() {
 
       {/* ══ WHY US ══ */}
       <section className="bg-dc-cream py-10 lg:py-14">
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
           <SectionHead
             num="04"
             title={
@@ -626,7 +610,7 @@ export default function About() {
                   <blockquote className="text-[12px] text-dc-ink2 leading-[1.5] mb-1.5">
                     {quote}
                   </blockquote>
-               
+
                   <cite className="font-mono text-[9px] text-dc-ink3 not-italic">
                     — {author}
                   </cite>
@@ -660,12 +644,11 @@ export default function About() {
 
       {/* ══ PARTNER CTA ══ */}
       <section className="bg-dc-ink py-14 lg:py-18 relative overflow-hidden">
-
         <span
           className="absolute -bottom-4 left-1/2 -translate-x-1/2 font-serif font-black text-white/[0.03] select-none pointer-events-none leading-none whitespace-nowrap"
           style={{
             fontSize: "clamp(40px, 7vw, 90px)",
-          }} 
+          }}
           aria-hidden
         >
           let&apos;s build
@@ -696,7 +679,7 @@ export default function About() {
           />
         </svg>
 
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10 relative z-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -711,12 +694,11 @@ export default function About() {
                 className="font-serif font-black text-white/90 leading-tight mb-4"
                 style={{
                   fontSize: "clamp(22px, 3.5vw, 42px)",
-                }} 
+                }}
               >
                 partner with <em className="italic text-dc-red">dcoder.</em>
               </h2>
               <p className="font-mono text-[11px] text-white/40 leading-[1.9] max-w-md mb-6">
-                
                 ready to build a website, app, or digital product that actually
                 works? no full brief needed — a quick 15-minute call is all it
                 takes to get started.
@@ -763,7 +745,6 @@ export default function About() {
               transition={{ duration: 0.55, delay: 0.15 }}
             >
               <div className="relative bg-dc-paper border border-black/[0.08] p-6 -rotate-[1deg] hover:rotate-0 transition-transform duration-300">
-               
                 <Tape rotate="-rotate-2" width={64} />
                 <svg
                   className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none"
@@ -776,7 +757,6 @@ export default function About() {
                   {"// start your project today"}
                 </p>
                 <p className="font-serif font-bold text-dc-ink text-[17px] mb-4 leading-tight">
-              
                   let&apos;s build something
                   <br />
                   <em className="italic text-dc-red">
@@ -798,7 +778,6 @@ export default function About() {
                   </Link>
                 </div>
                 <p className="font-hand text-[13px] text-dc-ink3 mt-4 text-center">
-             
                   free consultation · avg response under 24hrs ⚡
                 </p>
               </div>

@@ -10,6 +10,7 @@ const COLOR_MAP: Record<string, string> = {
   "dc-amber": "#c8860a",
   "sky-blue": "#bae6fd",
   "soft-yellow": "#fef9c3",
+  "dc-yellow-light": "#faf5b9",
 };
 
 interface TornEdgeProps {

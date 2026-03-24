@@ -109,7 +109,7 @@ const Tape = ({
 
 const Chooseus: React.FC = () => {
   return (
-    <section className="max-w-[1300px] mx-auto px-5 lg:px-10 py-10 lg:py-14">
+    <section className="w-full px-[5vw] xl:px-[7vw] lg:px-10 py-10 lg:py-14">
       {/* ── Section header ── */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}

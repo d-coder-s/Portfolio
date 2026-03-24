@@ -133,17 +133,15 @@ const PortfolioSection: React.FC = () => {
 
   return (
     <section className="bg-dc-ink py-10 lg:py-16">
-    
-      <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+      <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
         {/* ── Section header ── */}
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
-    
           <div className="flex items-baseline gap-3">
             <span
               className="font-serif font-black text-white/[0.04] leading-none select-none"
               style={{
                 fontSize: "clamp(38px, 5vw, 60px)",
-              }} 
+              }}
               aria-hidden
             >
               03
@@ -192,7 +190,7 @@ const PortfolioSection: React.FC = () => {
           className="relative w-full overflow-hidden"
           style={{
             height: "clamp(260px, 38vw, 420px)",
-          }} 
+          }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
@@ -215,7 +213,6 @@ const PortfolioSection: React.FC = () => {
 
           <div
             className="absolute inset-0 flex flex-col justify-end p-6 lg:p-8 transition-all duration-500"
-           
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(16px)",
@@ -247,13 +244,12 @@ const PortfolioSection: React.FC = () => {
               className="font-hand text-white/70 mb-2"
               style={{
                 fontSize: "clamp(12px, 1.2vw, 15px)",
-              }} 
+              }}
             >
               {item.tagline}
             </p>
 
             <p className="font-mono text-[10px] text-white/50 max-w-lg leading-relaxed mb-4 hidden sm:block">
-             
               {item.desc}
             </p>
 
@@ -267,7 +263,6 @@ const PortfolioSection: React.FC = () => {
               <Link
                 href={item.href}
                 className="inline-block font-mono text-[10px] font-bold tracking-[0.12em] uppercase border-2 text-white px-4 py-2 transition-colors duration-200 hover:text-dc-ink"
-                
                 style={{
                   borderColor: item.accent,
                   backgroundColor: hovered ? item.accent : "transparent",
@@ -304,7 +299,6 @@ const PortfolioSection: React.FC = () => {
                   background:
                     i === current ? item.accent : "rgba(255,255,255,0.2)",
                 }}
-                
               />
               <span
                 className="font-mono text-[8px] tracking-wider uppercase transition-all duration-200 hidden sm:block"
@@ -326,7 +320,6 @@ const PortfolioSection: React.FC = () => {
 
         {/* ── Stats + CTA strip ── */}
         <div className="mt-7 border border-white/10 p-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/[0.02]">
-          
           <div className="flex gap-6 flex-wrap">
             {[
               { num: "20+", label: "projects shipped" },
@@ -337,7 +330,7 @@ const PortfolioSection: React.FC = () => {
                 <span className="font-serif font-bold text-dc-amber text-lg">
                   {num}
                 </span>
-              
+
                 <span className="font-mono text-[9px] text-white/30 uppercase tracking-wider">
                   {label}
                 </span>
@@ -347,7 +340,6 @@ const PortfolioSection: React.FC = () => {
           <Link
             href="/contact"
             className="font-mono text-[10px] font-bold tracking-[0.12em] uppercase bg-dc-red text-white px-6 py-2.5 hover:bg-dc-red/80 transition-colors duration-200 shrink-0"
-           
           >
             get a free quote →
           </Link>

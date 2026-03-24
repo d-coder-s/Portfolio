@@ -217,7 +217,7 @@ const Contact: React.FC = () => {
         >
           contact
         </span>
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
           <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-2">
             {"// hire a digital studio · get a free quote"}
           </p>
@@ -241,7 +241,7 @@ const Contact: React.FC = () => {
 
       {/* ── Main content ── */}
       <section className="bg-dc-cream2 py-12 lg:py-16">
-        <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+        <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
             {/* LEFT */}
             <div className="flex flex-col gap-7">

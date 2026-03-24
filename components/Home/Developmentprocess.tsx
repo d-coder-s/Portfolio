@@ -64,15 +64,14 @@ const fadeUp = {
 const Developmentprocess: React.FC = () => {
   return (
     <section className="bg-dc-cream2 py-12 lg:py-16 overflow-hidden">
-  
-      <div className="max-w-[1300px] mx-auto px-5 lg:px-10">
+      <div className="w-full px-[5vw] xl:px-[7vw] lg:px-10">
         {/* ── Section header ── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-9 text-center" 
+          className="mb-9 text-center"
         >
           <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-dc-ink3 mb-2">
             {"// our development process"}
@@ -81,7 +80,7 @@ const Developmentprocess: React.FC = () => {
             className="font-serif font-black italic text-dc-ink"
             style={{
               fontSize: "clamp(24px, 3.2vw, 38px)",
-            }} 
+            }}
           >
             Simple. Transparent. Fast.
           </h2>
@@ -124,10 +123,8 @@ const Developmentprocess: React.FC = () => {
               <div
                 className={`${style.bg} ${style.text} border border-black/[0.08] p-4 flex flex-col gap-2.5`}
               >
-       
                 <div
                   className={`w-9 h-9 rounded-full border-[2px] ${style.circle} flex items-center justify-center font-serif font-black text-base shrink-0`}
-                  
                 >
                   {num}
                 </div>
@@ -136,7 +133,7 @@ const Developmentprocess: React.FC = () => {
                   className="font-serif font-bold italic leading-tight"
                   style={{
                     fontSize: "clamp(13px, 1.2vw, 16px)",
-                  }} 
+                  }}
                 >
                   {title}
                 </h3>

@@ -646,12 +646,12 @@ export default function ServiceDetailClient({
         </div>
       </section>
 
-      <TornEdge from="dc-cream" to="dc-sticky-yellow" />
+      <TornEdge from="dc-cream" to="dc-yellow-light" />
 
       {/* ══ BOTTOM CTA ══════════════════════════════════════ */}
       <section
         className="py-14 text-center relative overflow-hidden"
-        style={{ background: "#fef9c3" }}
+        style={{ background: "#faf8dc" }}
       >
         <span
           className="absolute inset-x-0 top-1/2 -translate-y-1/2 font-serif font-black select-none pointer-events-none leading-none text-center"
