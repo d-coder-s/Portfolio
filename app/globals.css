@@ -85,13 +85,11 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     font-size: 12px;
   }
 
   body {
-    margin: 0;
-    padding: 0; 
     @apply bg-background text-foreground font-mono;
     font-size: 11px;
   }

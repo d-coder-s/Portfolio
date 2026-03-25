@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import Nav from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import LeadPopup from "@/components/LeadPopup/LeadPopup";
+import ScrollReset from "@/components/ScrollReset";
 
 /* ─────────────────────────────────────────────────────────────
    Font loading
@@ -204,6 +205,7 @@ export default function RootLayout({
         />
 
         <Nav />
+        <ScrollReset />
         <LeadPopup />
         <main id="main-content" className="min-h-screen">
           {children}
