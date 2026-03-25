@@ -10,7 +10,7 @@ import TornEdge from "@/components/ui/TornEdge";
 
 const Home: React.FC = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
       {/* Hero — cream dotted bg */}
       <HeroSection />
 
