@@ -66,10 +66,10 @@ const PROJECTS: Project[] = [
   },
   {
     num: "// 005",
-    title: "MedRoute",
+    title: "SwasthRoute",
     category: "full-stack · medicine delivery",
-    images: ["/figma/mr1.png", "/figma/mr2.png"],
-    link: "https://med-r-c9vd.vercel.app/",
+    images: ["/figma/mr2.png", "/figma/mr1.png","/figma/mr3.png"],
+    link: "https://swasth-route.vercel.app/",
     tags: ["Next.js", "TypeScript", "MongoDB", "Mapbox"],
     description:
       "A full-stack medicine delivery platform built with Next.js 14 and TypeScript. Real-time order tracking, pharmacy dashboards, admin panel, emergency delivery, and an interactive pharmacy locator.",
