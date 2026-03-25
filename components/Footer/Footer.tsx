@@ -87,7 +87,7 @@ const Footer: React.FC = () => (
 
     {/* ── Main grid ─────────────────────────────────────── */}
     <div className="max-w-[1500px] mx-auto px-6 lg:px-12 pt-10 pb-8">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr] gap-10 lg:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-[1.8fr_1fr_1fr_1.2fr] gap-10 lg:gap-8">
         {/* Brand */}
         <div>
           {/* Logo */}

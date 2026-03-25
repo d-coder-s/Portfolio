@@ -27,7 +27,7 @@ const Tape = ({ rotate = "-rotate-2" }: { rotate?: string }) => (
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="w-full px-[5vw] xl:px-[7vw] lg:px-10 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative overflow-hidden">
+    <section className="w-full px-[5vw] xl:px-[7vw] lg:px-10 py-10 lg:py-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative overflow-hidden">
       {/* ── LEFT ─────────────────────────────────────────── */}
       <div>
         {/* EST badge */}
@@ -148,7 +148,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* ── RIGHT: 3-row collage ─────────────────────────── */}
-      <div className="hidden lg:flex flex-col gap-3" aria-hidden>
+      <div className="hidden md:flex flex-col gap-3" aria-hidden>
         {/* ── ROW 1 ─────────────────────────────────────── */}
         <div className="flex gap-3 items-end">
           {/* Receipt */}
