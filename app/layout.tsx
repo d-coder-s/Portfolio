@@ -100,11 +100,7 @@ export const metadata: Metadata = {
     images: ["/figma/lo.png"],
     creator: "@dcoder_atwork",
   },
-  icons: {
-    icon: "/figma/D.png",
-    shortcut: "/figma/D.png",
-    apple: "/figma/D.png",
-  },
+
   category: "technology",
 };
 

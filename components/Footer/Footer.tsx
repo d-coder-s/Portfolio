@@ -95,9 +95,9 @@ const Footer: React.FC = () => (
             <Image
               src="/figma/dcode.png"
               alt="Dcoder icon"
-              width={140}
-              height={36}
-              className="h-10 w-auto object-contain"
+              width={150}
+              height={40}
+              className="h-14 w-auto object-contain"
             />
           </Link>
 
